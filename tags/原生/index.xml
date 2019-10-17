@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>原生 on HerrDu&#39;s Blog</title>
+    <link>/tags/%E5%8E%9F%E7%94%9F/</link>
+    <description>Recent content in 原生 on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 03 Jul 2016 12:03:09 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E5%8E%9F%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何写一个原生js 的插件</title>
+      <link>/post/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9Fjs-%E7%9A%84%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Sun, 03 Jul 2016 12:03:09 +0000</pubDate>
+      
+      <guid>/post/%E5%A6%82%E4%BD%95%E5%86%99%E4%B8%80%E4%B8%AA%E5%8E%9F%E7%94%9Fjs-%E7%9A%84%E6%8F%92%E4%BB%B6/</guid>
+      <description>很多时候，我们使用的是 jQuery,因此我们也习惯了封装一个 jquery 插件来供平时的使用。但是随着 Html5 提供的接口不断的增加与完善，发现摆脱 jquery，可以尝试封装一个简单的原生插件。于是自己动手尝试了一下。
+插件需要满足的条件 一个可复用的插件需要满足以下条件：
+ 插件自身的作用域与用户当前的作用域相互独立，也就是插件内部的私有变量不能影响使用者的环境变量； 插件需具备默认设置参数； 插件除了具备已实现的基本功能外，需提供部分 API，使用者可以通过该 API 修改插件功能的默认参数，从而实现用户自定义插件效果； 插件需提供监听入口，及针对指定元素进行监听，使得该元素与插件响应达到插件效果； 插件支持链式调用。  1. 插件全局函数 实现私有作用域，最好的办法就是使用闭包。可以把插件当做一个函数，插件内部的变量及函数的私有变量，为了在调用插件后依旧能使用其功能，闭包的作用就是延长函数(插件)内部变量的生命周期，使得插件函数可以重复调用，而不影响用户自身作用域。
+故需将插件的所有功能写在一个立即执行函数中：
+ (function () { //插件所有功能都写在这个函数下 })();  2. 插件默认函数 插件的主要功能可以总结至几个关键参数，通过这几个关键参数即可修改插件的主要功能，也是第三步 API 设置的关键参数。
+将默认参数放置在全局函数的最前面，参数变量名为 defaults,通过对象字面量进行赋值：
+ var options = { key1: para1, key2: para2, key3: para3, ... keyn: paran } var options = $.extend({},defaults, options);  这里我直接用了 jquery 的 extend 的方法，很多时候我们可以自己写一个相似的方法
+3. 插件如何暴露给用户  var api = function(){ this.</description>
+    </item>
+    
+  </channel>
+</rss>

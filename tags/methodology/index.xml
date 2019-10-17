@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Methodology on HerrDu&#39;s Blog</title>
+    <link>/tags/methodology/</link>
+    <description>Recent content in Methodology on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 06 Jan 2015 10:27:09 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/methodology/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to be an expert in changing world</title>
+      <link>/post/how-to-be-an-expert-in-changing-world/</link>
+      <pubDate>Tue, 06 Jan 2015 10:27:09 +0000</pubDate>
+      
+      <guid>/post/how-to-be-an-expert-in-changing-world/</guid>
+      <description>If the world were static, we could have monotonically increasing confidence in our beliefs. The more (and more varied) experience a belief survived, the less likely it would be false. Most people implicitly believe something like this about their opinions. And they&amp;rsquo;re justified in doing so with opinions about things that don&amp;rsquo;t change much, like human nature. But you can&amp;rsquo;t trust your opinions in the same way about things that change, which could include practically everything else.</description>
+    </item>
+    
+  </channel>
+</rss>

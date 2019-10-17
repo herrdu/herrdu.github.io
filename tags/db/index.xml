@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DB on HerrDu&#39;s Blog</title>
+    <link>/tags/db/</link>
+    <description>Recent content in DB on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Nov 2014 07:52:08 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/db/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac下数据建模软件推荐</title>
+      <link>/post/dbdesigner/</link>
+      <pubDate>Tue, 25 Nov 2014 07:52:08 +0000</pubDate>
+      
+      <guid>/post/dbdesigner/</guid>
+      <description>在进行数据库设计的时候，数据建模软件能有效提升效率。在 windows 下，我之前使用得最多的是 powerdesigner，它没有 mac 版本。在搜寻一番后，找到两个好用的工具，推荐给大伙。
+Navicat Modeler Essentitals
+在 MAS 上，有。可以直接下载，免费。
+Navicat Modeler Essentitals
+它支持多种数据库:MySQL,Oracle,Sqlite,PostgreSql&amp;hellip;可以导出 sql 脚本。总体来说，满足最基本需求。
+Mysql Workbench
+Mysql 官方软件，既可以进行建模，又可以进行连接数据库，进行查询。如果是使用 Mysql 就用这个就可以了。
+Mysql Workbench
+eagleon / 2013-01-18
+Published under (CC) BY-NC-SA in categories learn tagged with mac database mysql</description>
+    </item>
+    
+  </channel>
+</rss>

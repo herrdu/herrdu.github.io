@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MouseEvent on HerrDu&#39;s Blog</title>
+    <link>/tags/mouseevent/</link>
+    <description>Recent content in MouseEvent on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Jul 2019 11:23:43 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/mouseevent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>每日一词：MouseEvent Order</title>
+      <link>/post/dailyword/mouseeventorder/</link>
+      <pubDate>Thu, 25 Jul 2019 11:23:43 +0800</pubDate>
+      
+      <guid>/post/dailyword/mouseeventorder/</guid>
+      <description>&lt;p&gt;上篇文章，我们关注了 MouseEvent 这个接口，但是它还有一个有趣的定义我们没有关注到，就是 MouseEvent 产生的 Order。 我们关注 MouseEvent 产生顺序的主要一下四种场景：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：MouseEvent</title>
+      <link>/post/dailyword/mouseevent/</link>
+      <pubDate>Tue, 23 Jul 2019 14:15:00 +0800</pubDate>
+      
+      <guid>/post/dailyword/mouseevent/</guid>
+      <description>&lt;p&gt;MouseEvent 接口模型起源于来自于1998年4月编写的 &lt;a href=&#34;https://www.w3.org/TR/html40/&#34;&gt;HTML40&lt;/a&gt; 中的 onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove 和 onmouseout 属性。这个接口是为了点击输入设备（如：鼠标、轨迹球、触摸屏等操控鼠标的输入设备）设计的。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

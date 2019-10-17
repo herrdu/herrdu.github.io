@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>腾讯云Centos上,pptpVpn的搭建</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="1. 为什么使用 VPN 随着公司项目服务器数量的增多，对服务器管理也越来越难，安全性的要求也越来越高。有一套好的技术机制可以让我们简单、安全的管理服务器集群。而 vpn 恰恰又是这其中的常用的一种。
+我们无论是在阿里云还是腾讯云上购买的服务器，它都是包含两个 ip 的：一个内网 ip，一个公网的 ip。公网的 ip 是我们用 ssh 通过外网进行访问的，而内网 ip 则是在服务器之间通过 ssh 访问用的。为了确保应用服务器在访问上的安全性，我们认为应该把部署应用的服务器的公网 ip 取消掉。这样就可以确保人们不能通过外网随意的访问这台机子，但是我们又需要访问这主机上的应用，那只能使用私有 ip 了。我们有负载均衡的服务器，这台服务器是一个连接公网与私网的桥梁。域名解析的时候指向负载均衡服务器的公网 ip，然后负载均衡服务器通过内网 ip 指向应用服务器。不过还是有一个问题就是，开发人员该如何访问应用服务器上去部署程序呢？这时我们需要一个和应用服务器在同一个局域网内的跳板服务器，我们先通过公网登录跳板服务器，然后在登录应用服务器。可是我们又不想给开发人员跳板服务器的用户名和密码，因此 vpn 就是一个不错的选择。vpn，让开发人员走跳板服务器的代理，然后对应服务器进行操作。这条路线虽然是曲折了一点，但还是简单的办法保证了服务器的安全性。
+2.如何在 centos 上搭建 vpn  准备必要的软件:ppp、iptables、pptpd  yum install -y ppp iptables pptpd 
+ 配置 pptp ##### /etc/pptpd.conf 添加下面两行   localip 192.168.0.1 remoteip 192.168.0.244-192.168.0.245 
+192.168.0.244-192.168.0.245 表示用户被分配的 ip 地址的范围。
+##### /etc/ppp/options.pptpd
+添加下面两行，表示使用 Google 的 DNS 服务器:
+ ms-dns 8.8.8.8 ms-dns 8.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="腾讯云Centos上,pptpVpn的搭建">
+    <meta name="twitter:description" content="1. 为什么使用 VPN 随着公司项目服务器数量的增多，对服务器管理也越来越难，安全性的要求也越来越高。有一套好的技术机制可以让我们简单、安全的管理服务器集群。而 vpn 恰恰又是这其中的常用的一种。
+我们无论是在阿里云还是腾讯云上购买的服务器，它都是包含两个 ip 的：一个内网 ip，一个公网的 ip。公网的 ip 是我们用 ssh 通过外网进行访问的，而内网 ip 则是在服务器之间通过 ssh 访问用的。为了确保应用服务器在访问上的安全性，我们认为应该把部署应用的服务器的公网 ip 取消掉。这样就可以确保人们不能通过外网随意的访问这台机子，但是我们又需要访问这主机上的应用，那只能使用私有 ip 了。我们有负载均衡的服务器，这台服务器是一个连接公网与私网的桥梁。域名解析的时候指向负载均衡服务器的公网 ip，然后负载均衡服务器通过内网 ip 指向应用服务器。不过还是有一个问题就是，开发人员该如何访问应用服务器上去部署程序呢？这时我们需要一个和应用服务器在同一个局域网内的跳板服务器，我们先通过公网登录跳板服务器，然后在登录应用服务器。可是我们又不想给开发人员跳板服务器的用户名和密码，因此 vpn 就是一个不错的选择。vpn，让开发人员走跳板服务器的代理，然后对应服务器进行操作。这条路线虽然是曲折了一点，但还是简单的办法保证了服务器的安全性。
+2.如何在 centos 上搭建 vpn  准备必要的软件:ppp、iptables、pptpd  yum install -y ppp iptables pptpd 
+ 配置 pptp ##### /etc/pptpd.conf 添加下面两行   localip 192.168.0.1 remoteip 192.168.0.244-192.168.0.245 
+192.168.0.244-192.168.0.245 表示用户被分配的 ip 地址的范围。
+##### /etc/ppp/options.pptpd
+添加下面两行，表示使用 Google 的 DNS 服务器:
+ ms-dns 8.8.8.8 ms-dns 8.">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="腾讯云Centos上,pptpVpn的搭建">
+  <meta property="og:description" content="1. 为什么使用 VPN 随着公司项目服务器数量的增多，对服务器管理也越来越难，安全性的要求也越来越高。有一套好的技术机制可以让我们简单、安全的管理服务器集群。而 vpn 恰恰又是这其中的常用的一种。
+我们无论是在阿里云还是腾讯云上购买的服务器，它都是包含两个 ip 的：一个内网 ip，一个公网的 ip。公网的 ip 是我们用 ssh 通过外网进行访问的，而内网 ip 则是在服务器之间通过 ssh 访问用的。为了确保应用服务器在访问上的安全性，我们认为应该把部署应用的服务器的公网 ip 取消掉。这样就可以确保人们不能通过外网随意的访问这台机子，但是我们又需要访问这主机上的应用，那只能使用私有 ip 了。我们有负载均衡的服务器，这台服务器是一个连接公网与私网的桥梁。域名解析的时候指向负载均衡服务器的公网 ip，然后负载均衡服务器通过内网 ip 指向应用服务器。不过还是有一个问题就是，开发人员该如何访问应用服务器上去部署程序呢？这时我们需要一个和应用服务器在同一个局域网内的跳板服务器，我们先通过公网登录跳板服务器，然后在登录应用服务器。可是我们又不想给开发人员跳板服务器的用户名和密码，因此 vpn 就是一个不错的选择。vpn，让开发人员走跳板服务器的代理，然后对应服务器进行操作。这条路线虽然是曲折了一点，但还是简单的办法保证了服务器的安全性。
+2.如何在 centos 上搭建 vpn  准备必要的软件:ppp、iptables、pptpd  yum install -y ppp iptables pptpd 
+ 配置 pptp ##### /etc/pptpd.conf 添加下面两行   localip 192.168.0.1 remoteip 192.168.0.244-192.168.0.245 
+192.168.0.244-192.168.0.245 表示用户被分配的 ip 地址的范围。
+##### /etc/ppp/options.pptpd
+添加下面两行，表示使用 Google 的 DNS 服务器:
+ ms-dns 8.8.8.8 ms-dns 8.">
+  <meta property="og:url" content="/post/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E4%B8%8A-pptpvpn%E7%9A%84%E6%90%AD%E5%BB%BA/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E4%B8%8A-pptpvpn%E7%9A%84%E6%90%AD%E5%BB%BA/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">腾讯云Centos上,pptpVpn的搭建</h1>
+      <p class="post-meta">@ · Sep 26, 2016 · 1 min read</p>
+    </header>
+    <article class="post-content">
+
+<h5 id="1-为什么使用-vpn">1. 为什么使用 VPN</h5>
+
+<p>随着公司项目服务器数量的增多，对服务器管理也越来越难，安全性的要求也越来越高。有一套好的技术机制可以让我们简单、安全的管理服务器集群。而 vpn 恰恰又是这其中的常用的一种。</p>
+
+<p>我们无论是在阿里云还是腾讯云上购买的服务器，它都是包含两个 ip 的：一个内网 ip，一个公网的 ip。公网的 ip 是我们用 ssh 通过外网进行访问的，而内网 ip 则是在服务器之间通过 ssh 访问用的。为了确保应用服务器在访问上的安全性，我们认为应该把部署应用的服务器的公网 ip 取消掉。这样就可以确保人们不能通过外网随意的访问这台机子，但是我们又需要访问这主机上的应用，那只能使用私有 ip 了。我们有负载均衡的服务器，这台服务器是一个连接公网与私网的桥梁。域名解析的时候指向负载均衡服务器的公网 ip，然后负载均衡服务器通过内网 ip 指向应用服务器。不过还是有一个问题就是，开发人员该如何访问应用服务器上去部署程序呢？这时我们需要一个和应用服务器在同一个局域网内的跳板服务器，我们先通过公网登录跳板服务器，然后在登录应用服务器。可是我们又不想给开发人员跳板服务器的用户名和密码，因此 vpn 就是一个不错的选择。vpn，让开发人员走跳板服务器的代理，然后对应服务器进行操作。这条路线虽然是曲折了一点，但还是简单的办法保证了服务器的安全性。</p>
+
+<h5 id="2-如何在-centos-上搭建-vpn">2.如何在 centos 上搭建 vpn</h5>
+
+<ul>
+<li>准备必要的软件:ppp、iptables、pptpd</li>
+</ul>
+
+<p><pre>yum install -y ppp iptables pptpd
+  </pre></p>
+
+<ul>
+<li>配置 pptp ##### /etc/pptpd.conf 添加下面两行</li>
+</ul>
+
+<p><pre>
+  localip 192.168.0.1
+  remoteip 192.168.0.244-192.168.0.245
+  </pre></p>
+
+<p>192.168.0.244-192.168.0.245 表示用户被分配的 ip 地址的范围。</p>
+
+<p>##### /etc/ppp/options.pptpd</p>
+
+<p>添加下面两行，表示使用 Google 的 DNS 服务器:</p>
+
+<p><pre>
+  ms-dns 8.8.8.8
+  ms-dns 8.8.4.4
+  </pre> ###### /etc/ppp/chap-secrets</p>
+
+<p>这个文件是用来添加 vpn 账号的，每一行表示一个用户，格式如下:</p>
+
+<p><pre>
+  username pptpd passwd *
+  </pre></p>
+
+<p>username 是 vpn 用户名</p>
+
+<p>passwd 是 vpn 密码 * 表示任何 ip，如果只想一个账号只能一个人登陆，就设置一个固定 ip，参考上面的 ip 地址范围 ##### /etc/sysctl.conf
+  修改内核设置，使得支持转发，将 net.ipv4.ip_forward=0 改为 net.ipv4.ip_forward=1，要取消注释。修改后运行下面命令使得生效:</p>
+
+<p><pre>
+  /sbin/sysctl -p
+  </pre> ##### 添加转发规则</p>
+
+<p>上面配置完了，重启 pptpd 服务后，应该是能登陆，但是没法上网，这时候需要添加 iptables 转发规则:</p>
+
+<p><pre>
+  iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT &ndash;to-source server-ip
+  </pre></p>
+
+<p>192.168.0.0/24 标识分配的网段
+  server-ip 填写的是服务器的公网 ip
+  保存规则</p>
+
+<p><pre>
+  /etc/init.d/iptables save
+  </pre></p>
+
+<p>有的时候 iptables 命令并不在 init.d 文件夹下面，因此我们需要先用 which 命令找到执行文件的地址，然后再执行保存命令
+  然后重启 iptables 以及 pptpd:</p>
+
+<p><pre>
+  /etc/init.d/iptables restart
+  /etc/init.d/pptpd restart
+  </pre></p>
+
+<p>有的时候 可以使用 service iptables stop 命令重启服务 ##### 设置开机启动</p>
+
+<p><pre>
+  chkconfig iptables on
+  chkconfig pptpd on
+  </pre></p>
+
+<h3 id="注意">注意：</h3>
+
+<ol>
+<li>保存 iptables 规则的时候一定要先备份 /etc/sysconfig/iptables 文件。因为在执行 iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT &ndash;to-source server-ip 命令时候有可能全部重新 iptables 这个配置文件</li>
+<li>iptables 配置文件和 docker 不兼容。我是周日凌晨搭建的 vpn，结果测试机的服务器挂掉了，我想大概是因为配置了 nat 转发才造成和 docker 分配的 172 网段的 ip 冲突，因此造成服务器挂掉，这个问题让我调了一上午。</li>
+<li>vpn 配置后以后，mac 笔记本上连接上 vpn 也不能通过 ssh root@内网 ip 的形式登录应用级服务器。这时候我们要在 mac Vpn 配置的时候进行高级配置，选中通过 vpn 分发所有流量即可。</li>
+</ol>
+
+<p>参看文献：</p>
+
+<ol>
+<li><a href="http://pptpclient.sourceforge.net/protocol-security.phtml">使用 pptpd 搭建 VPN</a></li>
+<li><a href="http://www.cnblogs.com/DwyaneTalk/p/4367093.html">VPN 介绍及 PPTP、L2TP、IPSec 等的比较</a></li>
+</ol>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/centos"><span class="tag">Centos</span></a></li>
+        
+          <li><a href="/tags/pptpvpn"><span class="tag">PptpVpn</span></a></li>
+        
+          <li><a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91"><span class="tag">腾讯云</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1115</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

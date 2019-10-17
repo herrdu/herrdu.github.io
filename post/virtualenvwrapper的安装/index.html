@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>virtualenvwrapper的安装</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="安装 支持的 SHELL virtualenvwrapper 是在 Bourne Shell 兼容语法上定义的一个 Shell 函数的合集。在 OS X 和 Linux 系统上，可以用下面这些 Shell 进行自动化的测试：
+ bash Ksh zsh  它也许可已运行在其他的 Shell 上，如果你发现了它能够运行除了以上列出来的其它 Shell 上，请告诉我。如果你在没有完全重写它而让他运行在其他的 Shell 上，你可以通过bitbucket project page发送一个 Pull 请求。如果你写了一个克隆的版本去适应不兼容的 Shell 的话，也请告诉我，我会在这个界面上加上一个链接。
+Windows 命令提示符 David Marble 已经将 virtualenvwrapper 到能够在微软的 Windows 命令提示符上运行的 Windows 批处理脚本。这是也是一个独立的分布式的再实现。你可以通过 PyPI 下载 virtualenvwrapper-win
+MSYS 它可以使用 virtualenv 和本地的 Windows Python 安装文件封装MSYS。为了让它能够运行，你需要额外的定义一个环境变量，起名字为——MSYS_HOME,包括指向 MSYS 安装程序的根目录。
+ export WORKON_HOME=$HOME/.virtualenvs export MSYS_HOME=/c/msys/1.0 source /usr/local/bin/virtualenvwrapper.sh  或者
+  export WORKON_HOME=$HOME/.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="virtualenvwrapper的安装">
+    <meta name="twitter:description" content="安装 支持的 SHELL virtualenvwrapper 是在 Bourne Shell 兼容语法上定义的一个 Shell 函数的合集。在 OS X 和 Linux 系统上，可以用下面这些 Shell 进行自动化的测试：
+ bash Ksh zsh  它也许可已运行在其他的 Shell 上，如果你发现了它能够运行除了以上列出来的其它 Shell 上，请告诉我。如果你在没有完全重写它而让他运行在其他的 Shell 上，你可以通过bitbucket project page发送一个 Pull 请求。如果你写了一个克隆的版本去适应不兼容的 Shell 的话，也请告诉我，我会在这个界面上加上一个链接。
+Windows 命令提示符 David Marble 已经将 virtualenvwrapper 到能够在微软的 Windows 命令提示符上运行的 Windows 批处理脚本。这是也是一个独立的分布式的再实现。你可以通过 PyPI 下载 virtualenvwrapper-win
+MSYS 它可以使用 virtualenv 和本地的 Windows Python 安装文件封装MSYS。为了让它能够运行，你需要额外的定义一个环境变量，起名字为——MSYS_HOME,包括指向 MSYS 安装程序的根目录。
+ export WORKON_HOME=$HOME/.virtualenvs export MSYS_HOME=/c/msys/1.0 source /usr/local/bin/virtualenvwrapper.sh  或者
+  export WORKON_HOME=$HOME/.">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="virtualenvwrapper的安装">
+  <meta property="og:description" content="安装 支持的 SHELL virtualenvwrapper 是在 Bourne Shell 兼容语法上定义的一个 Shell 函数的合集。在 OS X 和 Linux 系统上，可以用下面这些 Shell 进行自动化的测试：
+ bash Ksh zsh  它也许可已运行在其他的 Shell 上，如果你发现了它能够运行除了以上列出来的其它 Shell 上，请告诉我。如果你在没有完全重写它而让他运行在其他的 Shell 上，你可以通过bitbucket project page发送一个 Pull 请求。如果你写了一个克隆的版本去适应不兼容的 Shell 的话，也请告诉我，我会在这个界面上加上一个链接。
+Windows 命令提示符 David Marble 已经将 virtualenvwrapper 到能够在微软的 Windows 命令提示符上运行的 Windows 批处理脚本。这是也是一个独立的分布式的再实现。你可以通过 PyPI 下载 virtualenvwrapper-win
+MSYS 它可以使用 virtualenv 和本地的 Windows Python 安装文件封装MSYS。为了让它能够运行，你需要额外的定义一个环境变量，起名字为——MSYS_HOME,包括指向 MSYS 安装程序的根目录。
+ export WORKON_HOME=$HOME/.virtualenvs export MSYS_HOME=/c/msys/1.0 source /usr/local/bin/virtualenvwrapper.sh  或者
+  export WORKON_HOME=$HOME/.">
+  <meta property="og:url" content="/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">virtualenvwrapper的安装</h1>
+      <p class="post-meta">@ · Oct 30, 2015 · 2 min read</p>
+    </header>
+    <article class="post-content">
+
+<h3 id="安装">安装</h3>
+
+<h3 id="支持的-shell">支持的 SHELL</h3>
+
+<p>virtualenvwrapper 是在 Bourne Shell 兼容语法上定义的一个 Shell 函数的合集。在 OS X 和 Linux 系统上，可以用下面这些 Shell 进行自动化的测试：</p>
+
+<ul>
+<li>bash</li>
+<li>Ksh</li>
+<li>zsh</li>
+</ul>
+
+<p>它也许可已运行在其他的 Shell 上，如果你发现了它能够运行除了以上列出来的其它 Shell 上，请告诉我。如果你在没有完全重写它而让他运行在其他的 Shell 上，你可以通过<a href="https://bitbucket.org/dhellmann/virtualenvwrapper/">bitbucket project page</a>发送一个 Pull 请求。如果你写了一个克隆的版本去适应不兼容的 Shell 的话，也请告诉我，我会在这个界面上加上一个链接。</p>
+
+<h3 id="windows-命令提示符">Windows 命令提示符</h3>
+
+<p>David Marble 已经将 virtualenvwrapper 到能够在微软的 Windows 命令提示符上运行的 Windows 批处理脚本。这是也是一个独立的分布式的再实现。你可以通过 PyPI 下载 <a href="https://pypi.python.org/pypi/virtualenvwrapper-win">virtualenvwrapper-win</a></p>
+
+<h3 id="msys">MSYS</h3>
+
+<p>它可以使用 virtualenv 和本地的 Windows Python 安装文件封装<a href="http://www.mingw.org/wiki/MSYS">MSYS</a>。为了让它能够运行，你需要额外的定义一个环境变量，起名字为——MSYS_HOME,包括指向 MSYS 安装程序的根目录。</p>
+
+<pre><code>
+export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=/c/msys/1.0
+source /usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+
+<p>或者</p>
+
+<pre>
+<code>
+export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=C:\msys\1.0
+source /usr/local/bin/virtualenvwrapper.sh
+</code>
+</pre>
+
+<p>根据你的 MSYS 安装程序，你可能需要在 MSYS_HOME/bin 文件中安装<a href="http://sourceforge.net/projects/mingw/files/">MSYS mktemp 二进制安装文件</a></p>
+
+<h3 id="python-版本">Python 版本</h3>
+
+<p>virtualenvwrapper 是 Python 的 2.6-3.4 下进行测试。</p>
+
+<h3 id="基本安装">基本安装</h3>
+
+<p>virtualenvwrapper 应该安装到 virtualenv 所在的全局的 site-packages 目录中。你需要管理员权限才能做到这一点。最简单的安装方式是使用 pip:</p>
+
+<pre><code>
+$ pip install virtualenvwrapper
+</code></pre>
+
+<p>或</p>
+
+<pre><code>
+$ sudo pip install virtualenvwrapper
+</code></pre>
+
+<h6 id="警告">警告</h6>
+
+<p>virtualenv 可以让你创建许多不同的 Python 虚拟环境。你应该只在你原始的 Python 安装文件上安装 virtualenv 和 virtualenvwrapper（i.e 不要在激活的虚拟环境中安装），这样所有的 pthon 环境才会依赖同一个版本。</p>
+
+<p>另外一个将其安装在本地目录的全局的 site-packages 目录中的方法是（通常是 ~/.local）:</p>
+
+<pre><code>
+pip install --user virtualenvwrapper
+</code></pre>
+
+<h3 id="shell-启动文件">Shell 启动文件</h3>
+
+<p>添加三行到你的 shell 启动文件中（.bashrc,.profile 等文件）来设置虚拟环境的位置，你的开发项目的位置，和这个安装包的脚本存在的位置。</p>
+
+<pre><code>
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+
+<p>在编辑完了之后，重新加载启动文件（e.g. 运行 source ~/.bashrc）</p>
+
+<h3 id="延迟加载">延迟加载</h3>
+
+<p>还有另一种延迟加载 virtualenvwrapper 初始化安装脚本的方法。直接用 virtualevnwrapper_laze.sh 来取代 virtualenvwrapper.sh .如果 virtualenvwrapper.sh 不存在你的\$PATH 中，设置 VIRTUALENVWRAPPER_SCRIPT 来指向它。</p>
+
+<pre><code>
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+</code></pre>
+
+<h6 id="提醒">提醒</h6>
+
+<p>使用延迟加载版本的启动脚本的时候，tab 部全功能在在第一条命令执行完之后才能使用。例如：在第一次 workon 之前是不能使用 tab 补全功能的。</p>
+
+<h3 id="快速启动">快速启动</h3>
+
+<p>1.运行：workon 2.打印虚拟环境目录，或者为空 3.运行:mkvirtualenv temp 4.创建一个新的虚拟环境 temp 5.运行：workon 6.此时，temp 这个环境被包括进去了。</p>
+
+<h3 id="配置">配置</h3>
+
+<p>virtualenvwrapper 可以通过改变环境变量来定制。 加载 virtualenvwrapper.sh 之前设置你的 shell 启动文件中的变量。</p>
+
+<h3 id="项目目录的位置">项目目录的位置</h3>
+
+<p>WORK_HOME 变量告诉 virtualenvwrapper 你的工作目录放在了哪里。默认值是\$HOME/.virtualenvs。如果这个路径不存在，那么当 virtualenvwrapper 加载的时候，就会创建这个目录。</p>
+
+<h3 id="项目链接文件名">项目链接文件名</h3>
+
+<p>PROJECT_HOME 变量告诉 virtualenvwrapper 你把项目的工作路径放在了哪里。在项目使用之前，这个变量必须被设置，路径必须被创建。</p>
+
+<h6 id="可以看看">可以看看</h6>
+
+<ul>
+<li><a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#command-workon">项目管理</a></li>
+</ul>
+
+<h3 id="启动项目路径切换">启动项目路径切换</h3>
+
+<p>VIRTUALENVWRAPPER_WORKON_CD 这个变量空指着当激活的时候，工作的项目目录是否会切换。默认值是 1，可以改变目录。如果设置成 0 的话，禁用了所有的 workon 调用行为。</p>
+
+<h6 id="可以看看-1">可以看看</h6>
+
+<ul>
+<li><a href="https://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#command-workon">workon</a></li>
+</ul>
+
+<h3 id="hook-日志的位置">Hook 日志的位置</h3>
+
+<p>VIRTUALENVWRAPPER_LOG_FILE 变量告诉 virtualenvwrapper，哪里可以为 Hook loader 写日志。默认是不写日志的。</p>
+
+<h3 id="python-解释器-虚拟环境和环境路径">Python 解释器，虚拟环境和环境路径</h3>
+
+<p>在启动过程中，virtualenvwrapper.sh 在$path中找到python和虚拟环境的程序，并提醒一会使用它们。这消除了当$path 改变时引起的冲突，并且在 virtualenvwrapper 没有安装或者不同版本的 virtualenv 被安装的虚拟环境上会从内部进行解释。由于这种行为，在使用 sourcing virtualenvwrapper.sh 是非常重要的。例如：</p>
+
+<pre><code>
+export PATH=/usr/local/bin:$PATH
+source /usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+
+<p>要覆盖\$PATH 搜索的值，为解释的完整路径设置 VIRTUALENVWRAPPER_PYTHON 的变量和 virtualenv 二进制文件的完整目录设置 VIRTUALENVWRAPPER_VIRTUALENV。这两个变量必须在 sourcing virtualenvwrapper 之前设置。例如：</p>
+
+<pre><code>
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+
+<h3 id="virtualenv-的默认参数">virtualenv 的默认参数</h3>
+
+<p>如果定义这个应用的 VIRTUALENVWRAPPER_VIRTUALENV 需要一个参数，它们能在 VIRTUALENVWRAPPER_VIRTUALENV_ARGS 这里进行设置。同样的变量能被设置成默认的参数来传给 virtualenv.例如：设置成<code>&ndash;no-site-packages</code> 来保证所有的新环境是从<code>site-packages</code>目录中隔离出来的。</p>
+
+<pre><code>export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'</code></pre>
+
+<h3 id="临时文件">临时文件</h3>
+
+<p>virtualenvwrapper 在 \$TMPDIR 中创建了临时文件。如果没有设置这个变量的时候，它使用 /tmp 这个路径。为了改变 virtualenvwrapper 的临时文件的路径，设置 VIRTUALENVWRAPPER_TMPDIR。</p>
+
+<h3 id="side-wide-配置">Side-Wide 配置</h3>
+
+<p>大多数的 Unix 系统有能够为所有的用户改变配置的能力。这通常有两种形式：编辑新的帐号的 skeleton 或者 编辑一个 shell 的全局的启动文件。</p>
+
+<p>编辑新账户的 skeleton 文件，也就是说每一个新的用户会有它们私有的启动文件来预加载 virtualenvwrapper。我们可以通过注释或者删除那些语句所在的行来禁用这些。参考 Shell 和操作系统的文档来确定合适的文件去编辑。</p>
+
+<p>修改一个 Shell 的全局启动文件的意味着这个 shell 的所有用户都会启动 virtualenvwrapper，它们不能禁用它。参考 Shell 和操作系统的文档来确定合适的文件去编辑。</p>
+
+<h3 id="更新到-2-9">更新到 2.9</h3>
+
+<p>版本 2.9 包括以前 virtualenvwrapper.project 分别提供的功能。 如果你有一个更老的版本安装项目的扩展，升级之前将其删除。</p>
+
+<h3 id="从-1-x-的升级">从 1.x 的升级</h3>
+
+<p>含包装功能的 shell 脚本已经更名为 2.x 系列，以反映炮弹比的 bash 其他的都支持的事实。 在你的启动文件，更改</p>
+
+<pre><code>
+/ usr / local / bin目录/ virtualenvwrapper_bashrc源/usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/python"><span class="tag">Python</span></a></li>
+        
+          <li><a href="/tags/virtualenvwrapper"><span class="tag">Virtualenvwrapper</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1447</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

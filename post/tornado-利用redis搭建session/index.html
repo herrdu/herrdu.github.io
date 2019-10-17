@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>tornado 利用redis搭建session</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="参考文献        操作系统 Mac python 版本：2.7
+1.安装 tornado
+sudo easy_install tornado  2.安装 redis
+cd /tmp wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz tar -zxf redis-2.2.13.tar.gz cd redis-2.2.13 make sudo make install  3.安装 python 的 redis 模块
+pip install redis  4.安装 ujson
+pip install ujson  5.编写 session 文件，基于 redis 的数据库
+session.py
+#/usr/bin/python # coding: utf-8 import uuid import hmac import ujson import hashlib import redis __author__ = &#39;herrdu&#39; &amp;quot;&amp;quot;&amp;quot; 需要安装的第三方库： python的redis连接：http://pypi.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="tornado 利用redis搭建session">
+    <meta name="twitter:description" content="参考文献        操作系统 Mac python 版本：2.7
+1.安装 tornado
+sudo easy_install tornado  2.安装 redis
+cd /tmp wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz tar -zxf redis-2.2.13.tar.gz cd redis-2.2.13 make sudo make install  3.安装 python 的 redis 模块
+pip install redis  4.安装 ujson
+pip install ujson  5.编写 session 文件，基于 redis 的数据库
+session.py
+#/usr/bin/python # coding: utf-8 import uuid import hmac import ujson import hashlib import redis __author__ = &#39;herrdu&#39; &amp;quot;&amp;quot;&amp;quot; 需要安装的第三方库： python的redis连接：http://pypi.">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="tornado 利用redis搭建session">
+  <meta property="og:description" content="参考文献        操作系统 Mac python 版本：2.7
+1.安装 tornado
+sudo easy_install tornado  2.安装 redis
+cd /tmp wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz tar -zxf redis-2.2.13.tar.gz cd redis-2.2.13 make sudo make install  3.安装 python 的 redis 模块
+pip install redis  4.安装 ujson
+pip install ujson  5.编写 session 文件，基于 redis 的数据库
+session.py
+#/usr/bin/python # coding: utf-8 import uuid import hmac import ujson import hashlib import redis __author__ = &#39;herrdu&#39; &amp;quot;&amp;quot;&amp;quot; 需要安装的第三方库： python的redis连接：http://pypi.">
+  <meta property="og:url" content="/post/tornado-%E5%88%A9%E7%94%A8redis%E6%90%AD%E5%BB%BAsession/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/tornado-%E5%88%A9%E7%94%A8redis%E6%90%AD%E5%BB%BAsession/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">tornado 利用redis搭建session</h1>
+      <p class="post-meta">@ · May 3, 2016 · 3 min read</p>
+    </header>
+    <article class="post-content"><nav>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#参考文献">参考文献</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<p>操作系统 Mac
+python 版本：2.7</p>
+
+<p>1.安装 tornado</p>
+
+<pre><code>sudo easy_install tornado
+</code></pre>
+
+<p>2.安装 redis</p>
+
+<pre><code>cd /tmp
+wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz
+tar -zxf redis-2.2.13.tar.gz
+cd redis-2.2.13
+make
+sudo make install
+</code></pre>
+
+<p>3.安装 python 的 redis 模块</p>
+
+<pre><code>pip install redis
+</code></pre>
+
+<p>4.安装 ujson</p>
+
+<pre><code>pip install ujson
+</code></pre>
+
+<p>5.编写 session 文件，基于 redis 的数据库</p>
+
+<p>session.py</p>
+
+<pre><code>#/usr/bin/python
+# coding: utf-8
+import uuid
+import hmac
+import ujson
+import hashlib
+import redis
+
+
+__author__ = 'herrdu'
+
+
+&quot;&quot;&quot;
+需要安装的第三方库：
+python的redis连接：http://pypi.python.org/pypi?%3Aaction=search&amp;term=redis&amp;submit=search
+需要ujson
+安装方法：sudo easy_install ujson
+&quot;&quot;&quot;
+
+
+class SessionData(dict):
+    &quot;&quot;&quot;
+    hmac:
+        Hash-based message authentication code，利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出
+    &quot;&quot;&quot;
+    def __init__(self, session_id, hmac_key):
+        self.session_id = session_id
+        self.hmac_key = hmac_key
+
+
+class Session(SessionData):
+    def __init__(self, session_manager, request_handler):
+        self.session_manager = session_manager
+        self.request_handler = request_handler
+        try:
+            current_session = session_manager.get(request_handler)
+        except InvalidSessionException:
+            current_session = session_manager.get()
+        for key, data in current_session.iteritems():
+            self[key] = data
+        self.session_id = current_session.session_id
+        self.hmac_key = current_session.hmac_key
+
+    def save(self):
+        self.session_manager.set(self.request_handler, self)
+
+
+class SessionManager(object):
+    &quot;&quot;&quot;
+    redis的地址，端口和密码
+    &quot;&quot;&quot;
+    def __init__(self, secret, store_options, session_timeout):
+        self.secret = secret
+        self.session_timeout = session_timeout
+        try:
+            if store_options['redis_pass']:
+                self.redis = redis.StrictRedis(host=store_options['redis_host'], port=store_options['redis_port'], password=store_options['redis_pass'])
+            else:
+                self.redis = redis.StrictRedis(host=store_options['redis_host'], port=store_options['redis_port'])
+        except Exception as e:
+            print e
+
+    def _fetch(self, session_id):
+        try:
+            session_data = raw_data = self.redis.get(session_id)
+            if raw_data:
+                self.redis.setex(session_id, self.session_timeout, raw_data)
+                session_data = ujson.loads(raw_data)
+            if isinstance(session_data, dict):
+                return session_data
+            else:
+                return {}
+        except IOError:
+            return {}
+
+    def get(self, request_handler=None):
+        if not request_handler:
+            session_id = None
+            hmac_key = None
+        else:
+            session_id = request_handler.get_secure_cookie(&quot;session_id&quot;)
+            hmac_key = request_handler.get_secure_cookie(&quot;verification&quot;)
+        if not session_id:
+            session_exists = False
+            session_id = self._generate_id()
+            hmac_key = self._generate_hmac(session_id)
+        else:
+            session_exists = True
+        check_hmac = self._generate_hmac(session_id)
+        if hmac_key != check_hmac:
+            raise InvalidSessionException()
+        session = SessionData(session_id, hmac_key)
+        if session_exists:
+            session_data = self._fetch(session_id)
+            for key, data in session_data.iteritems():
+                session[key] = data
+        return session
+
+    def set(self, request_handler, session):
+        request_handler.set_secure_cookie(&quot;session_id&quot;, session.session_id)
+        request_handler.set_secure_cookie(&quot;verification&quot;, session.hmac_key)
+        session_data = ujson.dumps(dict(session.items()))
+        self.redis.setex(session.session_id, self.session_timeout, session_data)
+
+    def _generate_id(self):
+        new_id = hashlib.sha256(self.secret + str(uuid.uuid4()))
+        return new_id.hexdigest()
+
+    def _generate_hmac(self, session_id):
+        return hmac.new(session_id, self.secret, hashlib.sha256).hexdigest()
+
+
+#此处可以自定义异常处理
+class InvalidSessionException(Exception):
+    pass
+</code></pre>
+
+<p>6.接下来</p>
+
+<p>接下来我们写一个 tornado 项目来测试一下我们的 session，文件结构如下：</p>
+
+<pre><code>接下来我们写一个tornado项目来测试一下我们的session，文件结构如下：
+├── hello_world.py
+├── base.py
+├── session.py
+├── templates
+│   └── hello.html
+└── testhandler.py
+</code></pre>
+
+<p>base.py</p>
+
+<pre><code>#coding=utf-8
+__author__ = 'herrdu'
+
+import tornado.web
+import session
+
+
+class BaseHandler(tornado.web.RequestHandler):
+    def __init__(self, *argc, **argkw):
+        super(BaseHandler, self).__init__(*argc, **argkw)
+        self.session = session.Session(self.application.session_manager, self)
+</code></pre>
+
+<p>testHandler.py</p>
+
+<pre><code>#coding=utf-8
+__author__ = 'herrdu'
+
+from base import BaseHandler
+
+
+class HelloHandler(BaseHandler):
+    def get(self):
+        l = []
+        hello = self.get_argument('non1')
+        world = self.get_argument('non2')
+        print self.session
+        l.append(hello)
+        l.append(world)
+        l.append(self.session['first_session_value'])
+        self.render(&quot;./templates/hello.html&quot;, page_object=l)
+
+
+class TestGetHandler(BaseHandler):
+    def get(self):
+        test = self.get_argument('test', '')
+        self.session['first_session_value'] = &quot;今天玩session玩到晚上11点多&quot;
+        self.session.save()
+        print self.session
+        self.write(test)
+        self.finish()
+</code></pre>
+
+<p>hello_world.py</p>
+
+<pre><code>#coding=utf-8
+
+__author__ = 'herrdu'
+
+import os
+import sys
+from session import *
+from tornado.ioloop import IOLoop
+import tornado
+import session
+from testhandler import HelloHandler, TestGetHandler
+from tornado.web import Application, url
+from tornado.options import define, options
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+from base import BaseHandler
+from tornado.web import HTTPError
+
+
+def login_required(f):
+    def _wrapper(self, *args, **kwargs):
+        print self.get_current_user()
+        logged = self.get_current_user()
+        if logged == None:
+            self.write('no login')
+            self.finish()
+        else:
+            ret = f(self, *args, **kwargs)
+    return _wrapper
+
+
+class Application(tornado.web.Application):
+    def __init__(self):
+        settings = dict(
+            cookie_secret=&quot;e446976943b4e8442f099fed1f3fea28462d5832f483a0ed9a3d5d3859f==78d&quot;,
+            session_secret=&quot;3cdcb1f00803b6e78ab50b466a40b9977db396840c28307f428b25e2277f1bcc&quot;,
+            session_timeout=60,
+            store_options={
+                'redis_host': 'localhost',
+                'redis_port': 6379,
+                'redis_pass': ''
+            },
+        )
+        handlers = [
+            (r&quot;/test&quot;, TestGetHandler),
+            (r&quot;/hello&quot;, HelloHandler)
+        ]
+        tornado.web.Application.__init__(self, handlers, **settings)
+        self.session_manager = session.SessionManager(settings[&quot;session_secret&quot;], settings[&quot;store_options&quot;], settings[&quot;session_timeout&quot;])
+
+
+define('port', default=8888, group='application')
+
+if __name__ == &quot;__main__&quot;:
+    application = Application()
+    print &quot;Application starts on port: &quot;, options.port
+    application.listen(options.port)
+
+    tornado.ioloop.IOLoop.instance().start()
+</code></pre>
+
+<h6 id="参考文献">参考文献</h6>
+
+<ol>
+<li><a href="http://www.androiddev.net/%E4%BD%BF%E7%94%A8redis%E6%90%AD%E5%BB%BAtornado%E7%9A%84session/">使用 redis 搭建 tornado 的 session</a></li>
+<li><a href="http://blog.csdn.net/jcjc918/article/details/44241447">tornado-memcached-sessions —— Tornado session 支持的实现</a></li>
+</ol>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1261</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

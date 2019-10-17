@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on HerrDu&#39;s Blog</title>
+    <link>/tags/java/</link>
+    <description>Recent content in Java on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Sep 2015 23:06:07 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Play环境在mac上的搭建</title>
+      <link>/post/play%E7%8E%AF%E5%A2%83%E5%9C%A8mac%E4%B8%8A%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 14 Sep 2015 23:06:07 +0000</pubDate>
+      
+      <guid>/post/play%E7%8E%AF%E5%A2%83%E5%9C%A8mac%E4%B8%8A%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
+      <description>安装 java jdk  Mac 上本来内置 java jdk ，但是是 1.6 版本的。这里我们安装 java1.7，下面是下载地址:java1.7
+ 安装 activator  与 java1.7 想兼容的 play Framework 版本是 2.3.x 的，因此我们下载 2.3.x 的，下载地址：https://www.playframework.com/documentation/2.3.x/Home
+安装的步骤参考：官网上提供的“Installing Play”章节，下载 activator 之后，添加导环境变量即可。
+添加方法：在 .bash_profile 中添加 export PATH=\$PATH:/relativePath/to/activator 类似语句即可。
+进入到项目路径，输入 activator，程序自动更新 catch 包，更新完毕之后，输入 run 即可运行项目。
+ Mongo 数据库  找到适合 Mac 版的 mongo 数据库，安装上即可，配置好环境变量，然后运行 mongod 启动数据库
+Mongo 数据库图形管理工具：Mongohub
+下载地址：https://github.com/jeromelebel/MongoHub-Mac
+4.安装 Tomcat
+ 版本：tomcat-8.0 安装方法 + 下载地址 http://tomcat.apache.org/download-80.cgi + 解压重命名为 tomcat，然后将文件夹复制到/Library 下面，路径为/Library/tomcat + 为 tomcat 添加环境变量 到.</description>
+    </item>
+    
+  </channel>
+</rss>

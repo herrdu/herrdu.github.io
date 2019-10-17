@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Enum_in_TypeScript</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="Herr Du">
+  <meta name="description" content="在类似于C、C#和Java这些强类型的语言里都会有一个数据类型是 —— enumerations（enums是简称）。不过在JS里面似乎并没有这个数据类型。庆幸的是，在MS开发的TypeScript中提供了这个类似，我们可以在TS2.4以后的版本上使用。Enums可以让我们声明和定义一个常量数据集来阐述某一个概念下的相关的数值和字符含义。
+先看一下Enum的语法">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Enum_in_TypeScript">
+    <meta name="twitter:description" content="在类似于C、C#和Java这些强类型的语言里都会有一个数据类型是 —— enumerations（enums是简称）。不过在JS里面似乎并没有这个数据类型。庆幸的是，在MS开发的TypeScript中提供了这个类似，我们可以在TS2.4以后的版本上使用。Enums可以让我们声明和定义一个常量数据集来阐述某一个概念下的相关的数值和字符含义。
+先看一下Enum的语法">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Enum_in_TypeScript">
+  <meta property="og:description" content="在类似于C、C#和Java这些强类型的语言里都会有一个数据类型是 —— enumerations（enums是简称）。不过在JS里面似乎并没有这个数据类型。庆幸的是，在MS开发的TypeScript中提供了这个类似，我们可以在TS2.4以后的版本上使用。Enums可以让我们声明和定义一个常量数据集来阐述某一个概念下的相关的数值和字符含义。
+先看一下Enum的语法">
+  <meta property="og:url" content="/post/dailyword/enun_in_typescript/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/dailyword/enun_in_typescript/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Enum_in_TypeScript</h1>
+      <p class="post-meta">@Herr Du · Oct 17, 2019 · 3 min read</p>
+    </header>
+    <article class="post-content"><p>在类似于C、C#和Java这些强类型的语言里都会有一个数据类型是 —— enumerations（enums是简称）。不过在JS里面似乎并没有这个数据类型。庆幸的是，在MS开发的TypeScript中提供了这个类似，我们可以在TS2.4以后的版本上使用。Enums可以让我们声明和定义一个常量数据集来阐述某一个概念下的相关的数值和字符含义。</p>
+
+<h4 id="先看一下enum的语法">先看一下Enum的语法</h4>
+
+<pre><code class="language-js">enum Color {
+    Red,
+    Green,
+    Blue
+}
+var col = Color.Red;
+col = 0; // Effectively same as Color.Red
+
+</code></pre>
+
+<h4 id="在看一下-ts-是如何编译-enum-的">在看一下 TS 是如何编译 enum 的</h4>
+
+<pre><code>enum Tristate {
+    False,
+    True,
+    Unknown
+}
+
+被TS生成的代码
+
+var Tristate;
+(function (Tristate) {
+    Tristate[Tristate[&quot;False&quot;] = 0] = &quot;False&quot;;
+    Tristate[Tristate[&quot;True&quot;] = 1] = &quot;True&quot;;
+    Tristate[Tristate[&quot;Unknown&quot;] = 2] = &quot;Unknown&quot;;
+})(Tristate || (Tristate = {}));
+</code></pre>
+
+<p>我们会注意到 <code>Tristate[Tristate[&quot;False&quot;] = 0] = &quot;False&quot;</code>这一段中的<code>Tristate[&quot;False&quot;] = 0</code>。这意味着我们可以把 <code>Tristate</code> 一个字符串类型的 enum 转化成一个数字类型的enum，反之亦然。这在 enum 里面称之为反向枚举（Reverse mappings）</p>
+
+<pre><code>enum Tristate {
+    False,
+    True,
+    Unknown
+}
+console.log(Tristate[0]); // &quot;False&quot;
+console.log(Tristate[&quot;False&quot;]); // 0
+console.log(Tristate[Tristate.False]); // &quot;False&quot; because `Tristate.False == 0`
+</code></pre>
+
+<h4 id="数字枚举的默认值与自增">数字枚举的默认值与自增</h4>
+
+<p>自增。 当我们给Up赋值1的时候，Down、Left、Right的值会自增为2,3,4.</p>
+
+<pre><code>enum Direction {
+    Up = 1,
+    Down,
+    Left,
+    Right
+}
+
+</code></pre>
+
+<p>不连续的自增</p>
+
+<pre><code>enum Weekend {
+	Friday = 1,
+	Saturday = 13,
+	Sunday,
+}
+
+
+var Weekend;
+(function (Weekend) {
+    Weekend[Weekend[&quot;Friday&quot;] = 1] = &quot;Friday&quot;;
+    Weekend[Weekend[&quot;Saturday&quot;] = 13] = &quot;Saturday&quot;;
+    Weekend[Weekend[&quot;Sunday&quot;] = 14] = &quot;Sunday&quot;;
+})(Weekend || (Weekend = {}));
+
+</code></pre>
+
+<p>默认值。如果我们不赋值的话，则 Up、Down、Left、Right 的值会定义为 0、1 、2、3 。如下：</p>
+
+<pre><code>enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+</code></pre>
+
+<h4 id="字符串枚举">字符串枚举</h4>
+
+<p>字符串枚举有利于序列化</p>
+
+<pre><code>enum Direction {
+    Up = &quot;UP&quot;,
+    Down = &quot;DOWN&quot;,
+    Left = &quot;LEFT&quot;,
+    Right = &quot;RIGHT&quot;,
+}
+</code></pre>
+
+<h4 id="异构枚举">异构枚举</h4>
+
+<p>从技术角度看，枚举可以混合字符串和数字类型的成员。不过我们一般不会这么做</p>
+
+<pre><code>enum BooleanLikeHeterogeneousEnum {
+    No = 0,
+    Yes = &quot;YES&quot;,
+}
+
+</code></pre>
+
+<h4 id="计算成员的枚举">计算成员的枚举</h4>
+
+<pre><code>// All enum members in 'E1' and 'E2' are constant.
+
+enum E1 { X, Y, Z }
+
+enum E2 {
+    A = 1, B, C
+}
+
+enum FileAccess {
+    // constant members
+    None,
+    Read    = 1 &lt;&lt; 1,
+    Write   = 1 &lt;&lt; 2,
+    ReadWrite  = Read | Write,
+    // computed member
+    G = &quot;123&quot;.length
+}
+
+
+enum Weekend {
+  Friday = 1,
+  Saturday = getDate('TGIF'),
+  Sunday = Saturday * 40
+}
+
+function getDate(day : string): number {
+    if (day === 'TGIF') {
+        return 3;
+    }
+}
+Weekend.Saturday; // returns 3
+Weekend.Sunday; // returns 120
+</code></pre>
+
+<h4 id="联合枚举与枚举成员的类型">联合枚举与枚举成员的类型</h4>
+
+<p>下面的代码中，Circle 的 kind 属性是联合了 ShapeKind，并且使  ShapeKind 的 Circle成员变成了一个成员类型。</p>
+
+<pre><code>enum ShapeKind {
+    Circle,
+    Square,
+}
+
+interface Circle {
+    kind: ShapeKind.Circle;
+    radius: number;
+}
+
+interface Square {
+    kind: ShapeKind.Square;
+    sideLength: number;
+}
+
+let c: Circle = {
+    kind: ShapeKind.Square,
+    //    ~~~~~~~~~~~~~~~~ Error!
+    radius: 100,
+}
+</code></pre>
+
+<p>下面的例子中， 如果判断了 x !== E.Foo 则 x 的值只能是 E， 则无需再判断 x !== E.Bar</p>
+
+<pre><code>enum E {
+    Foo,
+    Bar,
+}
+
+function f(x: E) {
+    if (x !== E.Foo || x !== E.Bar) {
+        //             ~~~~~~~~~~~
+        // Error! Operator '!==' cannot be applied to types 'E.Foo' and 'E.Bar'.
+    }
+}
+</code></pre>
+
+<h4 id="运行时的枚举">运行时的枚举</h4>
+
+<p>函数 f 在调用 E 时没有报错，是因为 E 中是有 X 这个成员的</p>
+
+<pre><code>enum E {
+    X, Y, Z
+}
+
+function f(obj: { X: number }) {
+    return obj.X;
+}
+
+// Works, since 'E' has a property named 'X' which is a number.
+f(E);
+</code></pre>
+
+<h4 id="const-枚举">const 枚举</h4>
+
+<p>有时为了提高性能，我们可以使用常量枚举,这样在编译的时候直接把枚举成员的值赋值给引用的变量</p>
+
+<pre><code>enum Weekend {
+  Friday = 1,
+  Saturday,
+  Sunday
+}
+var day = Weekend.Saturday;
+
+编译后
+
+var Weekend;
+(function (Weekend) {
+    Weekend[Weekend[&quot;Friday&quot;] = 1] = &quot;Friday&quot;;
+    Weekend[Weekend[&quot;Saturday&quot;] = 2] = &quot;Saturday&quot;;
+    Weekend[Weekend[&quot;Sunday&quot;] = 3] = &quot;Sunday&quot;;
+})(Weekend || (Weekend = {}));
+var day = Weekend.Saturday;
+
+
+</code></pre>
+
+<pre><code>const enum Weekend {
+	Friday = 1,
+	Saturday,
+	Sunday,
+}
+var day = Weekend.Saturday;
+
+编译后
+
+var day = 2 /* Saturday */;
+
+</code></pre>
+
+<h4 id="参考文档">参考文档</h4>
+
+<ol>
+<li>[<a href="https://basarat.gitbooks.io/typescript/docs/enums.html](">https://basarat.gitbooks.io/typescript/docs/enums.html](</a>)</li>
+<li>[<a href="https://blog.logrocket.com/writing-readable-code-with-typescript-enums-a84864f340e9/](">https://blog.logrocket.com/writing-readable-code-with-typescript-enums-a84864f340e9/](</a>)</li>
+<li>[<a href="https://www.stevefenton.co.uk/2016/01/simpler-typescript-bit-flags/](">https://www.stevefenton.co.uk/2016/01/simpler-typescript-bit-flags/](</a>)</li>
+<li>[<a href="https://medium.com/@katbusch/typescript-enums-explained-e5f9a101afc9s](">https://medium.com/@katbusch/typescript-enums-explained-e5f9a101afc9s](</a>)</li>
+<li>[<a href="https://www.tslang.cn/docs/handbook/enums.html#enums-at-runtime](">https://www.tslang.cn/docs/handbook/enums.html#enums-at-runtime](</a>)</li>
+</ol></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/typescript"><span class="tag">TypeScript</span></a></li>
+        
+          <li><a href="/tags/enums"><span class="tag">Enums</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

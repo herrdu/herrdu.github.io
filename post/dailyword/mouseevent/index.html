@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>每日一词：MouseEvent</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="Herr Du">
+  <meta name="description" content="MouseEvent 接口模型起源于来自于1998年4月编写的 HTML40 中的 onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove 和 onmouseout 属性。这个接口是为了点击输入设备（如：鼠标、轨迹球、触摸屏等操控鼠标的输入设备）设计的。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="每日一词：MouseEvent">
+    <meta name="twitter:description" content="MouseEvent 接口模型起源于来自于1998年4月编写的 HTML40 中的 onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove 和 onmouseout 属性。这个接口是为了点击输入设备（如：鼠标、轨迹球、触摸屏等操控鼠标的输入设备）设计的。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="每日一词：MouseEvent">
+  <meta property="og:description" content="MouseEvent 接口模型起源于来自于1998年4月编写的 HTML40 中的 onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove 和 onmouseout 属性。这个接口是为了点击输入设备（如：鼠标、轨迹球、触摸屏等操控鼠标的输入设备）设计的。
+">
+  <meta property="og:url" content="/post/dailyword/mouseevent/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/dailyword/mouseevent/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">每日一词：MouseEvent</h1>
+      <p class="post-meta">@Herr Du · Jul 23, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>MouseEvent 接口模型起源于来自于1998年4月编写的 <a href="https://www.w3.org/TR/html40/">HTML40</a> 中的 onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove 和 onmouseout 属性。这个接口是为了点击输入设备（如：鼠标、轨迹球、触摸屏等操控鼠标的输入设备）设计的。</p>
+
+<h4 id="idl">IDL</h4>
+
+<pre><code>[Constructor(DOMString type, optional MouseEventInit eventInitDict)]
+interface MouseEvent : UIEvent {
+  readonly attribute long screenX;
+  readonly attribute long screenY;
+  readonly attribute long clientX;
+  readonly attribute long clientY;
+
+  readonly attribute boolean ctrlKey;
+  readonly attribute boolean shiftKey;
+  readonly attribute boolean altKey;
+  readonly attribute boolean metaKey;
+
+  readonly attribute short button;
+  readonly attribute unsigned short buttons;
+
+  readonly attribute EventTarget? relatedTarget;
+
+  boolean getModifierState(DOMString keyArg);
+};
+</code></pre>
+
+<h4 id="属性">属性</h4>
+
+<ul>
+<li>MouseEvent.screenX<br />
+鼠标指针相对于全局（屏幕）的X坐标；默认值：0</li>
+<li>MouseEvent.screenY<br />
+鼠标指针相对于全局（屏幕）的Y坐标；默认值：0</li>
+<li>MouseEvent.clientX<br />
+鼠标指针在点击元素（DOM）中的X坐标；默认值：0</li>
+<li>MouseEvent.clientY<br />
+鼠标指针在点击元素（DOM）中的Y坐标；默认值：0</li>
+<li>MouseEvent.ctrlKey<br />
+当鼠标事件触发时，如果 control 键被按下，则返回 true；默认值：false</li>
+<li>MouseEvent.metaKey<br />
+当鼠标事件触发时，如果 meta 键被按下，则返回 true；默认值：false</li>
+<li>MouseEvent.altKey<br />
+当鼠标事件触发的时，如果alt 键被按下，返回true;默认值：false</li>
+<li>MouseEvent.shiftKey
+当鼠标事件触发时，如果 shift 键被按下，则返回 true；默认值：false</li>
+
+<li><p>MouseEvent.button<br />
+它返回一个布尔值，代表用户按下并触发了事件的鼠标按键。它的可选址如下：</p>
+
+<p>0：主按键被按下，通常指鼠标左键 or the un-initialized state</p>
+
+<p>1：辅助按键被按下，通常指鼠标滚轮 or the middle button (if present)</p>
+
+<p>2：次按键被按下，通常指鼠标右键</p>
+
+<p>3：第四个按钮被按下，通常指浏览器后退按钮</p>
+
+<p>4：第五个按钮被按下，通常指浏览器的前进按钮</p>
+
+<pre><code>&lt;script&gt;
+var whichButton = function (e) {
+// Handle different event models
+var e = e || window.event;
+var btnCode;
+
+if ('object' === typeof e) {
+    btnCode = e.button;
+
+    switch (btnCode) {
+        case 0:
+            console.log('Left button clicked.');
+        break;
+
+        case 1:
+            console.log('Middle button clicked.');
+        break;
+
+        case 2:
+            console.log('Right button clicked.');
+        break;
+
+        default:
+            console.log('Unexpected code: ' + btnCode);
+    }
+}
+}
+&lt;/script&gt;
+
+&lt;button onmouseup=&quot;whichButton(event);&quot; oncontextmenu=&quot;event.preventDefault();&quot;&gt;Click with mouse...&lt;/button&gt;
+</code></pre></li>
+
+<li><p>MouseEvent.buttons<br />
+每一个按键都用一个给定的数（见下文）表示。如果同时多个按键被按下，buttons 的值为各键对应值做与计算（|）后的值。例如，如果右键（2）和滚轮键（4）被同时按下，buttons 的值为 2 | 4 = 6。<br />
+返回值列表如下：</p>
+
+<ul>
+<li>0  : 没有按键或者是没有初始化</li>
+<li>1  : 鼠标左键</li>
+<li>2  : 鼠标右键</li>
+<li>4  : 鼠标滚轮或者是中键</li>
+<li>8  : 第四按键 (通常是“浏览器后退”按键)</li>
+<li>16 : 第五按键 (通常是“浏览器前进”)</li>
+</ul></li>
+
+<li><p>MouseEvent.relatedTarget<br />
+是鼠标事件的次要目标（如果存在）。如果事件没有次要目标，relatedTarget 将返回 null。如：</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>target</th>
+<th>relatedTarget</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>focusin</td>
+<td>EventTarget 获取焦点</td>
+<td>EventTarget 失去焦点</td>
+</tr>
+
+<tr>
+<td>focusout</td>
+<td>EventTarget 失去焦点</td>
+<td>The EventTarget 获取焦点</td>
+</tr>
+
+<tr>
+<td>mouseenter</td>
+<td>指针设备进入EventTarget</td>
+<td>指针设备离开EventTarget</td>
+</tr>
+
+<tr>
+<td>mouseleave</td>
+<td>指针设备离开 EventTarget</td>
+<td>指针设备进入 EventTarget</td>
+</tr>
+
+<tr>
+<td>mouseout</td>
+<td>指针设备离开 EventTarget</td>
+<td>The EventTarget</td>
+</tr>
+
+<tr>
+<td>mouseover</td>
+<td>指针设备进入 EventTarget</td>
+<td>指针设备离开 EventTarget</td>
+</tr>
+
+<tr>
+<td>dragenter</td>
+<td>指针设备进入 EventTarget</td>
+<td>指针设备离开 EventTarget</td>
+</tr>
+
+<tr>
+<td>dragexit</td>
+<td>指针设备离开 EventTarget</td>
+<td>指针设备进入 EventTarget</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="方法">方法</h4>
+
+<ul>
+<li><p>getModifierState()<br />
+方法返回一个布尔值，表示有没有按下特定的功能键。它的参数是一个表示功能键的字符串。</p>
+
+<pre><code>var active =​ event.getModifierState(keyArg);
+</code></pre></li>
+</ul>
+
+<h4 id="参考文档">参考文档</h4>
+
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent</a></li>
+<li><a href="https://www.javascripture.com/MouseEvent">https://www.javascripture.com/MouseEvent</a></li>
+<li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#keys-modifiers">https://www.w3.org/TR/DOM-Level-3-Events/#keys-modifiers</a></li>
+<li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#dom-mouseevent-getmodifierstate">https://www.w3.org/TR/DOM-Level-3-Events/#dom-mouseevent-getmodifierstate</a></li>
+</ol></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/dailyword"><span class="tag">DailyWord</span></a></li>
+        
+          <li><a href="/tags/web"><span class="tag">Web</span></a></li>
+        
+          <li><a href="/tags/frontend"><span class="tag">FrontEnd</span></a></li>
+        
+          <li><a href="/tags/mouseevent"><span class="tag">MouseEvent</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

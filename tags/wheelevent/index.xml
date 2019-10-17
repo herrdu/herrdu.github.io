@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WheelEvent on HerrDu&#39;s Blog</title>
+    <link>/tags/wheelevent/</link>
+    <description>Recent content in WheelEvent on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 05 Aug 2019 11:13:03 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/wheelevent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WheelEvent</title>
+      <link>/post/dailyword/wheelevent/</link>
+      <pubDate>Mon, 05 Aug 2019 11:13:03 +0800</pubDate>
+      
+      <guid>/post/dailyword/wheelevent/</guid>
+      <description>&lt;p&gt;Wheel Event 是一个描述鼠标滚轮或者类似设备的 event 的接口。Whell Event 是继承自 MouseEvent。 下面看一下它的 IDL：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

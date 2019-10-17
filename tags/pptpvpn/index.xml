@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pptpVpn on HerrDu&#39;s Blog</title>
+    <link>/tags/pptpvpn/</link>
+    <description>Recent content in pptpVpn on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 26 Sep 2016 21:21:06 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/pptpvpn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>腾讯云Centos上,pptpVpn的搭建</title>
+      <link>/post/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E4%B8%8A-pptpvpn%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 26 Sep 2016 21:21:06 +0000</pubDate>
+      
+      <guid>/post/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E4%B8%8A-pptpvpn%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
+      <description>1. 为什么使用 VPN 随着公司项目服务器数量的增多，对服务器管理也越来越难，安全性的要求也越来越高。有一套好的技术机制可以让我们简单、安全的管理服务器集群。而 vpn 恰恰又是这其中的常用的一种。
+我们无论是在阿里云还是腾讯云上购买的服务器，它都是包含两个 ip 的：一个内网 ip，一个公网的 ip。公网的 ip 是我们用 ssh 通过外网进行访问的，而内网 ip 则是在服务器之间通过 ssh 访问用的。为了确保应用服务器在访问上的安全性，我们认为应该把部署应用的服务器的公网 ip 取消掉。这样就可以确保人们不能通过外网随意的访问这台机子，但是我们又需要访问这主机上的应用，那只能使用私有 ip 了。我们有负载均衡的服务器，这台服务器是一个连接公网与私网的桥梁。域名解析的时候指向负载均衡服务器的公网 ip，然后负载均衡服务器通过内网 ip 指向应用服务器。不过还是有一个问题就是，开发人员该如何访问应用服务器上去部署程序呢？这时我们需要一个和应用服务器在同一个局域网内的跳板服务器，我们先通过公网登录跳板服务器，然后在登录应用服务器。可是我们又不想给开发人员跳板服务器的用户名和密码，因此 vpn 就是一个不错的选择。vpn，让开发人员走跳板服务器的代理，然后对应服务器进行操作。这条路线虽然是曲折了一点，但还是简单的办法保证了服务器的安全性。
+2.如何在 centos 上搭建 vpn  准备必要的软件:ppp、iptables、pptpd  yum install -y ppp iptables pptpd 
+ 配置 pptp ##### /etc/pptpd.conf 添加下面两行   localip 192.168.0.1 remoteip 192.168.0.244-192.168.0.245 
+192.168.0.244-192.168.0.245 表示用户被分配的 ip 地址的范围。
+##### /etc/ppp/options.pptpd
+添加下面两行，表示使用 Google 的 DNS 服务器:
+ ms-dns 8.8.8.8 ms-dns 8.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>每日一词：Event</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="Herr Du">
+  <meta name="description" content="大概每个写过 HTML 的人都会知道 Event 接口，它为 DOM 的处理函数提供了上下文的描述。一般地说，事件的处理函数会把实现了 Event 接口的对象作为第一个参数传递过去。不过大多数 DOM 事件处理函数传递的上下文对象中，还会传递一些额外的信息。如：MouseEvent 的处理函数种会有 clientX 和 clientY 这些信息。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="每日一词：Event">
+    <meta name="twitter:description" content="大概每个写过 HTML 的人都会知道 Event 接口，它为 DOM 的处理函数提供了上下文的描述。一般地说，事件的处理函数会把实现了 Event 接口的对象作为第一个参数传递过去。不过大多数 DOM 事件处理函数传递的上下文对象中，还会传递一些额外的信息。如：MouseEvent 的处理函数种会有 clientX 和 clientY 这些信息。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="每日一词：Event">
+  <meta property="og:description" content="大概每个写过 HTML 的人都会知道 Event 接口，它为 DOM 的处理函数提供了上下文的描述。一般地说，事件的处理函数会把实现了 Event 接口的对象作为第一个参数传递过去。不过大多数 DOM 事件处理函数传递的上下文对象中，还会传递一些额外的信息。如：MouseEvent 的处理函数种会有 clientX 和 clientY 这些信息。
+">
+  <meta property="og:url" content="/post/dailyword/event/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/dailyword/event/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">每日一词：Event</h1>
+      <p class="post-meta">@Herr Du · Jul 14, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>大概每个写过 HTML 的人都会知道 Event 接口，它为 DOM 的处理函数提供了上下文的描述。一般地说，事件的处理函数会把实现了 Event 接口的对象作为第一个参数传递过去。不过大多数 DOM 事件处理函数传递的上下文对象中，还会传递一些额外的信息。如：MouseEvent 的处理函数种会有 clientX 和 clientY 这些信息。</p>
+
+<p>而可以调用事件处理函数的可以是用户操作设备引起的（如：鼠标和键盘的操作），也可以是 API Hook 引起的（如：音视频的 process，pause ），还有时可以是 EventTarget.dispatchEvent 引起的。</p>
+
+<p>下面看一下 Event 模型的 IDL</p>
+
+<h4 id="idl">IDL</h4>
+
+<pre><code>[Constructor(DOMString type, optional EventInit eventInitDict),
+ Exposed=(Window,Worker,AudioWorklet)]
+interface Event {
+  readonly attribute DOMString type;
+  readonly attribute EventTarget? target;
+  readonly attribute EventTarget? srcElement; // historical
+  readonly attribute EventTarget? currentTarget;
+  sequence&lt;EventTarget&gt; composedPath();
+
+  const unsigned short NONE = 0;
+  const unsigned short CAPTURING_PHASE = 1;
+  const unsigned short AT_TARGET = 2;
+  const unsigned short BUBBLING_PHASE = 3;
+  readonly attribute unsigned short eventPhase;
+
+  void stopPropagation();
+           attribute boolean cancelBubble; // historical alias of .stopPropagation
+  void stopImmediatePropagation();
+
+  readonly attribute boolean bubbles;
+  readonly attribute boolean cancelable;
+           attribute boolean returnValue;  // historical
+  void preventDefault();
+  readonly attribute boolean defaultPrevented;
+  readonly attribute boolean composed;
+
+  [Unforgeable] readonly attribute boolean isTrusted;
+  readonly attribute DOMHighResTimeStamp timeStamp;
+
+  void initEvent(DOMString type, optional boolean bubbles = false, optional boolean cancelable = false); // historical
+};
+
+dictionary EventInit {
+  boolean bubbles = false;
+  boolean cancelable = false;
+  boolean composed = false;
+};
+
+</code></pre>
+
+<h4 id="属性">属性</h4>
+
+<ul>
+<li><p>Event.type<br />
+事件的类型，具体类型看参考 1</p></li>
+
+<li><p>Event.target<br />
+返回触发 event（事件）的 dom 对象</p></li>
+
+<li><p>Event.srcElement<br />
+Microsoft Internet Explorer 种的遗留产物， 现在推荐使用 Event.target</p></li>
+
+<li><p>Event.currentTarget<br />
+返回使用 addEventListern 监听的事件</p></li>
+
+<li><p>Event.eventPhase<br />
+返回事件在哪个发生阶段，共有四个阶段：NONE, CAPTURING_PHASE, AT_TARGET, and BUBBLING_PHASE。</p></li>
+
+<li><p>Event.bubbles<br />
+表示该事件是否在 DOM 种冒泡</p></li>
+
+<li><p>Event.cancelBubble<br />
+Event.stopPropagation() 以前的别名。通过在一个事件处理程序返回前设置这个属性的值为真，来阻止事件冒泡。</p></li>
+
+<li><p>Event.cancelable<br />
+用来表示这个事件默认行为是否可以取消。如果 cancelable 的值为 false 的时候，调用 preventDefault() 将产生错误。</p></li>
+
+<li><p>Event.composed<br />
+感觉 event 初始化的内容返回 true 或者 false. True 表示触发事件的对象是一个 ShadowRoot node 且是 target 的 root；false 则表示相反的情况。</p></li>
+
+<li><p>Event.returnValue<br />
+旧版的 IE 的遗留产物，和 Event.preventDefault() 和 Event.defaultPrevented 有一样的作用。</p></li>
+
+<li><p>Eevet.defaultPrevented<br />
+表示了是否已经执行过了 event.preventDefault()</p></li>
+
+<li><p>Event.isTrusted<br />
+指明事件是否是由浏览器（当用户点击实例后）或者由脚本（使用事件的创建方法，例如 event.initEvent）启动</p></li>
+
+<li><p>Event.timeStamp
+表示从 UTC 1970 年 1 月 1 日都事件触发时的毫秒数</p></li>
+</ul>
+
+<h4 id="方法">方法</h4>
+
+<ul>
+<li><p>composedPath()<br />
+返回事件路径数组。如果 target 是影子根节点且 ShadowRoot.mode 是关闭的，则该路径不包括影子树中的节点。</p></li>
+
+<li><p>stopPropagation()<br />
+阻止事件冒泡</p></li>
+
+<li><p>stopImmediatePropagation()<br />
+如果有多个相同类型事件的事件监听函数绑定到同一个元素，当该类型的事件触发时，它们会按照被添加的顺序执行。如果其中某个监听函数执行了 event.stopImmediatePropagation() 方法，则当前元素剩下的监听函数将不会被执行。</p></li>
+
+<li><p>preventDefault()
+告诉 user agent，如果此事件没有被显式的处理，则它的默认动作也不要做。如：form &gt; button 的默认事件可能会执行一个表单提交。如果执行了 preventDefault()，那么不再会有提交动作。</p></li>
+</ul>
+
+<p>####参考文献</p>
+
+<ol>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/Events">https://developer.mozilla.org/en-US/docs/Web/Events</a></p></li>
+
+<li><p><a href="https://dom.spec.whatwg.org/#event">https://dom.spec.whatwg.org/#event</a></p></li>
+
+<li><p><a href="https://www.javascripture.com/Event">https://www.javascripture.com/Event</a></p></li>
+
+<li><p><a href="https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture">https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture</a></p></li>
+</ol></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/dailyword"><span class="tag">DailyWord</span></a></li>
+        
+          <li><a href="/tags/web"><span class="tag">Web</span></a></li>
+        
+          <li><a href="/tags/frontend"><span class="tag">FrontEnd</span></a></li>
+        
+          <li><a href="/tags/event"><span class="tag">Event</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

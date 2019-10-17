@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Building an MVPP: Minimum Viable Product We’re Proud Of</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="On November 18th, 2014, we publicly released Optimizely’s iOS editor. This was a big release for us because it marked the end of a months-long public beta in which we received a ton of customer feedback and built a lot of missing features. But before we launched, there was one problem the whole team rallied behind to fix: we weren’t proud of the product. To fix this issue, we went beyond a Minimum Viable Product or “MVP” to an MVPP: the Minimum Viable Product we’re Proud of.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Building an MVPP: Minimum Viable Product We’re Proud Of">
+    <meta name="twitter:description" content="On November 18th, 2014, we publicly released Optimizely’s iOS editor. This was a big release for us because it marked the end of a months-long public beta in which we received a ton of customer feedback and built a lot of missing features. But before we launched, there was one problem the whole team rallied behind to fix: we weren’t proud of the product. To fix this issue, we went beyond a Minimum Viable Product or “MVP” to an MVPP: the Minimum Viable Product we’re Proud of.">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Building an MVPP: Minimum Viable Product We’re Proud Of">
+  <meta property="og:description" content="On November 18th, 2014, we publicly released Optimizely’s iOS editor. This was a big release for us because it marked the end of a months-long public beta in which we received a ton of customer feedback and built a lot of missing features. But before we launched, there was one problem the whole team rallied behind to fix: we weren’t proud of the product. To fix this issue, we went beyond a Minimum Viable Product or “MVP” to an MVPP: the Minimum Viable Product we’re Proud of.">
+  <meta property="og:url" content="/post/building-an-mvpp-minimum-viable-product-were-proud-of/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/building-an-mvpp-minimum-viable-product-were-proud-of/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Building an MVPP: Minimum Viable Product We’re Proud Of</h1>
+      <p class="post-meta">@ · Jan 6, 2015 · 7 min read</p>
+    </header>
+    <article class="post-content"><p>On November 18th, 2014, we publicly released Optimizely’s iOS editor. This was a big release for us because it marked the end of a months-long public beta in which we received a ton of customer feedback and built a lot of missing features. But before we launched, there was one problem the whole team rallied behind to fix: we weren’t proud of the product. To fix this issue, we went beyond a Minimum Viable Product or “MVP” to an MVPP: the Minimum Viable Product we’re Proud of.</p>
+
+<p>What follows is the story of how we pulled this off, what we learned along the way, and product development tips to help you ship great products, from the perspective of someone who just did it.</p>
+
+<p>###Genesis of the MVPP</p>
+
+<p>We released a public beta of Optimizely’s iOS editor in June 2014. At that time, the product wasn’t complete yet, but it was important for us to get real customer feedback to inform its growth and find bugs. So after months of incorporating user feedback, the beta product felt complete enough to publicly launch. There was just one problem: the entire team wasn’t proud of the product. It didn’t meet our quality bar; It felt like a bunch of features bolted together without a holistic vision. To fix this, we decided to overhaul the user experience, an ambiguous goal that could easily go on forever, never reaching a clear “done” state.</p>
+
+<p>We did two things to be more directed in the overhaul. First, we committed to a deadline to prevent us from endlessly polishing the UI. Second, we took inspiration from the Lean Startup methodology and chose a set of features that made up a Minimum Viable Product. An MVP makes it clear that we’ll cut scope to make the deadline, but nothing about quality. So to make it explicit that we were focusing on quality and wanted the whole team to be proud of the final product, we added an extra “P” to MVP. And thus, the Minimum Viable Product we’re Proud of—our MVPP—was born.</p>
+
+<p>###Create the vision</p>
+
+<p>Once we had agreed on a feature set for the MVPP, a fellow Product Designer and I locked ourselves in a war room for the better part of a week to flesh out the user experience. We mapped out user flows and created rough mock ups that we could use to communicate our vision to the larger development team. Fortunately, we had some pre-existing usability test findings to inform our design decisions.</p>
+
+<p>These mockups were immensely helpful in planning the engineering and design work ahead. Instead of talking about ideas in the abstract, we had concrete features and visuals to point to. For example, everyone knew what we meant when we said “Improved Onboarding Flow.” WIth mockups in hand, communication between team members became much more concrete and people felt inspired to work hard to achieve our vision.</p>
+
+<p>###6 weeks on the clock… and go!</p>
+
+<p>We had 3 sprints (6 weeks) to complete the MVPP (most teams at Optimizely work in 2 week cycles called “sprints”). It was an aggressive timeline, but it felt achievable—exactly where a good deadline should be.</p>
+
+<p>In the first sprint, the team made amazing progress. All the major pieces had been built, without any major re-scoping or redesigns. There were still bugs to fix, polish to apply, and edge cases to consider, but the big pieces core to our vision were in place.</p>
+
+<p>That momentum carried over into the second sprint, which we spent fixing the biggest bugs, filling functional holes, and polishing the UI.</p>
+
+<p>For the third and final sprint, we gave ourselves a new goal: ship a week early. We were already focused on launching the MVPP, but at this point we became laser focused. During daily standups, we looked at our JIRA board and asked, “If we were launching tomorrow, what would we work on today?”</p>
+
+<p>During daily standups, we looked at our JIRA board and asked, “If we were launching tomorrow, what would we work on today?”</p>
+
+<p>We were ruthless about prioritizing tasks and moved a lot of items that were important, but not launch-critical, to the backlog.</p>
+
+<p>During the first week of sprint 3, we also did end-to-end product walkthroughs after every standup to ensure the team was proud of the new iOS editor. We all got to experience the product from the customer’s perspective, and caught user experience bugs that were degrading the quality of our work. We also found and fixed a lot of functional bugs during this time. By the end of the week, everyone was proud of the final product and felt confident launching.</p>
+
+<p>###The adrenaline rush &amp; benefit of an early release</p>
+
+<p>On <sup>11</sup>&frasl;<sub>10</sub>, we quietly released our MVPP to the world—a full week early! Not only did shipping early feel great, it also gave us breathing room to further polish the design, fix bugs, and give the rest of the company time to organize all the components to launch the MVPP.</p>
+
+<p>Product teams don’t launch products alone; it takes full collaboration between marketing, sales, and success to create materials to promote it, sell it, and enable our customers to use it. By the time the public announcement on <sup>11</sup>&frasl;<sub>18</sub> rolled around, the whole company was extremely proud of the final result.</p>
+
+<p>###Lessons learned</p>
+
+<p>While writing this post and reflecting on the project as a whole, a number of techniques became clear to me that can help any team ensure a high quality, on-time launch:</p>
+
+<p>Add a “P” to “MVP” to make quality a launch requirement. Referring to the project as the “Minimum Viable Product we’re Proud of” made sure everyone on the team approached the product with quality in mind. Every project has trade-offs between the ship date, quality, and scope. It’s very hard to do all three. Realistically, you can do two. By calling our project an MVPP, we were explicit that quality would not be sacrificed.
+Set a deadline. Having a deadline focused everyone’s efforts, preventing designers from endlessly polishing interfaces and developers spinning their wheels imagining every possible edge case. Make it aggressive, yet realistic, to instill a sense of urgency in the team.</p>
+
+<p>Focus on the smallest set of features that provide the largest customer impact. We were explicit about what features needed to be redesigned, and just as importantly, which were off limits. This prevented scope-creep, and increased the team’s focus.
+Make mockups before starting development. This is well-known in the industry, but it’s worth repeating. Creating tangible user flows and mockups ahead of time keeps planning discussions on track, removes ambiguity, and quickly explains the product vision. It also inspires the team by rallying them to achieve a concrete goal.</p>
+
+<p>Do daily product walkthroughs. Our product walkthroughs had two key benefits. First, numerous design and code bugs were discovered and fixed. And second, they ensured we lived up to the extra “P” in “MVPP.” Everyone had a place to verbally agree that they were proud of the final product and confident launching. Although these walkthroughs made our standups ~30 minutes longer, it was worth the cost.</p>
+
+<p>Ask: “If we were shipping tomorrow, what would you work on today?” When the launch date is approaching, asking this question separates the critical, pre-launch tasks from the post-launch tasks.</p>
+
+<p>###Lather, Rinse, and Repeat</p>
+
+<p>By going beyond an MVP to a Minimum Viable Product we’re Proud of, we guaranteed that quality was the requirement for launching. And by using a deadline, we stayed focused only on the tasks that were absolutely critical to shipping. With a well-scoped vision, mockups, and a date not too far in the future, you too can rally teams to create product experiences they’re proud of. And then do it again.</p>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        This post was published <strong>1744</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

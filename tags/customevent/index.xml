@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CustomEvent on HerrDu&#39;s Blog</title>
+    <link>/tags/customevent/</link>
+    <description>Recent content in CustomEvent on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 11 Jul 2019 10:40:49 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/customevent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CustomEvent</title>
+      <link>/post/dailyword/customevent/</link>
+      <pubDate>Thu, 11 Jul 2019 10:40:49 +0800</pubDate>
+      
+      <guid>/post/dailyword/customevent/</guid>
+      <description>&lt;p&gt;CustomEvent 是一个允许 Event 来使用自定义数据的一个接口。 Custom 继承自 Event，拥有 Event 的属性与方法。同事添加了一个自己的属性和一个自己的方法。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

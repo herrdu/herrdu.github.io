@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>前端命名规范</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="前端命名规范 纵览各家命名规范之后，决定参照腾讯的命名规范组建自己的一套命名规则
+1.工程命名规则 全部使用小写
+例如：my_project_name
+2.目录命名 参照项目命名规则；
+有复数结构时，要采用复数命名法。
+例：scripts, styles, images, data_models
+3.JS 文件命名 参照项目命名规则。
+例：account_model.js
+4.CSS, SCSS 文件命名 参照项目命名规则。
+例：retina_sprites.scss
+5.HTML 文件命名 参照项目命名规则。
+例：error_report.html
+HTML 规范 语法  缩进使用 soft tab（4 个空格）；
+ 嵌套的节点应该缩进；
+ 在属性上，使用双引号，不要使用单引号；
+ 属性名全小写，用中划线做分隔符；
+ 不要在自动闭合标签结尾处使用斜线（HTML5 规范 指出他们是可选的）；
+ 不要忽略可选的关闭标签，例： 和 。
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Page title&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;img src=&amp;quot;images/company_logo.png&amp;quot; alt=&amp;quot;Company&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;hello-world&amp;quot;&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;   HTML5 doctype 在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="前端命名规范">
+    <meta name="twitter:description" content="前端命名规范 纵览各家命名规范之后，决定参照腾讯的命名规范组建自己的一套命名规则
+1.工程命名规则 全部使用小写
+例如：my_project_name
+2.目录命名 参照项目命名规则；
+有复数结构时，要采用复数命名法。
+例：scripts, styles, images, data_models
+3.JS 文件命名 参照项目命名规则。
+例：account_model.js
+4.CSS, SCSS 文件命名 参照项目命名规则。
+例：retina_sprites.scss
+5.HTML 文件命名 参照项目命名规则。
+例：error_report.html
+HTML 规范 语法  缩进使用 soft tab（4 个空格）；
+ 嵌套的节点应该缩进；
+ 在属性上，使用双引号，不要使用单引号；
+ 属性名全小写，用中划线做分隔符；
+ 不要在自动闭合标签结尾处使用斜线（HTML5 规范 指出他们是可选的）；
+ 不要忽略可选的关闭标签，例： 和 。
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Page title&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;img src=&amp;quot;images/company_logo.png&amp;quot; alt=&amp;quot;Company&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;hello-world&amp;quot;&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;   HTML5 doctype 在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="前端命名规范">
+  <meta property="og:description" content="前端命名规范 纵览各家命名规范之后，决定参照腾讯的命名规范组建自己的一套命名规则
+1.工程命名规则 全部使用小写
+例如：my_project_name
+2.目录命名 参照项目命名规则；
+有复数结构时，要采用复数命名法。
+例：scripts, styles, images, data_models
+3.JS 文件命名 参照项目命名规则。
+例：account_model.js
+4.CSS, SCSS 文件命名 参照项目命名规则。
+例：retina_sprites.scss
+5.HTML 文件命名 参照项目命名规则。
+例：error_report.html
+HTML 规范 语法  缩进使用 soft tab（4 个空格）；
+ 嵌套的节点应该缩进；
+ 在属性上，使用双引号，不要使用单引号；
+ 属性名全小写，用中划线做分隔符；
+ 不要在自动闭合标签结尾处使用斜线（HTML5 规范 指出他们是可选的）；
+ 不要忽略可选的关闭标签，例： 和 。
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Page title&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;img src=&amp;quot;images/company_logo.png&amp;quot; alt=&amp;quot;Company&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;hello-world&amp;quot;&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;   HTML5 doctype 在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；">
+  <meta property="og:url" content="/post/%E5%89%8D%E7%AB%AF%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/%E5%89%8D%E7%AB%AF%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">前端命名规范</h1>
+      <p class="post-meta">@ · Sep 26, 2016 · 7 min read</p>
+    </header>
+    <article class="post-content">
+
+<h2 id="前端命名规范">前端命名规范</h2>
+
+<p>纵览各家命名规范之后，决定参照腾讯的命名规范组建自己的一套命名规则</p>
+
+<h5 id="1-工程命名规则">1.工程命名规则</h5>
+
+<p>全部使用小写</p>
+
+<p>例如：my_project_name</p>
+
+<h5 id="2-目录命名">2.目录命名</h5>
+
+<p>参照项目命名规则；</p>
+
+<p>有复数结构时，要采用复数命名法。</p>
+
+<p>例：scripts, styles, images, data_models</p>
+
+<h5 id="3-js-文件命名">3.JS 文件命名</h5>
+
+<p>参照项目命名规则。</p>
+
+<p>例：account_model.js</p>
+
+<h5 id="4-css-scss-文件命名">4.CSS, SCSS 文件命名</h5>
+
+<p>参照项目命名规则。</p>
+
+<p>例：retina_sprites.scss</p>
+
+<h5 id="5-html-文件命名">5.HTML 文件命名</h5>
+
+<p>参照项目命名规则。</p>
+
+<p>例：error_report.html</p>
+
+<h2 id="html-规范">HTML 规范</h2>
+
+<h4 id="语法">语法</h4>
+
+<ul>
+<li><p>缩进使用 soft tab（4 个空格）；</p></li>
+
+<li><p>嵌套的节点应该缩进；</p></li>
+
+<li><p>在属性上，使用双引号，不要使用单引号；</p></li>
+
+<li><p>属性名全小写，用中划线做分隔符；</p></li>
+
+<li><p>不要在自动闭合标签结尾处使用斜线（HTML5 规范 指出他们是可选的）；</p></li>
+
+<li><p>不要忽略可选的关闭标签，例： 和 。</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;img src=&quot;images/company_logo.png&quot; alt=&quot;Company&quot;&gt;
+
+    &lt;h1 class=&quot;hello-world&quot;&gt;Hello, world!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+</ul>
+
+<h4 id="html5-doctype">HTML5 doctype</h4>
+
+<p>在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；</p>
+
+<p>虽然 doctype 不区分大小写，但是按照惯例，doctype 大写 （关于 html 属性，大写还是小写）。</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    ...
+&lt;/html&gt;
+</code></pre>
+
+<h4 id="lang-属性">lang 属性</h4>
+
+<p>根据 HTML5 规范：</p>
+
+<p><blockquote> 应在html标签上加上lang属性。这会给语音工具和翻译工具帮助，告诉它们应当怎么去发音和翻译。</blockquote>
+更多关于 lang 属性的说明<a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-html-element">在这里</a>；</p>
+
+<p>在 sitepoint 上可以查到<a href="http://reference.sitepoint.com/html/lang-codes">语言列表</a>；</p>
+
+<p>但 sitepoint 只是给出了语言的大类，例如中文只给出了 zh，但是没有区分香港，台湾，大陆。而微软给出了一份更加<a href="http://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx</a> 详细的语言列表，其中细分了 zh-cn, zh-hk, zh-tw。</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en-us&quot;&gt;
+    ...
+&lt;/html&gt;
+</code></pre>
+
+<h4 id="字符编码">字符编码</h4>
+
+<p>通过声明一个明确的字符编码，让浏览器轻松、快速的确定适合网页内容的渲染方式，通常指定为&rsquo;UTF-8&rsquo;。</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;/head&gt;
+    ...
+&lt;/html&gt;
+</code></pre>
+
+<h4 id="ie-兼容模式">IE 兼容模式</h4>
+
+<p>用 `` 标签可以指定页面应该用什么版本的 IE 来渲染；</p>
+
+<p>如果你想要了解更多，请点击<a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e">这里</a>；</p>
+
+<p>不同 doctype 在不同浏览器下会触发不同的渲染模式（这篇<a href="https://hsivonen.fi/doctype/">文章</a>总结的很到位）。</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot;&gt;
+    &lt;/head&gt;
+    ...
+&lt;/html&gt;
+</code></pre>
+
+<h4 id="引入-css-js">引入 CSS, JS</h4>
+
+<p>根据 HTML5 规范, 通常在引入 CSS 和 JS 时不需要指明 type，因为 text/css 和 text/javascript 分别是他们的默认值。</p>
+
+<p>HTML5 规范链接</p>
+
+<p><a href="http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-link-element">使用 link</a></p>
+
+<p><a href="http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-style-element">使用 style</a></p>
+
+<p><a href="http://www.w3.org/TR/2011/WD-html5-20110525/scripting-1.html#the-script-element">使用 script</a></p>
+
+<pre><code>&lt;!-- External CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;code_guide.css&quot;&gt;
+
+&lt;!-- In-document CSS --&gt;
+&lt;style&gt;
+    ...
+&lt;/style&gt;
+
+&lt;!-- External JS --&gt;
+&lt;script src=&quot;code_guide.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- In-document JS --&gt;
+&lt;script&gt;
+    ...
+&lt;/script&gt;
+</code></pre>
+
+<h4 id="属性顺序">属性顺序</h4>
+
+<p>属性应该按照特定的顺序出现以保证易读性；</p>
+
+<ul>
+<li>class</li>
+<li>id</li>
+<li>name</li>
+<li>data-*</li>
+<li>src, for, type, href, value , max-length, max, min, pattern</li>
+<li>placeholder, title, alt</li>
+<li>aria-*, role</li>
+<li>required, readonly, disabled</li>
+</ul>
+
+<p>class 是为高可复用组件设计的，所以应处在第一位；</p>
+
+<p>id 更加具体且应该尽量少使用，所以将它放在第二位。</p>
+
+<pre><code>&lt;a class=&quot;...&quot; id=&quot;...&quot; data-modal=&quot;toggle&quot; href=&quot;#&quot;&gt;Example link&lt;/a&gt;
+
+&lt;input class=&quot;form-control&quot; type=&quot;text&quot;&gt;
+
+&lt;img src=&quot;...&quot; alt=&quot;...&quot;&gt;
+</code></pre>
+
+<h4 id="boolean-属性">boolean 属性</h4>
+
+<p>boolean 属性指不需要声明取值的属性，XHTML 需要每个属性声明取值，但是 HTML5 并不需要；</p>
+
+<p>更多内容可以参考 <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#boolean-attributes">WhatWG section on boolean attributes</a>：</p>
+
+<p>boolean 属性的存在表示取值为 true，不存在则表示取值为 false。</p>
+
+<pre><code>&lt;input type=&quot;text&quot; disabled&gt;
+
+&lt;input type=&quot;checkbox&quot; value=&quot;1&quot; checked&gt;
+
+&lt;select&gt;
+    &lt;option value=&quot;1&quot; selected&gt;1&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<h4 id="js-生成标签">JS 生成标签</h4>
+
+<p>在 JS 文件中生成标签让内容变得更难查找，更难编辑，性能更差。应该尽量避免这种情况的出现。</p>
+
+<p>减少标签数量</p>
+
+<p>在编写 HTML 代码时，需要尽量避免多余的父节点；</p>
+
+<p>很多时候，需要通过迭代和重构来使 HTML 变得更少。</p>
+
+<pre><code>&lt;!-- Not well --&gt;
+&lt;span class=&quot;avatar&quot;&gt;
+    &lt;img src=&quot;...&quot;&gt;
+&lt;/span&gt;
+
+&lt;!-- Better --&gt;
+&lt;img class=&quot;avatar&quot; src=&quot;...&quot;&gt;
+</code></pre>
+
+<p>实用高于完美</p>
+
+<p>尽量遵循 HTML 标准和语义，但是不应该以浪费实用性作为代价；</p>
+
+<p>任何时候都要用尽量小的复杂度和尽量少的标签来解决问题。</p>
+
+<h2 id="css-scss">CSS SCSS</h2>
+
+<h4 id="缩进">缩进</h4>
+
+<p>使用 soft tab（4 个空格）。</p>
+
+<pre><code>.element {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+}
+</code></pre>
+
+<h4 id="分号">分号</h4>
+
+<p>每个属性声明末尾都要加分号。</p>
+
+<pre><code>.element {
+    width: 20px;
+    height: 20px;
+
+    background-color: red;
+}
+</code></pre>
+
+<h4 id="空格">空格</h4>
+
+<p>以下几种情况不需要空格：</p>
+
+<ul>
+<li>属性名后</li>
+<li>多个规则的分隔符&rsquo;,&lsquo;前</li>
+<li>!important &lsquo;!&lsquo;后</li>
+<li>属性值中&rsquo;(&lsquo;后和&rsquo;)&lsquo;前</li>
+<li>行末不要有多余的空格</li>
+</ul>
+
+<p>以下几种情况需要空格：</p>
+
+<ul>
+<li>属性值前</li>
+<li>选择器&rsquo;&gt;&lsquo;, &lsquo;+&rsquo;, &lsquo;~&lsquo;前后</li>
+<li>&rsquo;{&lsquo;前</li>
+<li>!important &lsquo;!&lsquo;前</li>
+<li>@else 前后</li>
+<li>属性值中的&rsquo;,&lsquo;后</li>
+
+<li><p>注释&rsquo;/&lsquo;后和&rsquo;/&lsquo;前</p>
+
+<pre><code>/* not good */
+.element {
+color :red! important;
+background-color: rgba(0,0,0,.5);
+}
+
+/* good */
+.element {
+color: red !important;
+background-color: rgba(0, 0, 0, .5);
+}
+
+/* not good */
+.element ,
+.dialog{
+...
+}
+
+/* good */
+.element,
+.dialog {
+
+}
+
+/* not good */
+.element&gt;.dialog{
+...
+}
+
+/* good */
+.element &gt; .dialog{
+...
+}
+
+/* not good */
+.element{
+...
+}
+
+/* good */
+.element {
+...
+}
+
+/* not good */
+@if{
+...
+}@else{
+...
+}
+
+/* good */
+@if {
+...
+} @else {
+...
+}
+</code></pre></li>
+</ul>
+
+<h4 id="空行">空行</h4>
+
+<p>以下几种情况需要空行：</p>
+
+<p>文件最后保留一个空行
+&lsquo;}&lsquo;后最好跟一个空行，包括 scss 中嵌套的规则
+属性之间需要适当的空行，具体见属性声明顺序</p>
+
+<pre><code>/* not good */
+.element {
+    ...
+}
+.dialog {
+    color: red;
+    &amp;:after {
+        ...
+    }
+}
+
+/* good */
+.element {
+    ...
+}
+
+.dialog {
+    color: red;
+
+    &amp;:after {
+        ...
+    }
+}
+</code></pre>
+
+<h4 id="换行">换行</h4>
+
+<p>以下几种情况不需要换行：</p>
+
+<p>&rsquo;{&lsquo;前
+以下几种情况需要换行：</p>
+
+<p>&rsquo;{&lsquo;后和&rsquo;}&lsquo;前
+每个属性独占一行
+多个规则的分隔符&rsquo;,&lsquo;后</p>
+
+<pre><code>/* not good */
+.element
+{color: red; background-color: black;}
+
+/* good */
+.element {
+    color: red;
+    background-color: black;
+}
+
+/* not good */
+.element, .dialog {
+    ...
+}
+
+/* good */
+.element,
+.dialog {
+    ...
+}
+</code></pre>
+
+<h4 id="注释">注释</h4>
+
+<p>注释统一用&rsquo;/* */&lsquo;（scss 中也不要用&rsquo;//&lsquo;），具体参照右边的写法；</p>
+
+<p>缩进与下一行代码保持一致；</p>
+
+<p>可位于一个代码行的末尾，与代码间隔一个空格。</p>
+
+<pre><code>/* Modal header */
+.modal-header {
+    ...
+}
+
+/*
+ * Modal header
+ */
+.modal-header {
+    ...
+}
+
+.modal-header {
+    /* 50px */
+    width: 50px;
+
+    color: red; /* color red */
+}
+引号
+
+最外层统一使用双引号；
+
+url的内容要用引号；
+
+属性选择器中的属性值需要引号。
+
+.element:after {
+    content: &quot;&quot;;
+    background-image: url(&quot;logo.png&quot;);
+}
+
+li[data-type=&quot;single&quot;] {
+    ...
+}
+</code></pre>
+
+<h4 id="命名">命名</h4>
+
+<p>类名使用小写字母，以中划线分隔
+id 采用驼峰式命名
+scss 中的变量、函数、混合、placeholder 采用驼峰式命名</p>
+
+<pre><code>/* class */
+.element-content {
+    ...
+}
+
+/* id */
+#myDialog {
+    ...
+}
+
+/* 变量 */
+$colorBlack: #000;
+
+/* 函数 */
+@function pxToRem($px) {
+    ...
+}
+
+/* 混合 */
+@mixin centerBlock {
+    ...
+}
+
+/* placeholder */
+%myDialog {
+    ...
+}
+</code></pre>
+
+<h4 id="属性声明顺序">属性声明顺序</h4>
+
+<p>相关的属性声明按右边的顺序做分组处理，组之间需要有一个空行。</p>
+
+<pre><code>.declaration-order {
+    display: block;
+    float: right;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    width: 100px;
+    height: 100px;
+
+    font: normal 13px &quot;Helvetica Neue&quot;, sans-serif;
+    line-height: 1.5;
+    text-align: center;
+
+    color: #333;
+    background-color: #f5f5f5;
+
+    opacity: 1;
+}
+// 下面是推荐的属性的顺序
+[
+    [
+        &quot;display&quot;,
+        &quot;visibility&quot;,
+        &quot;float&quot;,
+        &quot;clear&quot;,
+        &quot;overflow&quot;,
+        &quot;overflow-x&quot;,
+        &quot;overflow-y&quot;,
+        &quot;clip&quot;,
+        &quot;zoom&quot;
+    ],
+    [
+        &quot;table-layout&quot;,
+        &quot;empty-cells&quot;,
+        &quot;caption-side&quot;,
+        &quot;border-spacing&quot;,
+        &quot;border-collapse&quot;,
+        &quot;list-style&quot;,
+        &quot;list-style-position&quot;,
+        &quot;list-style-type&quot;,
+        &quot;list-style-image&quot;
+    ],
+    [
+        &quot;-webkit-box-orient&quot;,
+        &quot;-webkit-box-direction&quot;,
+        &quot;-webkit-box-decoration-break&quot;,
+        &quot;-webkit-box-pack&quot;,
+        &quot;-webkit-box-align&quot;,
+        &quot;-webkit-box-flex&quot;
+    ],
+    [
+        &quot;position&quot;,
+        &quot;top&quot;,
+        &quot;right&quot;,
+        &quot;bottom&quot;,
+        &quot;left&quot;,
+        &quot;z-index&quot;
+    ],
+    [
+        &quot;margin&quot;,
+        &quot;margin-top&quot;,
+        &quot;margin-right&quot;,
+        &quot;margin-bottom&quot;,
+        &quot;margin-left&quot;,
+        &quot;-webkit-box-sizing&quot;,
+        &quot;-moz-box-sizing&quot;,
+        &quot;box-sizing&quot;,
+        &quot;border&quot;,
+        &quot;border-width&quot;,
+        &quot;border-style&quot;,
+        &quot;border-color&quot;,
+        &quot;border-top&quot;,
+        &quot;border-top-width&quot;,
+        &quot;border-top-style&quot;,
+        &quot;border-top-color&quot;,
+        &quot;border-right&quot;,
+        &quot;border-right-width&quot;,
+        &quot;border-right-style&quot;,
+        &quot;border-right-color&quot;,
+        &quot;border-bottom&quot;,
+        &quot;border-bottom-width&quot;,
+        &quot;border-bottom-style&quot;,
+        &quot;border-bottom-color&quot;,
+        &quot;border-left&quot;,
+        &quot;border-left-width&quot;,
+        &quot;border-left-style&quot;,
+        &quot;border-left-color&quot;,
+        &quot;-webkit-border-radius&quot;,
+        &quot;-moz-border-radius&quot;,
+        &quot;border-radius&quot;,
+        &quot;-webkit-border-top-left-radius&quot;,
+        &quot;-moz-border-radius-topleft&quot;,
+        &quot;border-top-left-radius&quot;,
+        &quot;-webkit-border-top-right-radius&quot;,
+        &quot;-moz-border-radius-topright&quot;,
+        &quot;border-top-right-radius&quot;,
+        &quot;-webkit-border-bottom-right-radius&quot;,
+        &quot;-moz-border-radius-bottomright&quot;,
+        &quot;border-bottom-right-radius&quot;,
+        &quot;-webkit-border-bottom-left-radius&quot;,
+        &quot;-moz-border-radius-bottomleft&quot;,
+        &quot;border-bottom-left-radius&quot;,
+        &quot;-webkit-border-image&quot;,
+        &quot;-moz-border-image&quot;,
+        &quot;-o-border-image&quot;,
+        &quot;border-image&quot;,
+        &quot;-webkit-border-image-source&quot;,
+        &quot;-moz-border-image-source&quot;,
+        &quot;-o-border-image-source&quot;,
+        &quot;border-image-source&quot;,
+        &quot;-webkit-border-image-slice&quot;,
+        &quot;-moz-border-image-slice&quot;,
+        &quot;-o-border-image-slice&quot;,
+        &quot;border-image-slice&quot;,
+        &quot;-webkit-border-image-width&quot;,
+        &quot;-moz-border-image-width&quot;,
+        &quot;-o-border-image-width&quot;,
+        &quot;border-image-width&quot;,
+        &quot;-webkit-border-image-outset&quot;,
+        &quot;-moz-border-image-outset&quot;,
+        &quot;-o-border-image-outset&quot;,
+        &quot;border-image-outset&quot;,
+        &quot;-webkit-border-image-repeat&quot;,
+        &quot;-moz-border-image-repeat&quot;,
+        &quot;-o-border-image-repeat&quot;,
+        &quot;border-image-repeat&quot;,
+        &quot;padding&quot;,
+        &quot;padding-top&quot;,
+        &quot;padding-right&quot;,
+        &quot;padding-bottom&quot;,
+        &quot;padding-left&quot;,
+        &quot;width&quot;,
+        &quot;min-width&quot;,
+        &quot;max-width&quot;,
+        &quot;height&quot;,
+        &quot;min-height&quot;,
+        &quot;max-height&quot;
+    ],
+    [
+        &quot;font&quot;,
+        &quot;font-family&quot;,
+        &quot;font-size&quot;,
+        &quot;font-weight&quot;,
+        &quot;font-style&quot;,
+        &quot;font-variant&quot;,
+        &quot;font-size-adjust&quot;,
+        &quot;font-stretch&quot;,
+        &quot;font-effect&quot;,
+        &quot;font-emphasize&quot;,
+        &quot;font-emphasize-position&quot;,
+        &quot;font-emphasize-style&quot;,
+        &quot;font-smooth&quot;,
+        &quot;line-height&quot;,
+        &quot;text-align&quot;,
+        &quot;-webkit-text-align-last&quot;,
+        &quot;-moz-text-align-last&quot;,
+        &quot;-ms-text-align-last&quot;,
+        &quot;text-align-last&quot;,
+        &quot;vertical-align&quot;,
+        &quot;white-space&quot;,
+        &quot;text-decoration&quot;,
+        &quot;text-emphasis&quot;,
+        &quot;text-emphasis-color&quot;,
+        &quot;text-emphasis-style&quot;,
+        &quot;text-emphasis-position&quot;,
+        &quot;text-indent&quot;,
+        &quot;-ms-text-justify&quot;,
+        &quot;text-justify&quot;,
+        &quot;letter-spacing&quot;,
+        &quot;word-spacing&quot;,
+        &quot;-ms-writing-mode&quot;,
+        &quot;text-outline&quot;,
+        &quot;text-transform&quot;,
+        &quot;text-wrap&quot;,
+        &quot;-ms-text-overflow&quot;,
+        &quot;text-overflow&quot;,
+        &quot;text-overflow-ellipsis&quot;,
+        &quot;text-overflow-mode&quot;,
+        &quot;-ms-word-wrap&quot;,
+        &quot;word-wrap&quot;,
+        &quot;-ms-word-break&quot;,
+        &quot;word-break&quot;
+    ],
+    [
+        &quot;color&quot;,
+        &quot;background&quot;,
+        &quot;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader&quot;,
+        &quot;background-color&quot;,
+        &quot;background-image&quot;,
+        &quot;background-repeat&quot;,
+        &quot;background-attachment&quot;,
+        &quot;background-position&quot;,
+        &quot;-ms-background-position-x&quot;,
+        &quot;background-position-x&quot;,
+        &quot;-ms-background-position-y&quot;,
+        &quot;background-position-y&quot;,
+        &quot;-webkit-background-clip&quot;,
+        &quot;-moz-background-clip&quot;,
+        &quot;background-clip&quot;,
+        &quot;background-origin&quot;,
+        &quot;-webkit-background-size&quot;,
+        &quot;-moz-background-size&quot;,
+        &quot;-o-background-size&quot;,
+        &quot;background-size&quot;
+    ],
+    [
+        &quot;outline&quot;,
+        &quot;outline-width&quot;,
+        &quot;outline-style&quot;,
+        &quot;outline-color&quot;,
+        &quot;outline-offset&quot;,
+        &quot;opacity&quot;,
+        &quot;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity&quot;,
+        &quot;-ms-filter:\\'progid:DXImageTransform.Microsoft.Alpha&quot;,
+        &quot;-ms-interpolation-mode&quot;,
+        &quot;-webkit-box-shadow&quot;,
+        &quot;-moz-box-shadow&quot;,
+        &quot;box-shadow&quot;,
+        &quot;filter:progid:DXImageTransform.Microsoft.gradient&quot;,
+        &quot;-ms-filter:\\'progid:DXImageTransform.Microsoft.gradient&quot;,
+        &quot;text-shadow&quot;
+    ],
+    [
+        &quot;-webkit-transition&quot;,
+        &quot;-moz-transition&quot;,
+        &quot;-ms-transition&quot;,
+        &quot;-o-transition&quot;,
+        &quot;transition&quot;,
+        &quot;-webkit-transition-delay&quot;,
+        &quot;-moz-transition-delay&quot;,
+        &quot;-ms-transition-delay&quot;,
+        &quot;-o-transition-delay&quot;,
+        &quot;transition-delay&quot;,
+        &quot;-webkit-transition-timing-function&quot;,
+        &quot;-moz-transition-timing-function&quot;,
+        &quot;-ms-transition-timing-function&quot;,
+        &quot;-o-transition-timing-function&quot;,
+        &quot;transition-timing-function&quot;,
+        &quot;-webkit-transition-duration&quot;,
+        &quot;-moz-transition-duration&quot;,
+        &quot;-ms-transition-duration&quot;,
+        &quot;-o-transition-duration&quot;,
+        &quot;transition-duration&quot;,
+        &quot;-webkit-transition-property&quot;,
+        &quot;-moz-transition-property&quot;,
+        &quot;-ms-transition-property&quot;,
+        &quot;-o-transition-property&quot;,
+        &quot;transition-property&quot;,
+        &quot;-webkit-transform&quot;,
+        &quot;-moz-transform&quot;,
+        &quot;-ms-transform&quot;,
+        &quot;-o-transform&quot;,
+        &quot;transform&quot;,
+        &quot;-webkit-transform-origin&quot;,
+        &quot;-moz-transform-origin&quot;,
+        &quot;-ms-transform-origin&quot;,
+        &quot;-o-transform-origin&quot;,
+        &quot;transform-origin&quot;,
+        &quot;-webkit-animation&quot;,
+        &quot;-moz-animation&quot;,
+        &quot;-ms-animation&quot;,
+        &quot;-o-animation&quot;,
+        &quot;animation&quot;,
+        &quot;-webkit-animation-name&quot;,
+        &quot;-moz-animation-name&quot;,
+        &quot;-ms-animation-name&quot;,
+        &quot;-o-animation-name&quot;,
+        &quot;animation-name&quot;,
+        &quot;-webkit-animation-duration&quot;,
+        &quot;-moz-animation-duration&quot;,
+        &quot;-ms-animation-duration&quot;,
+        &quot;-o-animation-duration&quot;,
+        &quot;animation-duration&quot;,
+        &quot;-webkit-animation-play-state&quot;,
+        &quot;-moz-animation-play-state&quot;,
+        &quot;-ms-animation-play-state&quot;,
+        &quot;-o-animation-play-state&quot;,
+        &quot;animation-play-state&quot;,
+        &quot;-webkit-animation-timing-function&quot;,
+        &quot;-moz-animation-timing-function&quot;,
+        &quot;-ms-animation-timing-function&quot;,
+        &quot;-o-animation-timing-function&quot;,
+        &quot;animation-timing-function&quot;,
+        &quot;-webkit-animation-delay&quot;,
+        &quot;-moz-animation-delay&quot;,
+        &quot;-ms-animation-delay&quot;,
+        &quot;-o-animation-delay&quot;,
+        &quot;animation-delay&quot;,
+        &quot;-webkit-animation-iteration-count&quot;,
+        &quot;-moz-animation-iteration-count&quot;,
+        &quot;-ms-animation-iteration-count&quot;,
+        &quot;-o-animation-iteration-count&quot;,
+        &quot;animation-iteration-count&quot;,
+        &quot;-webkit-animation-direction&quot;,
+        &quot;-moz-animation-direction&quot;,
+        &quot;-ms-animation-direction&quot;,
+        &quot;-o-animation-direction&quot;,
+        &quot;animation-direction&quot;
+    ],
+    [
+        &quot;content&quot;,
+        &quot;quotes&quot;,
+        &quot;counter-reset&quot;,
+        &quot;counter-increment&quot;,
+        &quot;resize&quot;,
+        &quot;cursor&quot;,
+        &quot;-webkit-user-select&quot;,
+        &quot;-moz-user-select&quot;,
+        &quot;-ms-user-select&quot;,
+        &quot;user-select&quot;,
+        &quot;nav-index&quot;,
+        &quot;nav-up&quot;,
+        &quot;nav-right&quot;,
+        &quot;nav-down&quot;,
+        &quot;nav-left&quot;,
+        &quot;-moz-tab-size&quot;,
+        &quot;-o-tab-size&quot;,
+        &quot;tab-size&quot;,
+        &quot;-webkit-hyphens&quot;,
+        &quot;-moz-hyphens&quot;,
+        &quot;hyphens&quot;,
+        &quot;pointer-events&quot;
+    ]
+]
+</code></pre>
+
+<h4 id="颜色">颜色</h4>
+
+<p>颜色 16 进制用小写字母；</p>
+
+<p>颜色 16 进制尽量用简写。</p>
+
+<pre><code>/* not good */
+.element {
+    color: #ABCDEF;
+    background-color: #001122;
+}
+
+/* good */
+.element {
+    color: #abcdef;
+    background-color: #012;
+}
+属性简写
+
+属性简写需要你非常清楚属性值的正确顺序，而且在大多数情况下并不需要设置属性简写中包含的所有值，所以建议尽量分开声明会更加清晰；
+
+margin 和 padding 相反，需要使用简写；
+
+常见的属性简写包括：
+
+font
+background
+transition
+animation
+/* not good */
+.element {
+    transition: opacity 1s linear 2s;
+}
+
+/* good */
+.element {
+    transition-delay: 2s;
+    transition-timing-function: linear;
+    transition-duration: 1s;
+    transition-property: opacity;
+}
+</code></pre>
+
+<h4 id="媒体查询">媒体查询</h4>
+
+<p>尽量将媒体查询的规则靠近与他们相关的规则，不要将他们一起放到一个独立的样式文件中，或者丢在文档的最底部，这样做只会让大家以后更容易忘记他们。</p>
+
+<pre><code>.element {
+    ...
+}
+
+.element-avatar{
+    ...
+}
+
+@media (min-width: 480px) {
+    .element {
+        ...
+    }
+
+    .element-avatar {
+        ...
+    }
+}
+</code></pre>
+
+<h4 id="scss-相关">SCSS 相关</h4>
+
+<p>提交的代码中不要有 @debug；</p>
+
+<p>声明顺序：</p>
+
+<p>@extend
+不包含 @content 的 @include
+包含 @content 的 @include
+自身属性
+嵌套规则
+@import 引入的文件不需要开头的&rsquo;_&lsquo;和结尾的&rsquo;.scss&rsquo;；</p>
+
+<p>嵌套最多不能超过 5 层；</p>
+
+<p>@extend 中使用 placeholder 选择器；</p>
+
+<p>去掉不必要的父级引用符号&rsquo;&amp;&lsquo;。</p>
+
+<pre><code>/* not good */
+@import &quot;_dialog.scss&quot;;
+
+/* good */
+@import &quot;dialog&quot;;
+
+/* not good */
+.fatal {
+    @extend .error;
+}
+
+/* good */
+.fatal {
+    @extend %error;
+}
+
+/* not good */
+.element {
+    &amp; &gt; .dialog {
+        ...
+    }
+}
+
+/* good */
+.element {
+    &gt; .dialog {
+        ...
+    }
+}
+</code></pre>
+
+<h4 id="杂项">杂项</h4>
+
+<p>不允许有空的规则；</p>
+
+<p>元素选择器用小写字母；</p>
+
+<p>去掉小数点前面的 0；</p>
+
+<p>去掉数字中不必要的小数点和末尾的 0；</p>
+
+<p>属性值&rsquo;0&rsquo;后面不要加单位；</p>
+
+<p>同个属性不同前缀的写法需要在垂直方向保持对齐，具体参照右边的写法；</p>
+
+<p>无前缀的标准属性应该写在有前缀的属性后面；</p>
+
+<p>不要在同个规则里出现重复的属性，如果重复的属性是连续的则没关系；</p>
+
+<p>不要在一个文件里出现两个相同的规则；</p>
+
+<p>用 border: 0; 代替 border: none;；</p>
+
+<p>选择器不要超过 4 层（在 scss 中如果超过 4 层应该考虑用嵌套的方式来写）；</p>
+
+<p>发布的代码中不要有 @import；</p>
+
+<p>尽量少用&rsquo;*&lsquo;选择器。</p>
+
+<pre><code>/* not good */
+.element {
+}
+
+/* not good */
+LI {
+    ...
+}
+
+/* good */
+li {
+    ...
+}
+
+/* not good */
+.element {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* good */
+.element {
+    color: rgba(0, 0, 0, .5);
+}
+
+/* not good */
+.element {
+    width: 50.0px;
+}
+
+/* good */
+.element {
+    width: 50px;
+}
+
+/* not good */
+.element {
+    width: 0px;
+}
+
+/* good */
+.element {
+    width: 0;
+}
+
+/* not good */
+.element {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+    background: linear-gradient(to bottom, #fff 0, #eee 100%);
+    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background: -moz-linear-gradient(top, #fff 0, #eee 100%);
+}
+
+/* good */
+.element {
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+
+    background: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background:    -moz-linear-gradient(top, #fff 0, #eee 100%);
+    background:         linear-gradient(to bottom, #fff 0, #eee 100%);
+}
+
+/* not good */
+.element {
+    color: rgb(0, 0, 0);
+    width: 50px;
+    color: rgba(0, 0, 0, .5);
+}
+
+/* good */
+.element {
+    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, .5);
+}
+</code></pre>
+
+<h2 id="javascript">JAVASCRIPT</h2>
+
+<p><a href="https://www.kancloud.cn/digest/code-guide/42603">https://www.kancloud.cn/digest/code-guide/42603</a></p>
+
+<p>附：</p>
+
+<p>命名流行的有两种方法：</p>
+
+<ol>
+<li>驼峰命名法</li>
+<li>连接法，linux 多支持下划线连接法</li>
+</ol>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1115</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>sass的高级用法</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="1. Prefixing parent selector references 2. Variable expansion in selectors 3. Variable defaults 4. Control directives 5. The list data type 6. Defining custom functions 7. Argument defaults 8. Keyword arguments 9. Variable arguments for functions/mixins 10. Content block arguments for mixins 11. Content block overrides -pattern 12. Media query bubbling 13. Media query nesting 14. Extending selectors 15.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="sass的高级用法">
+    <meta name="twitter:description" content="1. Prefixing parent selector references 2. Variable expansion in selectors 3. Variable defaults 4. Control directives 5. The list data type 6. Defining custom functions 7. Argument defaults 8. Keyword arguments 9. Variable arguments for functions/mixins 10. Content block arguments for mixins 11. Content block overrides -pattern 12. Media query bubbling 13. Media query nesting 14. Extending selectors 15.">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="sass的高级用法">
+  <meta property="og:description" content="1. Prefixing parent selector references 2. Variable expansion in selectors 3. Variable defaults 4. Control directives 5. The list data type 6. Defining custom functions 7. Argument defaults 8. Keyword arguments 9. Variable arguments for functions/mixins 10. Content block arguments for mixins 11. Content block overrides -pattern 12. Media query bubbling 13. Media query nesting 14. Extending selectors 15.">
+  <meta property="og:url" content="/post/sass%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/sass%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">sass的高级用法</h1>
+      <p class="post-meta">@ · Jul 21, 2017 · 15 min read</p>
+    </header>
+    <article class="post-content"><nav>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-prefixing-parent-selector-references">1. Prefixing parent selector references</a></li>
+<li><a href="#2-variable-expansion-in-selectors">2. Variable expansion in selectors</a></li>
+<li><a href="#3-variable-defaults">3. Variable defaults</a></li>
+<li><a href="#4-control-directives">4. Control directives</a></li>
+<li><a href="#5-the-list-data-type">5. The list data type</a></li>
+<li><a href="#6-defining-custom-functions">6. Defining custom functions</a></li>
+<li><a href="#7-argument-defaults">7. Argument defaults</a></li>
+<li><a href="#8-keyword-arguments">8. Keyword arguments</a></li>
+<li><a href="#9-variable-arguments-for-functions-mixins">9. Variable arguments for functions/mixins</a></li>
+<li><a href="#10-content-block-arguments-for-mixins">10. Content block arguments for mixins</a></li>
+<li><a href="#11-content-block-overrides-pattern">11. Content block overrides -pattern</a></li>
+<li><a href="#12-media-query-bubbling">12. Media query bubbling</a></li>
+<li><a href="#13-media-query-nesting">13. Media query nesting</a></li>
+<li><a href="#14-extending-selectors">14. Extending selectors</a></li>
+<li><a href="#15-placeholder-selectors">15. Placeholder selectors</a></li>
+<li><a href="#16-selector-multiple-inheritance">16. Selector multiple inheritance</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<p>Or, 16 cool things you may not have known your stylesheets could do. I&rsquo;d rather have kept it to a nice round number like 10, but they just kept coming. Sorry.</p>
+
+<p>I&rsquo;ve been using SCSS/SASS for most of my styling work since 2009, and I&rsquo;m a huge fan of Compass (by the great @chriseppstein). It really helped many of us through the darkest cross-browser crap. Even though browsers are increasingly playing nice with CSS, another problem has become very topical: managing the complexity in stylesheets as our in-browser apps get larger and larger. SCSS is an indispensable tool for dealing with this.</p>
+
+<p>This isn&rsquo;t an introduction to the language by a long shot; many things probably won&rsquo;t make sense unless you have some SCSS under your belt already. That said, if you&rsquo;re not yet comfy with the basics, check out the awesome CSS extensions you&rsquo;ve always wished you had:</p>
+
+<p>Nested selectors
+Variables
+Mixins
+and loads more
+The tips are vaguely ordered from basic to more advanced. If you&rsquo;re immediately bored, feel free to skip ahead to the deep end of the pool. Also, if you have any questions, comments or corrections, leave a comment below, or fork this gist and let me know!</p>
+
+<p>So without further ado, on to the cool things.</p>
+
+<h6 id="1-prefixing-parent-selector-references">1. Prefixing parent selector references</h6>
+
+<p>This is the familiar way you&rsquo;re probably using &amp;:</p>
+
+<pre><code>a {
+    &amp;:hover {
+        color: red;
+    }
+}
+/* compiled CSS */
+a:hover {
+  color: red;
+}
+But &amp; can be used with a prefix just as well:
+
+p {
+    body.no-touch &amp; {
+        display: none; // hide the message if not on a touch device
+    }
+}
+/* compiled CSS */
+body.no-touch p {
+  display: none;
+}
+</code></pre>
+
+<p>This can be very useful when you have a deep nesting of rules, and you want to effect a change to the styling of an element based on a selector match much closer to the DOM root. Client capability flags such as the Modernizr no-touch class are often applied this way to the <body> element. This way you don&rsquo;t have to back out of your nesting just to be able to change your <p> styling based on a class on the <body>.</p>
+
+<h6 id="2-variable-expansion-in-selectors">2. Variable expansion in selectors</h6>
+
+<p>Variables can be expanded in selectors, too:</p>
+
+<pre><code>$alertClass: &quot;error&quot;;
+
+p.message-#{$alertClass} {
+    color: red;
+}
+/* compiled CSS */
+p.message-error {
+  color: red;
+}
+...or almost anywhere else for that matter, like in media queries or CSS comments:
+
+$breakpoint: 768px;
+
+@media (max-width: #{$breakpoint}) {
+    /* This block only applies to viewports &lt;= #{$breakpoint} wide... */
+}
+/* compiled CSS */
+@media (max-width: 768px) {
+  /* This block only applies to viewports &lt;= 768px wide... */
+}
+</code></pre>
+
+<p>The media query example is particularly useful if the \$breakpoint variable is defined in a settings partial somewhere (say, _settings.scss), so the breakpoints of the entire application are configurable from one file.</p>
+
+<h6 id="3-variable-defaults">3. Variable defaults</h6>
+
+<p>If your SCSS module can be configured using globals (which tends to be the SCSS way), you can declare them with a default value:</p>
+
+<pre><code>// _my-module.scss:
+$message-color: blue !default;
+
+p.message {
+    color: $message-color;
+}
+/* compiled CSS */
+p.message {
+  color: blue;
+}
+But you can then optionally override the module defaults before its inclusion:
+
+$message-color: black;
+@import 'my-module';
+/* compiled CSS */
+p.message {
+  color: black;
+}
+</code></pre>
+
+<p>That is, an assignment with a !default will only take effect if such a variable didn&rsquo;t have a value before (in contrast to the standard assignment, which will always overwrite a possible previous value).</p>
+
+<p>This is how many SCSS modules (including most that ship with Compass) are configured.</p>
+
+<h6 id="4-control-directives">4. Control directives</h6>
+
+<p>SCSS sports the standard set of flow control directives, such as if:</p>
+
+<pre><code>$debug: false; // TODO: move to _settings.scss
+
+article {
+    color: black;
+
+    @if ($debug) { // visualizing layout internals
+        border: 1px dotted red;
+    }
+}
+/* compiled CSS */
+article {
+  color: black;
+}
+</code></pre>
+
+<p>Having such compile-time flags in your project&rsquo;s styling can help debug complex layout issues visually, faster than just inspecting the page an element at a time.</p>
+
+<p>There&rsquo;s also @for, @each and @while. They&rsquo;re good for a number of use cases that would otherwise need lots of repetitive (S)CSS, like:</p>
+
+<pre><code>@each $name in 'save' 'cancel' 'help' {
+    .icon-#{$name} {
+        background-image: url('/images/#{$name}.png');
+    }
+}
+/* compiled CSS */
+.icon-save {
+  background-image: url(&quot;/images/save.png&quot;);
+}
+.icon-cancel {
+  background-image: url(&quot;/images/cancel.png&quot;);
+}
+.icon-help {
+  background-image: url(&quot;/images/help.png&quot;);
+}
+</code></pre>
+
+<p>&hellip;and much more. Keep in mind, though, that if you need them in your daily styling work you&rsquo;re probably overdoing it a bit. Instead, the added complexity is usually justified when building configurable SCSS modules and such.</p>
+
+<p>The interested reader can check out the full documentation on control directives.</p>
+
+<h6 id="5-the-list-data-type">5. The list data type</h6>
+
+<p>As we saw in the previous example, @each can iterate over a list. Lists are in fact a fundamental part of the SCSS language, but a quick demonstration of their usefulness might be configuring some generated styling:</p>
+
+<pre><code>$buttonConfig: 'save' 50px, 'cancel' 50px, 'help' 100px; // TODO: move to _settings.scss
+
+@each $tuple in $buttonConfig {
+    .button-#{nth($tuple, 1)} {
+        width: nth($tuple, 2);
+    }
+}
+/* compiled CSS */
+.button-save {
+  width: 50px;
+}
+.button-cancel {
+  width: 50px;
+}
+.button-help {
+  width: 100px;
+}
+</code></pre>
+
+<p>This demonstrates two features of the list data type, namely the nth() list accessor function, and more interestingly list nestability: in JavaScript notation, the above would be equivalent to:</p>
+
+<p>var buttonConfig = [[ &lsquo;save&rsquo;, 50 ], [ &lsquo;cancel&rsquo;, 50 ], [ &lsquo;help&rsquo;, 100 ]];
+That is, lists can be separated by both spaces and commas, and alternation between the two notations produces nested lists.</p>
+
+<h6 id="6-defining-custom-functions">6. Defining custom functions</h6>
+
+<p>Mixins are a well-known part of the language, but SCSS also allows you to define custom functions. Contrary to what one might expect, this can also be done in pure SCSS, instead of extending SCSS in Ruby:</p>
+
+<pre><code>@function make-greener($value) {
+    @return $value + rgb(0,50,0); // arithmetic with colors is totally fine, btw
+}
+p {
+    background: make-greener(gray);
+}
+/* compiled CSS */
+p {
+  background: #80b280;
+}
+</code></pre>
+
+<p>The above color is a gray with a slight green tint.</p>
+
+<p>Custom functions are most useful in avoiding some repeated computation in an expression. It also implicitly documents that computation by giving it a name: the above example, while contrived, is still more understandable than just having arbitrary color arithmetic in the style block. SCSS ships with a ton of useful built-in functions, and Compass adds even more, so do first check whether there&rsquo;s a built-in equivalent before implementing your own.</p>
+
+<h6 id="7-argument-defaults">7. Argument defaults</h6>
+
+<p>Mixins and functions support default values for arguments; the last zero-to-N arguments can be made optional by providing them with a default value:</p>
+
+<pre><code>@mixin foobar($a, $b, $padding: 20px) {
+    padding: $padding;
+    // ...and something with $a and $b
+}
+
+p {
+    @include foobar(123, &quot;abc&quot;); // the default padding's fine
+}
+
+p.important {
+    @include foobar(123, &quot;abc&quot;, 50px); // override the default
+}
+</code></pre>
+
+<h6 id="8-keyword-arguments">8. Keyword arguments</h6>
+
+<p>If your mixin (or function) takes a lot of arguments, there&rsquo;s a similar call-time syntax for selecting specific arguments to override:</p>
+
+<pre><code>@mixin foobar($topPadding: 10px, $rightPadding: 20px,
+    $bottomPadding: 10px, $leftPadding: 20px, $evenMorePadding: 10px) {
+    // do something with all these arguments...
+}
+
+p {
+    @include foobar($bottomPadding: 50px);
+}
+</code></pre>
+
+<p>Without being able to name arguments call-time, you&rsquo;d have to specify $topPadding and $rightPadding first. Now, you can instead override only the argument you want, leaving the rest to their default values.</p>
+
+<p>Note, however, that in cases where a lot of the arguments are just for overriding specific CSS properties (such as top-padding, bottom-padding and so on), the &ldquo;content block overrides&rdquo; -pattern is likely a better fit (see below).</p>
+
+<h6 id="9-variable-arguments-for-functions-mixins">9. Variable arguments for functions/mixins</h6>
+
+<p>Var-args work much the same way as in other languages that support the feature; any extra arguments to a function/mixin call are wrapped into a list and assigned to the argument having a &hellip; suffix:</p>
+
+<pre><code>@mixin config-icon-colors($prefix, $colors...) {
+    @each $i in $colors {
+        .#{$prefix}#{nth($i, 1)} {
+            color: nth($i, 2);
+        }
+    }
+}
+@include config-icon-colors('icon-',
+    'save'   green,
+    'cancel' gray,
+    'delete' red
+);
+/* compiled CSS */
+.icon-save {
+  color: green;
+}
+.icon-cancel {
+  color: gray;
+}
+.icon-delete {
+  color: red;
+}
+</code></pre>
+
+<p>The above helper could be used to set up colors for your font icons, Font Awesome for example, without having to repeat yourself. The helper works by passing in a variable number of arguments (after the first, required one). Each of those arguments is expected to be a tuple of two items (again in JavaScript notation, for example [ &ldquo;save&rdquo;, &ldquo;green&rdquo; ]).</p>
+
+<p>In fact, the &hellip; syntax also works during call-time, where it expands a list into separate arguments, to be fed into the target mixin:</p>
+
+<pre><code>@mixin foobar($a, $b, $c) {
+    // receives args $a = 5px, $b = red, and so on
+}
+
+$myArgs: 5px red &quot;bla bla&quot;;
+// at this point, you could also programmatically add/remove arguments
+
+@include foobar($myArgs...);
+</code></pre>
+
+<p>Personally, I have yet to find a use case for this, but the documentation has a nice use case for passing current arguments forward to another mixin.</p>
+
+<h6 id="10-content-block-arguments-for-mixins">10. Content block arguments for mixins</h6>
+
+<p>Since version 3.2.0, SCSS has had an implicit mixin argument accessible through the @content directive. It allows passing an entire SCSS content block as an argument to the mixin:</p>
+
+<pre><code>@mixin only-for-mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@include only-for-mobile() /* note: @content begins here */ {
+    p {
+        font-size: 150%;
+    }
+} /* @content ends */
+/* compiled CSS */
+@media (max-width: 768px) {
+  p {
+    font-size: 150%;
+  }
+}
+</code></pre>
+
+<p>This is a very powerful language feature for framework authors, as it allows you to pass arbitrary blocks of styling around, which you can choose to wrap in specific selectors, repeat in loops, make conditional with @if, etc. You can mix standard and content block arguments, too:</p>
+
+<pre><code>@mixin only-for-mobile($breakpoint) {
+    @media (max-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+@include only-for-mobile(480px) {
+    p {
+        font-size: 150%;
+    }
+}
+</code></pre>
+
+<h6 id="11-content-block-overrides-pattern">11. Content block overrides -pattern</h6>
+
+<p>Consider a mixin that generates a selector and some styles for it, allowing the caller to customize the styling if needed:</p>
+
+<pre><code>@mixin message($class, $color: yellow, $margin: 20px, $padding: 10px) {
+    .message-#{$class} {
+        border: 1px dotted $color;
+        color: $color;
+        margin: $margin;
+        padding: $padding;
+    }
+}
+</code></pre>
+
+<p>Calling this mixin using keyword arguments (see above) is quite convenient, because if the defaults are fine, no extra arguments need be provided. If they&rsquo;re not, you only need to specify the arguments you want to override:</p>
+
+<pre><code>@include message(&quot;subtle&quot;, $margin: 5px);
+But this requires you to list all overridable properties in the mixin signature. However, content block arguments allow arbitrary overrides without the argument jungle:
+
+@mixin message($class) {
+    .message-#{$class} {
+        border: 1px dotted yellow;
+        color: yellow;
+        margin: 20px;
+        padding: 10px;
+        @content;
+    }
+}
+
+@include message(&quot;subtle&quot;) {
+    margin: 5px;
+}
+/* compiled CSS */
+.message-subtle {
+  border: 1px dotted yellow;
+  color: yellow;
+  margin: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+</code></pre>
+
+<p>Here, we allow the good-ole CSS cascade to effect the property override (the latter margin overrides the former one). Also, we&rsquo;re not limited to overriding the properties the author of the mixin thought of. In fact, this allows passing in nested blocks as well:</p>
+
+<pre><code>@include message(&quot;actionable&quot;) {
+    button { // actionable messages may contain buttons for taking action!
+        float: right;
+    }
+}
+/* compiled CSS */
+.message-actionable {
+  border: 1px dotted yellow;
+  color: yellow;
+  margin: 20px;
+  padding: 10px;
+}
+.message-actionable button {
+  float: right;
+}
+</code></pre>
+
+<p>This pattern can be useful in any library code that outputs nontrivial styling with generated selectors, since it allows the user a customization point beyond what the library author foresaw. Note, though, that in simple cases (where no selectors are emitted within the mixin) it&rsquo;s rather unnecessary, as any overrides can be made just using the standard CSS cascade.</p>
+
+<h6 id="12-media-query-bubbling">12. Media query bubbling</h6>
+
+<pre><code>@media blocks do not need to be declared at the root level of the stylesheet:
+
+body {
+    article {
+        p {
+            font-size: 100%;
+            color: black;
+            padding: 10px;
+
+            @media (max-width: 768px) {
+                font-size: 150%; // use larger text for smaller screens
+            }
+        }
+    }
+}
+/* compiled CSS */
+body article p {
+  font-size: 100%;
+  color: black;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  body article p {
+    font-size: 150%;
+  }
+}
+</code></pre>
+
+<p>Notice how the compiler &ldquo;bubbles up&rdquo; the @media block to the root level (since regular CSS doesn&rsquo;t support selector nesting), and within it, outputs all styling that was encountered within the @media block in the SCSS source.</p>
+
+<p>This is very useful as it allows you to make media-specific tweaks almost anywhere in your styling, right where they&rsquo;re relevant, instead of collecting all those tweaks to the end of the stylesheet, and hoping that their selectors will stay in sync with the ones they&rsquo;re overriding (they won&rsquo;t).</p>
+
+<h6 id="13-media-query-nesting">13. Media query nesting</h6>
+
+<p>The aforementioned bubbling mechanism also takes nesting into account, and combines all applicable queries with the and operator:</p>
+
+<pre><code>p {
+    @media (max-width: 768px) {
+        font-size: 150%; // use larger text for smaller screens
+        @media (orientation: landscape) {
+            line-height: 75%; // condense text a bit because of small vertical space
+        }
+    }
+}
+/* compiled CSS */
+@media (max-width: 768px) {
+  p {
+    font-size: 150%;
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  p {
+    line-height: 75%;
+  }
+}
+</code></pre>
+
+<h6 id="14-extending-selectors">14. Extending selectors</h6>
+
+<p>SCSS allows extending selectors, by copying and combining selectors in the CSS output. Interestingly, while the mechanism is (obviously) very different, the semantics of @extend are quite analogous to traditional object-oriented programming languages (such as Java &amp; whatnot):</p>
+
+<pre><code>.animal {
+    background: gray;
+}
+.cat {
+    @extend .animal;
+    color: white;
+}
+/* compiled CSS */
+.animal, .cat {
+  background: gray;
+}
+.cat {
+  color: white;
+}
+</code></pre>
+
+<p>That is, .cat has all the properties of its &ldquo;parent class&rdquo; .animal, plus any specific ones it adds or overrides. Whereas in normal CSS you would have to reference both the extending class and the parent class (e.g. <div class="animal cat">), now you can just name the exact class you want (<div class="cat">). What it does (or doesn&rsquo;t) inherit from depends on the definition of .cat, and can later change without touching the markup.</p>
+
+<p>Classical inheritance, right? Overriding properties in the &ldquo;child class&rdquo; works due to the style cascade in the browser: styling for the same selector that comes later in the file always wins over the styling that came before it. Perhaps a bit unintuitively, this actually works out fine even if the combined selectors have differing specificity (think .class extending an #id). Extending selectors may often be preferable to using mixins to achieve the same effect:</p>
+
+<pre><code>@mixin animal {
+    background: gray;
+    border: 1px solid red;
+    font-weight: bold;
+    font-size: 50px;
+    color: red;
+    padding: 20px;
+}
+.cat {
+    @include animal;
+    color: white;
+}
+.dog {
+    @include animal;
+    color: black;
+}
+/* compiled CSS */
+.cat {
+  background: gray;
+  border: 1px solid red;
+  font-weight: bold;
+  font-size: 50px;
+  color: red;
+  padding: 20px;
+  color: white;
+}
+.dog {
+  background: gray;
+  border: 1px solid red;
+  font-weight: bold;
+  font-size: 50px;
+  color: red;
+  padding: 20px;
+  color: black;
+}
+</code></pre>
+
+<p>Notice how only the last property (color) is different, the rest is the same. As we define more types of animals, the amount of repeated style properties in the CSS output keeps growing. This is in contrast to how selector extension would solve the same problem:</p>
+
+<pre><code>.animal {
+    background: gray;
+    border: 1px solid red;
+    font-weight: bold;
+    font-size: 50px;
+    color: red;
+    padding: 20px;
+}
+.cat {
+    @extend .animal;
+    color: white;
+}
+.dog {
+    @extend .animal;
+    color: black;
+}
+/* compiled CSS */
+.animal, .cat, .dog {
+  background: gray;
+  border: 1px solid red;
+  font-weight: bold;
+  font-size: 50px;
+  color: red;
+  padding: 20px;
+}
+.cat {
+  color: white;
+}
+.dog {
+  color: black;
+}
+</code></pre>
+
+<p>Finally, selector extension allows for integrations into 3rd party CSS libraries, that need not be specifically designed for extension, or even be written in SCSS. Twitter Bootstrap, for example, includes nice styling for buttons with .btn, but doesn&rsquo;t apply it to &lt;button&gt; elements by default. In our quest to reduce unnecessary CSS classes, we can fix this simply with:</p>
+
+<pre><code>@import &quot;bootstrap.scss&quot;; // just a renamed .css file, so that @import works
+
+button {
+    @extend .btn;
+}
+</code></pre>
+
+<p>This will add the button selector into the Bootstrap source wherever .btn is defined.</p>
+
+<p>The extension mechanism is surprisingly clever even with more complex selectors, and allows chaining extends (think .cat extends .feline extends .animal), but with great power comes great responsibility: overly neat tricks with @extend may be hard to reason about when debugging styles. Use responsibly.</p>
+
+<h6 id="15-placeholder-selectors">15. Placeholder selectors</h6>
+
+<p>Because in the above example(s) the .animal base class isn&rsquo;t used anywhere directly (only through its child classes), we might just as well get rid of it in the CSS output. SCSS allows this with placeholder selectors. Whereas .foo signifies a class, and #foo an ID, %foo is considered a placeholder, and gets special treatment by the compiler: its styles are never output on their own, only through extension.</p>
+
+<pre><code>%animal {
+    background: gray;
+    // and so on...
+}
+.cat {
+    @extend %animal;
+    color: white;
+}
+.dog {
+    @extend %animal;
+    color: black;
+}
+/* compiled CSS */
+.cat, .dog {
+  background: gray;
+}
+.cat {
+  color: white;
+}
+.dog {
+  color: black;
+}
+</code></pre>
+
+<p>Because %animal was just a placeholder selector, it&rsquo;s disappeared from the output. More importantly, if you never define a selector that extends %animal, its styles (background: gray; and so on) are completely omitted from the output. This can be very useful for SCSS framework authors, as you can offer any number of base classes for opt-in extension, but only the ones actually used are output into the resulting CSS.</p>
+
+<p>Placeholder selectors can actually do even more than this, namely expanding the %placeholder part into a more complex selector during @extend, but personally I&rsquo;ve never had to use this feature. The interested reader can check out the docs on the subject.</p>
+
+<h6 id="16-selector-multiple-inheritance">16. Selector multiple inheritance</h6>
+
+<p>A selector can actually inherit from several other selectors - that is, SCSS supports multiple inheritance. For each @extend, the current selector is appended to the selector being extended. When combined with placeholder selectors, this allows powerful abstractions for styling framework authors. This is perhaps best explained through an example:</p>
+
+<pre><code>// in the framework files:
+%mfw-standing-out {
+    font-size: 150%;
+    font-style: italic;
+    padding: 25px;
+}
+%mfw-slightly-shadowed {
+    @include box-shadow(black 2px 2px 10px); // from Compass
+}
+%mfw-rounded {
+    @include border-radius(25px); // from Compass
+}
+
+// in the application files:
+# join-button {
+    @extend %mfw-standing-out;
+    @extend %mfw-slightly-shadowed;
+    @extend %mfw-rounded;
+    background: green;
+    color: white;
+}
+</code></pre>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>817</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

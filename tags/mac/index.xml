@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on HerrDu&#39;s Blog</title>
+    <link>/tags/mac/</link>
+    <description>Recent content in Mac on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Sep 2015 23:06:07 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Play环境在mac上的搭建</title>
+      <link>/post/play%E7%8E%AF%E5%A2%83%E5%9C%A8mac%E4%B8%8A%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 14 Sep 2015 23:06:07 +0000</pubDate>
+      
+      <guid>/post/play%E7%8E%AF%E5%A2%83%E5%9C%A8mac%E4%B8%8A%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
+      <description>安装 java jdk  Mac 上本来内置 java jdk ，但是是 1.6 版本的。这里我们安装 java1.7，下面是下载地址:java1.7
+ 安装 activator  与 java1.7 想兼容的 play Framework 版本是 2.3.x 的，因此我们下载 2.3.x 的，下载地址：https://www.playframework.com/documentation/2.3.x/Home
+安装的步骤参考：官网上提供的“Installing Play”章节，下载 activator 之后，添加导环境变量即可。
+添加方法：在 .bash_profile 中添加 export PATH=\$PATH:/relativePath/to/activator 类似语句即可。
+进入到项目路径，输入 activator，程序自动更新 catch 包，更新完毕之后，输入 run 即可运行项目。
+ Mongo 数据库  找到适合 Mac 版的 mongo 数据库，安装上即可，配置好环境变量，然后运行 mongod 启动数据库
+Mongo 数据库图形管理工具：Mongohub
+下载地址：https://github.com/jeromelebel/MongoHub-Mac
+4.安装 Tomcat
+ 版本：tomcat-8.0 安装方法 + 下载地址 http://tomcat.apache.org/download-80.cgi + 解压重命名为 tomcat，然后将文件夹复制到/Library 下面，路径为/Library/tomcat + 为 tomcat 添加环境变量 到.</description>
+    </item>
+    
+    <item>
+      <title>Mac下数据建模软件推荐</title>
+      <link>/post/dbdesigner/</link>
+      <pubDate>Tue, 25 Nov 2014 07:52:08 +0000</pubDate>
+      
+      <guid>/post/dbdesigner/</guid>
+      <description>在进行数据库设计的时候，数据建模软件能有效提升效率。在 windows 下，我之前使用得最多的是 powerdesigner，它没有 mac 版本。在搜寻一番后，找到两个好用的工具，推荐给大伙。
+Navicat Modeler Essentitals
+在 MAS 上，有。可以直接下载，免费。
+Navicat Modeler Essentitals
+它支持多种数据库:MySQL,Oracle,Sqlite,PostgreSql&amp;hellip;可以导出 sql 脚本。总体来说，满足最基本需求。
+Mysql Workbench
+Mysql 官方软件，既可以进行建模，又可以进行连接数据库，进行查询。如果是使用 Mysql 就用这个就可以了。
+Mysql Workbench
+eagleon / 2013-01-18
+Published under (CC) BY-NC-SA in categories learn tagged with mac database mysql</description>
+    </item>
+    
+    <item>
+      <title>Mac下安装爬虫框架Scrapy</title>
+      <link>/post/scrapy/</link>
+      <pubDate>Mon, 17 Nov 2014 22:07:16 +0000</pubDate>
+      
+      <guid>/post/scrapy/</guid>
+      <description>刚刚试了下可以，可以简化为下面三个步骤 一、删除 Mac 自带的 Python 1 sudo rm -rf /usr/bin/python
+二、homebrew 安装最新的 Python 1 brew install python
+创建一个软链接 1 sudo ln -s /usr/local/bin/python /usr/bin/python
+三、使用 pip 安装 scrapy 使用 homebrew 安装完 python 后会自动安装好包管理工具 pip，所以执行下面安装命令 pip install scrapy
+安装完成后如下所示
+machaismile\$ scrapy Scrapy 0.22.2 - no active project
+Usage: scrapy  [options][args]
+Available commands: bench Run quick benchmark test fetch Fetch a URL using the Scrapy downloader runspider Run a self-contained spider (without creating a project) settings Get settings values shell Interactive scraping console startproject Create new project version Print Scrapy version view Open URL in browser, as seen by Scrapy</description>
+    </item>
+    
+    <item>
+      <title>Mac下Navicat安装文件与破解方法</title>
+      <link>/post/navicat/</link>
+      <pubDate>Sun, 26 Oct 2014 23:15:37 +0000</pubDate>
+      
+      <guid>/post/navicat/</guid>
+      <description>由于最近工作学习需要使用到 MySQL，所以找了 Navicat Premium 作为客户端，在官网上下载了最新的中文版本(11.0.12)，发现网上流传的破解工具不能破解，后来发现，该工具只能破解英文版的。 所以重新在官网上下载了最新的英文版本（11.0.15），有中文版本不能用，有点不甘心，所以提取出了中文版本中的语言包，放到了英文版本下面，运行一切正常。只是其中文汉化还不是很好，还有一些有不明确的地方。 不管怎么样，能够使用就 OK。
+安装步骤： 1、下载 Navicat Premium_11.0.15.zip，解压之后有两个文件，一个是 Navicat Premium.app(英文版本 11.0.15，已包含中文语言包)，另一个是 Keygen.app。 2、将 Navicat Premium.app 移动或者复制到应用程序目录下。 3、运行 Keygen.app 进行破解，按如下步骤： 3.1 点击 Generate,生成 SN 3.2 点击 Activate，然后选择 Navicat Premium.app 3.3 点击 Patch,然后选择 Navicat Premium.app。恭喜你，你可以使用中文版本的 Navicat Premium 了
+下载地址：http://pan.baidu.com/s/1u2T1G 原文地址：http://bbs.maiyadi.com/thread-935221-1-1.html</description>
+    </item>
+    
+    <item>
+      <title>Mac 下的 tree 命令</title>
+      <link>/post/tree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tree/</guid>
+      <description>在默认安装安装的 mac 下没有找到 tree 命令，找了一下原来有个比较流氓的解决办法：
+1 find . -print | sed -e &amp;rsquo;s;[^/]*/;|__;g;s;__|; |;g&amp;rsquo; 这个命令行跑起来类似平常 tree 的效果，
+写一个 alias 到~/.bash_profile 里，就更方便了:
+alias tree=&amp;ldquo;find . -print | sed -e &amp;rsquo;s;[^/]*/;|__;g;s;__|; |;g&amp;rsquo;&amp;rdquo; Update
+2 现在正在用的是 homebrew 安装的 tree 命令行。
+brew install tree
+作者: Volcano 发表于 November 22, 2010 at 8:34 pm 版权信息: 可以任意转载, 转载时请务必以超链接形式标明文章原始出处和作者信息及此声明 永久链接 - http://www.ooso.net/archives/564</description>
+    </item>
+    
+  </channel>
+</rss>

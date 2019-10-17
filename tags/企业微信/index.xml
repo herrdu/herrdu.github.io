@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>企业微信 on HerrDu&#39;s Blog</title>
+    <link>/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/</link>
+    <description>Recent content in 企业微信 on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Aug 2019 13:41:02 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>企业微信认证</title>
+      <link>/post/identifybywechatwork/</link>
+      <pubDate>Fri, 16 Aug 2019 13:41:02 +0800</pubDate>
+      
+      <guid>/post/identifybywechatwork/</guid>
+      <description>&lt;p&gt;公司内部有一个图书小城程序，之前使用 ldap 进行权限认证。Ldap 认证有一个不合适的地方是每次用户认证都需要用户输入用户的帐号密码，而这个帐号密码同邮箱的帐号密码一致。为了保证用户的帐号密码不泄漏出去，同时公司又使用了企业微信，我认为可以借用企业微信的认证。经过两天的奋斗实现了这个方案。
+下面给出方案步骤：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>应用 on HerrDu&#39;s Blog</title>
+    <link>/tags/%E5%BA%94%E7%94%A8/</link>
+    <description>Recent content in 应用 on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 27 Nov 2015 16:46:39 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E5%BA%94%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>virtualenvwrapper 的常规应用</title>
+      <link>/post/virtualenvwrapper%E7%9A%84%E5%B8%B8%E8%A7%84%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Fri, 27 Nov 2015 16:46:39 +0000</pubDate>
+      
+      <guid>/post/virtualenvwrapper%E7%9A%84%E5%B8%B8%E8%A7%84%E5%BA%94%E7%94%A8/</guid>
+      <description>#### virtualenvwrapper 简介 virtualenvwrapper 是 python 的一个虚拟环境管理工具。它是对 virtualenv 工具的一个扩展。 #### 功能  在一个地方管理所有的虚拟环境 Wrappers 帮助你管理虚拟环境（创建，删除，复制）. 一个简单的命令，在虚拟环境之中随意切换. 命令可以由 Tab 补齐，虚拟环境是命令的参数 所有的操作者都可以有自己的用户配置文件 有更多的创建共享扩展的系统插件  #### 安装与创建一个项目   $ pip install virtualenvwrapper &amp;hellip; $ export WORKON_HOME=~/Envs $ mkdir -p $WORKON_HOME $ source /usr/local/bin/virtualenvwrapper.sh $ mkvirtualenv env1 Installing setuptools&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip; &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.done. virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/predeactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postdeactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/preactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postactivate New python executable in env1/bin/python (env1)$ ls $WORKON_HOME env1 hook.</description>
+    </item>
+    
+  </channel>
+</rss>

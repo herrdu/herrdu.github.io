@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on HerrDu&#39;s Blog</title>
+    <link>/tags/javascript/</link>
+    <description>Recent content in javascript on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 22 Sep 2017 10:26:37 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何优雅的编写JavaScript代码（转自前端之巅）</title>
+      <link>/post/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E7%BC%96%E5%86%99javascript%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Fri, 22 Sep 2017 10:26:37 +0000</pubDate>
+      
+      <guid>/post/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E7%BC%96%E5%86%99javascript%E4%BB%A3%E7%A0%81/</guid>
+      <description>原文地址：http://mp.weixin.qq.com/s/PUpZTnCf3qilVWhU-bTC0A
+几乎每个大一点公司都有一个“运行时间长，维护的工程师换了一批又一批”的项目，如果参与到这样的项目中来，大部分人只有一个感觉——『climb the shit mountain』。 所以我们经常会说谁谁谁写的代码就像排泄物一样，为了避免成为别人嘴里的谁谁谁，所以我写的代码一般不注明作者日期信息（抖机灵，其实是因为 Git 能够很好的管理这些信息），所以在项目中，我们应该编写可维护性良好的代码。 同时，对于工程师而言，提高自身的编码能力和编写易于阅读和维护的代码，是提高开发效率和职业身涯中必做的事情。我在面试的时候发现很多面试者拥有所谓的多年工作经验，一直在平庸的写着重复的代码，而从未去推敲、提炼和优化，这样是不可能提高编程水平的。 那么如何编写出可维护的、优雅的代码呢？ 首先，我们应该明确的认识到，代码是写给自己和别人看的，应该保持清晰的结构，方便后人阅读和维护，假如有一天需要回头修改代码，别人和你都会感谢你！ 其次，不管公司大小，不管项目大小，不管工期有多紧张，制定良好的编码规范并落到实地。如果代码质量不够好的话，在需求较多的情况下，就可能会牵一发动全身，大厦将倾。所以在项目的开始或者 现在 制定良好的编码规范，每个人都应该有自己的或者团队的编码规范！ 最后，嗅出代码的 Bad Smell，比如重复的代码、命名不规范、过长的函数、数据泥团等等，然后在不改变代码外在行为的前提下，不断的优化重构，以改进代程序的内部结构。 接下来，我总结整理了一大套理论和实操，以飨各位。
+ 避免使用 JS 糟粕和鸡肋  这些年来，随着 HTML5 和 Node.js 的发展，JavaScript 在各个领域遍地开花，已经从“世界上最被误解的语言”变成了“世界上最流行的语言”。但是由于历史原因，JavaScript 语言设计中还是有一些糟粕和鸡肋，比如：全局变量、自动插入分号、typeof、NaN、假值、==、eval 等等，并不能被语言移除，开发者一定要避免使用这些特性。 还好下文中的 ESLint 能够检测出这些特性，给出错误提示（如果你遇到面试官还在考你这些特性的话，那就需要考量一下，他们的项目中是否仍在使用这些特性，同时你也应该知道如何回答这类问题了）。
+ 编写简洁的 JavaScript 代码  以下这些准则来自 Robert C. Martin 的书 “Clean Code”，适用于 JavaScript。整个列表很长，我选取了我认为最重要的一部分，也是我在项目用的最多的一部分，但是还是推荐大家看一下原文： https://github.com/ryanmcdermott/clean-code-javascript 这不是风格指南，而是 使用 JavaScript 生产可读、可重用和可重构的软件的指南。
+变量 使用有意义，可读性好的变量名 Bad: var yyyymmdstr = moment().format(&#39;YYYY/MM/DD&#39;) Good: var yearMonthDay = moment().format(&#39;YYYY/MM/DD&#39;)  使用 ES6 的 const 定义常量 反例中使用&amp;rdquo;var&amp;rdquo;定义的&amp;rdquo;常量&amp;rdquo;是可变的，在声明一个常量时，该常量在整个程序中都应该是不可变的。</description>
+    </item>
+    
+  </channel>
+</rss>

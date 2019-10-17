@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Install GreenPlum</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="Herr Du">
+  <meta name="description" content=" 注：本文档是个人部署的一点心得，读者部署时请详读官方文档
+ 最近新听说了一个数据库 GreenPlum（简称：GP），是一款基于 Postgresql 的数据库。本着对 Postgresql 数据库的喜爱对 GP 这款数仓应用也产生了兴趣。兴趣是行动直接的驱动力呀，自己部署一个试试？
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Install GreenPlum">
+    <meta name="twitter:description" content=" 注：本文档是个人部署的一点心得，读者部署时请详读官方文档
+ 最近新听说了一个数据库 GreenPlum（简称：GP），是一款基于 Postgresql 的数据库。本着对 Postgresql 数据库的喜爱对 GP 这款数仓应用也产生了兴趣。兴趣是行动直接的驱动力呀，自己部署一个试试？
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Install GreenPlum">
+  <meta property="og:description" content=" 注：本文档是个人部署的一点心得，读者部署时请详读官方文档
+ 最近新听说了一个数据库 GreenPlum（简称：GP），是一款基于 Postgresql 的数据库。本着对 Postgresql 数据库的喜爱对 GP 这款数仓应用也产生了兴趣。兴趣是行动直接的驱动力呀，自己部署一个试试？
+">
+  <meta property="og:url" content="/post/install-greenplum/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/install-greenplum/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Install GreenPlum</h1>
+      <p class="post-meta">@Herr Du · Aug 8, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content"><blockquote>
+<p>注：本文档是个人部署的一点心得，读者部署时请详读<a href="https://gpdb.docs.pivotal.io/6-0Beta/install_guide/create_data_dirs.html">官方文档</a></p>
+</blockquote>
+
+<p>最近新听说了一个数据库 GreenPlum（简称：GP），是一款基于 Postgresql 的数据库。本着对 Postgresql 数据库的喜爱对 GP 这款数仓应用也产生了兴趣。兴趣是行动直接的驱动力呀，自己部署一个试试？</p>
+
+<p>我是一步步按照<a href="https://gpdb.docs.pivotal.io/6-0Beta/install_guide/create_data_dirs.html">官方文档</a>教程来的，教程的资料是否详细，因此部署中没有太多的坑。</p>
+
+<h4 id="第一步-制作三个-centos-的虚拟机">第一步，制作三个 CentOS 的虚拟机</h4>
+
+<p>由于 GP 是一款分布式数据库，使用的是 MPP（Massively Parallel Processing）架构。因此我们在部署时需要一个 Master 主机，以及一个（两个）segments 主机。实际上，为了预防 Master 主机挂掉，GP 还有一个 standby master 的概念，不过我的虚拟机有限，忽略了那个概念。</p>
+
+<p>三个虚拟机的配置:</p>
+
+<ul>
+<li>单核</li>
+<li>4G 内存</li>
+<li>50G 硬盘</li>
+<li>CentOS7（Linux mdw 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux）</li>
+</ul>
+
+<h4 id="第二步-对三个虚拟机的配置进行修改">第二步，对三个虚拟机的配置进行修改。</h4>
+
+<p>为了部署 GP ，还需要为其宿主机进行内核级别的修改。<a href="https://gpdb.docs.pivotal.io/6-0Beta/install_guide/prep_os.html">配置指南</a>中的主要配置项如下：</p>
+
+<ol>
+<li>禁用 SELinux</li>
+<li>关闭 iptables</li>
+<li>关闭 firewall</li>
+<li>修改 /etc/sysctl.conf</li>
+<li>修改 /etc/security/limits.conf</li>
+<li>检查文件系统是不是 xfs</li>
+<li>设置硬盘的 read-head</li>
+<li>调整 I/O 调度器</li>
+<li>禁用透明大页（Transparent Huge Pages）</li>
+<li>禁用 IPC</li>
+<li>修改 SSH 配置</li>
+<li>同步系统时钟 （这一步我并没有做）</li>
+</ol>
+
+<p>以上的配置项需要为每一个主机进行配置</p>
+
+<h4 id="第三步-按照-gp">第三步，按照 GP</h4>
+
+<ol>
+<li>为 CentOS 下载 greenplum-db-&lt;version&gt;-&lt;platform&gt;.rpm</li>
+</ol>
+
+<p>GP 在 6.x 版本的文档里提供的 yum 和 apt 两种安装方式。我使用的<a href="https://github.com/greenplum-db/gpdb/releases">6.0.0-beta.6</a>这个版本，似乎只有这个版本在 github 上有 assets，其它版本的主要注册 Pivotal 的帐号，且无法下载。</p>
+
+<ol>
+<li><p>yum install</p>
+
+<pre><code>yum install ./greenplum-db-&lt;version&gt;-&lt;platform&gt;.rpm
+</code></pre></li>
+
+<li><p>创建 gpadmin 用户</p>
+
+<pre><code>useradd gpadmin
+</code></pre></li>
+
+<li><p>修改安装目录的 owner 与 group</p>
+
+<pre><code>chown -R gpadmin /usr/local/greenplum*
+chgrp -R gpadmin /usr/local/greenplum*
+</code></pre></li>
+
+<li><p>实现 master 与 segments 之间的无密码登录</p></li>
+</ol>
+
+<h4 id="确认-master-与-segments-的-gp-安装是否正确">确认 master 与 segments 的 GP 安装是否正确</h4>
+
+<p>具体的可以看文档，下面这个语句可以帮助看各个机子的 GP 是否安装正常</p>
+
+<pre><code>gpssh -f hostfile_exkeys -e 'ls -l /usr/local/greenplum-db-&lt;version&gt;'
+</code></pre>
+
+<ol>
+<li>为 GP 创建物理存储路径</li>
+</ol>
+
+<ul>
+<li>Master 的机子的存储路径有一个 <code>/data/master</code> ，创建完之后要修改其 owner 和 group</li>
+<li>Segment 的存储路径有两个，<code>/data/primary</code> 和 <code>/data/mirror</code>，创建完后要修改其 owner 和 group</li>
+</ul>
+
+<h4 id="初始化-gp-的配置">初始化 GP 的配置</h4>
+
+<ol>
+<li><p>从 GP 的默认配置文件里面 copy gpinitsystem_config 出来</p>
+
+<pre><code>cp $GPHOME/docs/cli_help/gpconfigs/gpinitsystem_config /home/gpadmin/gpconfigs/gpinitsystem_config
+</code></pre></li>
+
+<li><p>修改 gpinitsystem_config</p></li>
+</ol>
+
+<p>配置文件里面的大部分内容不需要修改的，不过还是需要注意的是下面几个值：</p>
+
+<ul>
+<li>MASTER_DIRECTORY=/data/master</li>
+<li>MASTER_HOSTNAME=mdw</li>
+<li>declare -a DATA_DIRECTORY=(/data1/primary /data1/primary /data1/primary /data2/primary /data2/primary /data2/primary)</li>
+</ul>
+
+<p>declare -a DATA_DIRECTORY 里面的值会决定一个主机上可以安装几个 segments 实例。</p>
+
+<ol>
+<li><p>执行 gpinitsystem 命令，进行初始化配置</p>
+
+<pre><code>gpinitsystem -c gpconfigs/gpinitsystem_config -h gpconfigs/hostfile_gpinitsystem
+</code></pre></li>
+</ol>
+
+<p>hostfile_gpinitsyste 是一个列有 segment 机子的文本，需要主动去写</p>
+
+<ol>
+<li><p>创建成功</p>
+
+<pre><code>=&gt; Greenplum Database instance successfully created.
+</code></pre></li>
+</ol>
+
+<h4 id="psql-连接数据库">PSQL 连接数据库</h4>
+
+<h4 id="其它问题">其它问题</h4>
+
+<ol>
+<li>Unknown host mode-test-3.novalocal: ping: mode-test-3.novalocal: 未知的名称或服务</li>
+</ol>
+
+<p>解决方法 ：</p>
+
+<ul>
+<li>修改主机名称 hostnamectl</li>
+<li>清空 ~/.gphostcache 里面的内容</li>
+</ul>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://gpdb.docs.pivotal.io/6-0Beta/install_guide/init_gpdb.html#topic8">6.0 的文档</a></li>
+<li><a href="https://community.pivotal.io/s/question/0D50e00005YbqSqCAJ/why-do-i-get-unknown-host-sdw11-on-gpinitsystem?t=1565180069937">Why do I get &lsquo;Unknown host sdw1-1 on gpinitsystem&rsquo;?</a></li>
+<li><a href="http://blog.itpub.net/29162273/viewspace-2126813/">greenplum install for linux</a></li>
+<li><a href="https://www.linuxidc.com/Linux/2015-05/117563.htm">Greenplum 测试环境部署</a></li>
+</ol></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/database"><span class="tag">Database</span></a></li>
+        
+          <li><a href="/tags/postgresql"><span class="tag">PostgreSql</span></a></li>
+        
+          <li><a href="/tags/greenplum"><span class="tag">GreenPlum</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

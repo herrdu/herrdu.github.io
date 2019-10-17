@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Order on HerrDu&#39;s Blog</title>
+    <link>/tags/order/</link>
+    <description>Recent content in Order on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Jul 2019 11:23:43 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/order/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>每日一词：MouseEvent Order</title>
+      <link>/post/dailyword/mouseeventorder/</link>
+      <pubDate>Thu, 25 Jul 2019 11:23:43 +0800</pubDate>
+      
+      <guid>/post/dailyword/mouseeventorder/</guid>
+      <description>&lt;p&gt;上篇文章，我们关注了 MouseEvent 这个接口，但是它还有一个有趣的定义我们没有关注到，就是 MouseEvent 产生的 Order。 我们关注 MouseEvent 产生顺序的主要一下四种场景：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>CentOs上搭建svnServer小记</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="系统环境 ： 新申请的阿里云 CentOs 系统  Svn 工作原理  Svn 的基本工作原理 SVN 工作原理示意图： SVN 文件目录介绍 如何安装 SVN 参考文献：        系统环境 ： 新申请的阿里云 CentOs 系统 Svn 工作原理 Subversion（简称 svn）是近几年崛起的版本管理软件，是 cvs 的接班人，目前绝大多数开源软件都使用 svn 作为代码版本管理软件。
+Subversion 支持 linux 和 windows，但较多安装在 linux 下。
+Svn 的基本工作原理 在一台服务器上建立一个源代码库，库里可以存放许多不同项目的源程序。有源代码库管理员统一管理这些源程序。每个用户在使用源代码库之前，首先要把源代码库里德项目文件下载到本地，然后开发人员可以在本地修改，左后用 svn 命令进行提交，游源代码库统一管理修改。
+版本控制解决了：
+ 代码管理混乱 解决代码冲突困难 在代码整合期间引发 bug 无法对代码的拥有者进行权限控制 项目不同版本的发布困难  SVN 工作原理示意图： SVN 文件目录介绍  dav 目录：是提供 apache 与 mod_dav_svn 使用的目录，让他们存储内部数据 db 目录：就是所有版本控制的数据存放文件 hooks 目录：放置 hook 脚本文件的目录 locks 目录：用来放置 subversion 见艰苦锁定数据的目录，用来追踪存取文件库的客户端 format 文件：是一个文本文件，里面只放了一个整数。表示当前文件库配置的版本号 conf 目录：是这个仓库的配置文件（仓库的用户访问账号、权限等）  如何安装 SVN  下载安装 svn yum install -y subversion 验证是否成功安装 svnserve –version 创建 SVN 版本库,下面我们创建了两个版本库  cd ~ mkdir .">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="CentOs上搭建svnServer小记">
+    <meta name="twitter:description" content="系统环境 ： 新申请的阿里云 CentOs 系统  Svn 工作原理  Svn 的基本工作原理 SVN 工作原理示意图： SVN 文件目录介绍 如何安装 SVN 参考文献：        系统环境 ： 新申请的阿里云 CentOs 系统 Svn 工作原理 Subversion（简称 svn）是近几年崛起的版本管理软件，是 cvs 的接班人，目前绝大多数开源软件都使用 svn 作为代码版本管理软件。
+Subversion 支持 linux 和 windows，但较多安装在 linux 下。
+Svn 的基本工作原理 在一台服务器上建立一个源代码库，库里可以存放许多不同项目的源程序。有源代码库管理员统一管理这些源程序。每个用户在使用源代码库之前，首先要把源代码库里德项目文件下载到本地，然后开发人员可以在本地修改，左后用 svn 命令进行提交，游源代码库统一管理修改。
+版本控制解决了：
+ 代码管理混乱 解决代码冲突困难 在代码整合期间引发 bug 无法对代码的拥有者进行权限控制 项目不同版本的发布困难  SVN 工作原理示意图： SVN 文件目录介绍  dav 目录：是提供 apache 与 mod_dav_svn 使用的目录，让他们存储内部数据 db 目录：就是所有版本控制的数据存放文件 hooks 目录：放置 hook 脚本文件的目录 locks 目录：用来放置 subversion 见艰苦锁定数据的目录，用来追踪存取文件库的客户端 format 文件：是一个文本文件，里面只放了一个整数。表示当前文件库配置的版本号 conf 目录：是这个仓库的配置文件（仓库的用户访问账号、权限等）  如何安装 SVN  下载安装 svn yum install -y subversion 验证是否成功安装 svnserve –version 创建 SVN 版本库,下面我们创建了两个版本库  cd ~ mkdir .">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CentOs上搭建svnServer小记">
+  <meta property="og:description" content="系统环境 ： 新申请的阿里云 CentOs 系统  Svn 工作原理  Svn 的基本工作原理 SVN 工作原理示意图： SVN 文件目录介绍 如何安装 SVN 参考文献：        系统环境 ： 新申请的阿里云 CentOs 系统 Svn 工作原理 Subversion（简称 svn）是近几年崛起的版本管理软件，是 cvs 的接班人，目前绝大多数开源软件都使用 svn 作为代码版本管理软件。
+Subversion 支持 linux 和 windows，但较多安装在 linux 下。
+Svn 的基本工作原理 在一台服务器上建立一个源代码库，库里可以存放许多不同项目的源程序。有源代码库管理员统一管理这些源程序。每个用户在使用源代码库之前，首先要把源代码库里德项目文件下载到本地，然后开发人员可以在本地修改，左后用 svn 命令进行提交，游源代码库统一管理修改。
+版本控制解决了：
+ 代码管理混乱 解决代码冲突困难 在代码整合期间引发 bug 无法对代码的拥有者进行权限控制 项目不同版本的发布困难  SVN 工作原理示意图： SVN 文件目录介绍  dav 目录：是提供 apache 与 mod_dav_svn 使用的目录，让他们存储内部数据 db 目录：就是所有版本控制的数据存放文件 hooks 目录：放置 hook 脚本文件的目录 locks 目录：用来放置 subversion 见艰苦锁定数据的目录，用来追踪存取文件库的客户端 format 文件：是一个文本文件，里面只放了一个整数。表示当前文件库配置的版本号 conf 目录：是这个仓库的配置文件（仓库的用户访问账号、权限等）  如何安装 SVN  下载安装 svn yum install -y subversion 验证是否成功安装 svnserve –version 创建 SVN 版本库,下面我们创建了两个版本库  cd ~ mkdir .">
+  <meta property="og:url" content="/post/centos%E4%B8%8A%E6%90%AD%E5%BB%BAsvnserver%E5%B0%8F%E8%AE%B0/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/centos%E4%B8%8A%E6%90%AD%E5%BB%BAsvnserver%E5%B0%8F%E8%AE%B0/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">CentOs上搭建svnServer小记</h1>
+      <p class="post-meta">@ · Jan 5, 2016 · 2 min read</p>
+    </header>
+    <article class="post-content"><nav>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#系统环境-新申请的阿里云-centos-系统">系统环境 ： 新申请的阿里云 CentOs 系统</a></li>
+</ul></li>
+<li><a href="#svn-工作原理">Svn 工作原理</a>
+<ul>
+<li><a href="#svn-的基本工作原理">Svn 的基本工作原理</a></li>
+<li><a href="#svn-工作原理示意图">SVN 工作原理示意图：</a></li>
+<li><a href="#svn-文件目录介绍">SVN 文件目录介绍</a></li>
+<li><a href="#如何安装-svn">如何安装 SVN</a></li>
+<li><a href="#参考文献">参考文献：</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<h6 id="系统环境-新申请的阿里云-centos-系统">系统环境 ： 新申请的阿里云 CentOs 系统</h6>
+
+<h5 id="svn-工作原理">Svn 工作原理</h5>
+
+<p>Subversion（简称 svn）是近几年崛起的版本管理软件，是 cvs 的接班人，目前绝大多数开源软件都使用 svn 作为代码版本管理软件。</p>
+
+<p>Subversion 支持 linux 和 windows，但较多安装在 linux 下。</p>
+
+<h6 id="svn-的基本工作原理">Svn 的基本工作原理</h6>
+
+<p>在一台服务器上建立一个源代码库，库里可以存放许多不同项目的源程序。有源代码库管理员统一管理这些源程序。每个用户在使用源代码库之前，首先要把源代码库里德项目文件下载到本地，然后开发人员可以在本地修改，左后用 svn 命令进行提交，游源代码库统一管理修改。</p>
+
+<p>版本控制解决了：</p>
+
+<ul>
+<li>代码管理混乱</li>
+<li>解决代码冲突困难</li>
+<li>在代码整合期间引发 bug</li>
+<li>无法对代码的拥有者进行权限控制</li>
+<li>项目不同版本的发布困难</li>
+</ul>
+
+<h6 id="svn-工作原理示意图">SVN 工作原理示意图：</h6>
+
+<p><img src="http://chxt6896.github.io/images/linux/svn.jpg" alt="image" /></p>
+
+<h6 id="svn-文件目录介绍">SVN 文件目录介绍</h6>
+
+<ul>
+<li>dav 目录：是提供 apache 与 mod_dav_svn 使用的目录，让他们存储内部数据</li>
+<li>db 目录：就是所有版本控制的数据存放文件</li>
+<li>hooks 目录：<a href="http://www.cnblogs.com/gaohj/p/3154448.html">放置 hook 脚本文件的目录</a></li>
+<li>locks 目录：用来放置 subversion 见艰苦锁定数据的目录，用来追踪存取文件库的客户端</li>
+<li>format 文件：是一个文本文件，里面只放了一个整数。表示当前文件库配置的版本号</li>
+<li>conf 目录：是这个仓库的配置文件（仓库的用户访问账号、权限等）</li>
+</ul>
+
+<h6 id="如何安装-svn">如何安装 SVN</h6>
+
+<ol>
+<li>下载安装 svn yum install -y subversion</li>
+<li>验证是否成功安装 svnserve –version</li>
+<li>创建 SVN 版本库,下面我们创建了两个版本库
+<pre>
+<code>cd ~
+mkdir ./svn
+svnadmin create svn/testrepo1
+svnadmin create svn/testrepo2
+</code>
+</pre></li>
+<li>配置新的版本库，在这个版本库的 conf 目录下会生成 3 个配置文件</li>
+</ol>
+
+<p>1）svnserve.conf 是 svn 服务综合配置文件</p>
+
+<p>2）passwd 是用户名和密码配置文件</p>
+
+<p>3）authz 是权限配置文件</p>
+
+<p>4.1 添加两个访问用户及口令</p>
+
+<p><pre>
+   <code>
+   # vi /svn/project/conf/passwd
+   [users]
+   xiaoran.shen = 123456
+   test1 = 123456
+   test2 = 123456
+   保存
+   </code>
+   </pre></p>
+
+<p>4.2（可选）配置可使用明文密码</p>
+
+<p>vim /\$HOME/.subversion/servers 找到 store-plaintext-passwords = yes</p>
+
+<p>4.3 修改 authz 文件
+   格式说明：</p>
+
+<p>版本库目录格式：</p>
+
+<p>[&lt;版本库&gt;:/项目/目录]</p>
+
+<p>@&lt;用户组名&gt; = &lt;权限&gt;</p>
+
+<p>&lt;用户名&gt; = &lt;权限&gt;</p>
+
+<p>/ 表示对根目录（即/svn/project 目录）下的所有子目录范围设置权限；</p>
+
+<p>[/abc] 表示对资料库中 abc 项目设置权限；</p>
+
+<p>创建一个 admin 组，组成员包括 xiaoran.shen 和 test1</p>
+
+<p>创建一个 user 组，成员只有 test2；</p>
+
+<p>admin 组对目录有读写权限；</p>
+
+<p>单个用户 test2 有读写权限；</p>
+
+<p>*=表示除了上面设置的权限用户组以外，其他所有用户都设置空权限，空权限表示禁止访问本目录，这很重要一定要加上。</p>
+
+<p>注意：对权限配置文件的修改立即生效，不必重启 svn。</p>
+
+<p><pre>    <code>
+   配置新用户的授权文件
+   # vi /svn/project/conf/authz
+   [groups]
+   admin = xiaoran.shen,test1
+   user = test2
+   [/]
+   @admin = rw
+   @user = r
+   *=
+   保存
+   </code>
+   </pre></p>
+
+<p>4.4 修改 svnserve.conf</p>
+
+<p><pre>
+   <code>
+   # vi /svn/project/conf/svnserve.conf
+   [general]
+   anon-access = none
+   auth-access = write
+   password-db = /svn/project/conf/passwd
+   authz-db = /svn/project/conf/authz
+   realm = My Test Repository         #这是个提示信息
+   </code>
+   </pre></p>
+
+<ol>
+<li>启动 svn</li>
+</ol>
+
+<p>svnserve -d -r /svn/project/</p>
+
+<p>注意：不要使用系统提供的 /etc/init.d/svnserve start 来启动，因为系统默认的启动脚本中没有使用 –r /svn/project 参数指定一个资源。这种情况下启动的 svn 服务，客户端连接会提示“svn: No repository found in &lsquo;svn://192.168.11.229/project&rsquo; ”这样的错误。</p>
+
+<p>默认 svn 服务器端口是 3690。</p>
+
+<p>杀死 svn 服务：</p>
+
+<p><pre><code>
+   # ps -ef|grep svn
+   root      4642     1  0 16:08 ?        00:00:00 svnserve -d -r /svn/project/
+   root      4692  3676  0 16:13 pts/2    00:00:00 grep svn
+   # kill -9 4642
+   </code></pre></p>
+
+<ol>
+<li>测试 svn 迁出</li>
+</ol>
+
+<p># svn co svn://ip/testrepo1</p>
+
+<p># svn co svn://127.0.0.1/testrepo2</p>
+
+<h6 id="参考文献">参考文献：</h6>
+
+<ol>
+<li><a href="http://www.ha97.com/4467.html">CentOS Linux 搭建 SVN Server 配置详解</a></li>
+<li><a href="http://my.oschina.net/lionel45/blog/298305">linux centos 搭建 svn 服务器</a></li>
+</ol>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/svnserver"><span class="tag">Svnserver</span></a></li>
+        
+          <li><a href="/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="/tags/centos"><span class="tag">CentOs</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1380</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tree on HerrDu&#39;s Blog</title>
+    <link>/tags/tree/</link>
+    <description>Recent content in Tree on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="/tags/tree/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac 下的 tree 命令</title>
+      <link>/post/tree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tree/</guid>
+      <description>在默认安装安装的 mac 下没有找到 tree 命令，找了一下原来有个比较流氓的解决办法：
+1 find . -print | sed -e &amp;rsquo;s;[^/]*/;|__;g;s;__|; |;g&amp;rsquo; 这个命令行跑起来类似平常 tree 的效果，
+写一个 alias 到~/.bash_profile 里，就更方便了:
+alias tree=&amp;ldquo;find . -print | sed -e &amp;rsquo;s;[^/]*/;|__;g;s;__|; |;g&amp;rsquo;&amp;rdquo; Update
+2 现在正在用的是 homebrew 安装的 tree 命令行。
+brew install tree
+作者: Volcano 发表于 November 22, 2010 at 8:34 pm 版权信息: 可以任意转载, 转载时请务必以超链接形式标明文章原始出处和作者信息及此声明 永久链接 - http://www.ooso.net/archives/564</description>
+    </item>
+    
+  </channel>
+</rss>

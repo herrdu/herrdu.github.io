@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Database on HerrDu&#39;s Blog</title>
+    <link>/tags/database/</link>
+    <description>Recent content in Database on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 08 Aug 2019 10:58:56 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Install GreenPlum</title>
+      <link>/post/install-greenplum/</link>
+      <pubDate>Thu, 08 Aug 2019 10:58:56 +0800</pubDate>
+      
+      <guid>/post/install-greenplum/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;注：本文档是个人部署的一点心得，读者部署时请详读&lt;a href=&#34;https://gpdb.docs.pivotal.io/6-0Beta/install_guide/create_data_dirs.html&#34;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最近新听说了一个数据库 GreenPlum（简称：GP），是一款基于 Postgresql 的数据库。本着对 Postgresql 数据库的喜爱对 GP 这款数仓应用也产生了兴趣。兴趣是行动直接的驱动力呀，自己部署一个试试？&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

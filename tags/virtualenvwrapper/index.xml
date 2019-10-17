@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>virtualenvwrapper on HerrDu&#39;s Blog</title>
+    <link>/tags/virtualenvwrapper/</link>
+    <description>Recent content in virtualenvwrapper on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 27 Nov 2015 16:46:39 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/virtualenvwrapper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>virtualenvwrapper 的常规应用</title>
+      <link>/post/virtualenvwrapper%E7%9A%84%E5%B8%B8%E8%A7%84%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Fri, 27 Nov 2015 16:46:39 +0000</pubDate>
+      
+      <guid>/post/virtualenvwrapper%E7%9A%84%E5%B8%B8%E8%A7%84%E5%BA%94%E7%94%A8/</guid>
+      <description>#### virtualenvwrapper 简介 virtualenvwrapper 是 python 的一个虚拟环境管理工具。它是对 virtualenv 工具的一个扩展。 #### 功能  在一个地方管理所有的虚拟环境 Wrappers 帮助你管理虚拟环境（创建，删除，复制）. 一个简单的命令，在虚拟环境之中随意切换. 命令可以由 Tab 补齐，虚拟环境是命令的参数 所有的操作者都可以有自己的用户配置文件 有更多的创建共享扩展的系统插件  #### 安装与创建一个项目   $ pip install virtualenvwrapper &amp;hellip; $ export WORKON_HOME=~/Envs $ mkdir -p $WORKON_HOME $ source /usr/local/bin/virtualenvwrapper.sh $ mkvirtualenv env1 Installing setuptools&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip; &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.done. virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/predeactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postdeactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/preactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postactivate New python executable in env1/bin/python (env1)$ ls $WORKON_HOME env1 hook.</description>
+    </item>
+    
+    <item>
+      <title>virtualenvwrapper 的命令参考</title>
+      <link>/post/virtualenvwrapper%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83/</link>
+      <pubDate>Fri, 13 Nov 2015 23:43:33 +0000</pubDate>
+      
+      <guid>/post/virtualenvwrapper%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83/</guid>
+      <description> 命令参考 下面所有的命令都是在终端中使用
+管理环境 创建一个新的环境，在 WORKON_HOME 中
+语法：
+ mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] ENVNAME  除了-a,-i,-r和-h的所有命令选项都会直接传递给 virtualenv。新的环境在初始化之后会自动被激活。
+ $ workon $ mkvirtualenv mynewenv New python executable in mynewenv/bin/python Installing setuptools............................................. .................................................................. .................................................................. done. (mynewenv)$ workon mynewenv (mynewenv)$  命令选项 -a，是用来关联已经存在的项目路径的新环境的
+命令选项 -i，在环境创建之后用来安装一个或多个安装包的（通过重复选项）
+命令选项 -r, 在用来指定一个存着等待安装软件列表的文件。这些参数会传递给 pip -r 来进行安装。
+也可以看看  premkvirtualenv postmkvirtualenv requirements file format  mktmpenv 在 WORKON_HOME 目录中创建新的环境
+语法：
+ mktmpenv [(-c|--cd)|(-n|--no-cd)] [VIRTUALENV_OPTIONS]  </description>
+    </item>
+    
+    <item>
+      <title>virtualenvwrapper的安装</title>
+      <link>/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 30 Oct 2015 22:13:36 +0000</pubDate>
+      
+      <guid>/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+      <description>安装 支持的 SHELL virtualenvwrapper 是在 Bourne Shell 兼容语法上定义的一个 Shell 函数的合集。在 OS X 和 Linux 系统上，可以用下面这些 Shell 进行自动化的测试：
+ bash Ksh zsh  它也许可已运行在其他的 Shell 上，如果你发现了它能够运行除了以上列出来的其它 Shell 上，请告诉我。如果你在没有完全重写它而让他运行在其他的 Shell 上，你可以通过bitbucket project page发送一个 Pull 请求。如果你写了一个克隆的版本去适应不兼容的 Shell 的话，也请告诉我，我会在这个界面上加上一个链接。
+Windows 命令提示符 David Marble 已经将 virtualenvwrapper 到能够在微软的 Windows 命令提示符上运行的 Windows 批处理脚本。这是也是一个独立的分布式的再实现。你可以通过 PyPI 下载 virtualenvwrapper-win
+MSYS 它可以使用 virtualenv 和本地的 Windows Python 安装文件封装MSYS。为了让它能够运行，你需要额外的定义一个环境变量，起名字为——MSYS_HOME,包括指向 MSYS 安装程序的根目录。
+ export WORKON_HOME=$HOME/.virtualenvs export MSYS_HOME=/c/msys/1.0 source /usr/local/bin/virtualenvwrapper.sh  或者
+  export WORKON_HOME=$HOME/.</description>
+    </item>
+    
+  </channel>
+</rss>

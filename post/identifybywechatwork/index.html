@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>企业微信认证</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="HerrDu">
+  <meta name="description" content="公司内部有一个图书小城程序，之前使用 ldap 进行权限认证。Ldap 认证有一个不合适的地方是每次用户认证都需要用户输入用户的帐号密码，而这个帐号密码同邮箱的帐号密码一致。为了保证用户的帐号密码不泄漏出去，同时公司又使用了企业微信，我认为可以借用企业微信的认证。经过两天的奋斗实现了这个方案。 下面给出方案步骤：
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="企业微信认证">
+    <meta name="twitter:description" content="公司内部有一个图书小城程序，之前使用 ldap 进行权限认证。Ldap 认证有一个不合适的地方是每次用户认证都需要用户输入用户的帐号密码，而这个帐号密码同邮箱的帐号密码一致。为了保证用户的帐号密码不泄漏出去，同时公司又使用了企业微信，我认为可以借用企业微信的认证。经过两天的奋斗实现了这个方案。 下面给出方案步骤：
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="企业微信认证">
+  <meta property="og:description" content="公司内部有一个图书小城程序，之前使用 ldap 进行权限认证。Ldap 认证有一个不合适的地方是每次用户认证都需要用户输入用户的帐号密码，而这个帐号密码同邮箱的帐号密码一致。为了保证用户的帐号密码不泄漏出去，同时公司又使用了企业微信，我认为可以借用企业微信的认证。经过两天的奋斗实现了这个方案。 下面给出方案步骤：
+">
+  <meta property="og:url" content="/post/identifybywechatwork/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/identifybywechatwork/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">企业微信认证</h1>
+      <p class="post-meta">@HerrDu · Aug 16, 2019 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>公司内部有一个图书小城程序，之前使用 ldap 进行权限认证。Ldap 认证有一个不合适的地方是每次用户认证都需要用户输入用户的帐号密码，而这个帐号密码同邮箱的帐号密码一致。为了保证用户的帐号密码不泄漏出去，同时公司又使用了企业微信，我认为可以借用企业微信的认证。经过两天的奋斗实现了这个方案。
+下面给出方案步骤：</p>
+
+<blockquote>
+<p>创建用户</p>
+</blockquote>
+
+<ol>
+<li>使用 wx.login 获取 code</li>
+<li>使用 code 通过  <code>GET https://api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code
+</code> 接口转成 session_key,openid 来在系统里面创建微信端的用户</li>
+</ol>
+
+<blockquote>
+<p>在企业微信中进行认证，关联认证用户和普通微信用户的openid</p>
+</blockquote>
+
+<ol>
+<li>点击小程序的认证按钮，触发 wx.qy.login 来获取企业微信的 code</li>
+
+<li><p>获取小程序的 access_token</p>
+
+<pre><code>https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=********&amp;corpsecret=********
+</code></pre></li>
+
+<li><p>使用企业微信的 codeToSession 接口获取 session_key 和 userid</p>
+
+<pre><code>https://qyapi.weixin.qq.com/cgi-bin/miniprogram/jscode2session?access_token=**********&amp;js_code=**********&amp;grant_type=authorization_code
+
+</code></pre></li>
+
+<li><p>根据 userid 获取个人信息，如果成功可以则可以认证该人为公司员工。</p>
+
+<pre><code>https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=***********&amp;userid=***********
+
+返回数据格式
+
+{
+&quot;errcode&quot;: 0,
+&quot;errmsg&quot;: &quot;ok&quot;,
+&quot;userid&quot;: &quot;zhangsan&quot;,
+&quot;name&quot;: &quot;李四&quot;,
+&quot;department&quot;: [1, 2],
+&quot;position&quot;: &quot;后台工程师&quot;,
+&quot;mobile&quot;: &quot;15913215421&quot;,
+&quot;gender&quot;: &quot;1&quot;,
+&quot;email&quot;: &quot;zhangsan@gzdev.com&quot;,
+&quot;weixinid&quot;: &quot;lisifordev&quot;,  
+&quot;avatar&quot;: &quot;http://wx.qlogo.cn/mmopen/ajNVdqHZLLA3WJ6DSZUfiakYe37PKnQhBIeOQBO4czqrnZDS79FH5Wm5m4X69TBicnHFlhiafvDwklOpZeXYQQ2icg/0&quot;,
+&quot;status&quot;: 1,
+&quot;extattr&quot;: {&quot;attrs&quot;:[{&quot;name&quot;:&quot;爱好&quot;,&quot;value&quot;:&quot;旅游&quot;},{&quot;name&quot;:&quot;卡号&quot;,&quot;value&quot;:&quot;1234567234&quot;}]}
+}
+</code></pre></li>
+</ol></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1"><span class="tag">企业微信</span></a></li>
+        
+          <li><a href="/tags/wechat-work"><span class="tag">Wechat Work</span></a></li>
+        
+          <li><a href="/tags/%E8%AE%A4%E8%AF%81"><span class="tag">认证</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>html on HerrDu&#39;s Blog</title>
+    <link>/tags/html/</link>
+    <description>Recent content in html on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 22 Jan 2018 01:08:07 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一个不断进步的标准</title>
+      <link>/post/html-%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%96%AD%E8%BF%9B%E6%AD%A5%E7%9A%84%E6%A0%87%E5%87%86/</link>
+      <pubDate>Mon, 22 Jan 2018 01:08:07 +0000</pubDate>
+      
+      <guid>/post/html-%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%96%AD%E8%BF%9B%E6%AD%A5%E7%9A%84%E6%A0%87%E5%87%86/</guid>
+      <description> 简介  这是 HTML5 吗？   </description>
+    </item>
+    
+    <item>
+      <title>Google 前端html代码规范</title>
+      <link>/post/%E5%89%8D%E7%AB%AFhtml%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Tue, 19 Jan 2016 18:10:01 +0000</pubDate>
+      
+      <guid>/post/%E5%89%8D%E7%AB%AFhtml%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</guid>
+      <description>本文档定义了 HTML/CSS 的编写格式和风格规则。它旨在提高合作和代码质量,并使其支持基础架构。适用于 HTML/CSS 文件，包括 GSS 文件。 只要代码质量是可以被维护的，就能很好的被工具混淆、压缩和合并。
+1.样式规则 协议
+嵌入式资源书写省略协议头 省略图像、媒体文件、样式表和脚本等 URL 协议头部声明 ( http: , https: )。如果不是这两个声明的 URL 则不省略。
+省略协议声明，使 URL 成相对地址，防止内容混淆问题和导致小文件重复下载。
+&amp;lt;!-- 不推荐 --&amp;gt; &amp;lt;script src=&#34;http://www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- 推荐 --&amp;gt; &amp;lt;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; /* 不推荐 */ .example { background: url(http://www.google.com/images/example); } /* 推荐 */ .example { background: url(//www.google.com/images/example); } 2. 排版规则 缩进 每次缩进两个空格，不适用 TAB 键或者多个空格来缩进
+ &amp;lt;ul &amp;lt;liFantastic &amp;lt;liGreat &amp;lt;/ul .example { color: blue; }  大小写 只用小写字母。 所有的代码都用小写字母：适用于元素名，属性，属性值（除了文本和 CDATA ）， 选择器，特性，特性值（除了字符串）。</description>
+    </item>
+    
+  </channel>
+</rss>

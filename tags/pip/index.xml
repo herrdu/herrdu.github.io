@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pip on HerrDu&#39;s Blog</title>
+    <link>/tags/pip/</link>
+    <description>Recent content in pip on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Nov 2014 21:48:45 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/pip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pip – pip安装和使用教程</title>
+      <link>/post/pip-install/</link>
+      <pubDate>Mon, 17 Nov 2014 21:48:45 +0000</pubDate>
+      
+      <guid>/post/pip-install/</guid>
+      <description>pip 是一个安装 python 库很方便的东西，类似 yum，pip search pip install，如果没 wget 的话，就用 curl -O 另外也可以考虑用 easy_install 代替 pip
+来源：http://www.jsxubar.info/install-pip.html pip 是一个安装和管理 Python 包的工具 , 是 easy_install 的一个替换品。本文将详细说明 安装 pip 的方法和 使用 pip 的一些基本操作如安装、更新和卸载 python 包。
+目录 [显示] 一、pip 安装
+安装 pip 的方法非常简单, 首先下载一个 python 程序, 然后运行这个程序即可. 这个是在线安装. $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py $ python get-pip.py 如果不能联网, 可以到这里下载, 然后按照压缩包的说明安装即可.
+如果要安装 pip 的开发版本, 使用以下命令即可:
+easy_install pip==dev 开发包源码下载地址: pip 开发版本
+Mac 安装方法
+1.安装 easy_install $ wget http://python-distribute.</description>
+    </item>
+    
+  </channel>
+</rss>

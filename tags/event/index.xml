@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event on HerrDu&#39;s Blog</title>
+    <link>/tags/event/</link>
+    <description>Recent content in Event on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 14 Jul 2019 18:22:20 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/event/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>每日一词：Event</title>
+      <link>/post/dailyword/event/</link>
+      <pubDate>Sun, 14 Jul 2019 18:22:20 +0800</pubDate>
+      
+      <guid>/post/dailyword/event/</guid>
+      <description>&lt;p&gt;大概每个写过 HTML 的人都会知道 Event 接口，它为 DOM 的处理函数提供了上下文的描述。一般地说，事件的处理函数会把实现了 Event 接口的对象作为第一个参数传递过去。不过大多数 DOM 事件处理函数传递的上下文对象中，还会传递一些额外的信息。如：MouseEvent 的处理函数种会有 clientX 和 clientY 这些信息。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

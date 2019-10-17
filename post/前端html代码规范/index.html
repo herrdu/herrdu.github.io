@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Google 前端html代码规范</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="本文档定义了 HTML/CSS 的编写格式和风格规则。它旨在提高合作和代码质量,并使其支持基础架构。适用于 HTML/CSS 文件，包括 GSS 文件。 只要代码质量是可以被维护的，就能很好的被工具混淆、压缩和合并。
+1.样式规则 协议
+嵌入式资源书写省略协议头 省略图像、媒体文件、样式表和脚本等 URL 协议头部声明 ( http: , https: )。如果不是这两个声明的 URL 则不省略。
+省略协议声明，使 URL 成相对地址，防止内容混淆问题和导致小文件重复下载。
+&amp;lt;!-- 不推荐 --&amp;gt; &amp;lt;script src=&#34;http://www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- 推荐 --&amp;gt; &amp;lt;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; /* 不推荐 */ .example { background: url(http://www.google.com/images/example); } /* 推荐 */ .example { background: url(//www.google.com/images/example); } 2. 排版规则 缩进 每次缩进两个空格，不适用 TAB 键或者多个空格来缩进
+ &amp;lt;ul &amp;lt;liFantastic &amp;lt;liGreat &amp;lt;/ul .example { color: blue; }  大小写 只用小写字母。 所有的代码都用小写字母：适用于元素名，属性，属性值（除了文本和 CDATA ）， 选择器，特性，特性值（除了字符串）。">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Google 前端html代码规范">
+    <meta name="twitter:description" content="本文档定义了 HTML/CSS 的编写格式和风格规则。它旨在提高合作和代码质量,并使其支持基础架构。适用于 HTML/CSS 文件，包括 GSS 文件。 只要代码质量是可以被维护的，就能很好的被工具混淆、压缩和合并。
+1.样式规则 协议
+嵌入式资源书写省略协议头 省略图像、媒体文件、样式表和脚本等 URL 协议头部声明 ( http: , https: )。如果不是这两个声明的 URL 则不省略。
+省略协议声明，使 URL 成相对地址，防止内容混淆问题和导致小文件重复下载。
+&amp;lt;!-- 不推荐 --&amp;gt; &amp;lt;script src=&#34;http://www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- 推荐 --&amp;gt; &amp;lt;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; /* 不推荐 */ .example { background: url(http://www.google.com/images/example); } /* 推荐 */ .example { background: url(//www.google.com/images/example); } 2. 排版规则 缩进 每次缩进两个空格，不适用 TAB 键或者多个空格来缩进
+ &amp;lt;ul &amp;lt;liFantastic &amp;lt;liGreat &amp;lt;/ul .example { color: blue; }  大小写 只用小写字母。 所有的代码都用小写字母：适用于元素名，属性，属性值（除了文本和 CDATA ）， 选择器，特性，特性值（除了字符串）。">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Google 前端html代码规范">
+  <meta property="og:description" content="本文档定义了 HTML/CSS 的编写格式和风格规则。它旨在提高合作和代码质量,并使其支持基础架构。适用于 HTML/CSS 文件，包括 GSS 文件。 只要代码质量是可以被维护的，就能很好的被工具混淆、压缩和合并。
+1.样式规则 协议
+嵌入式资源书写省略协议头 省略图像、媒体文件、样式表和脚本等 URL 协议头部声明 ( http: , https: )。如果不是这两个声明的 URL 则不省略。
+省略协议声明，使 URL 成相对地址，防止内容混淆问题和导致小文件重复下载。
+&amp;lt;!-- 不推荐 --&amp;gt; &amp;lt;script src=&#34;http://www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- 推荐 --&amp;gt; &amp;lt;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&amp;gt;&amp;lt;/script&amp;gt; /* 不推荐 */ .example { background: url(http://www.google.com/images/example); } /* 推荐 */ .example { background: url(//www.google.com/images/example); } 2. 排版规则 缩进 每次缩进两个空格，不适用 TAB 键或者多个空格来缩进
+ &amp;lt;ul &amp;lt;liFantastic &amp;lt;liGreat &amp;lt;/ul .example { color: blue; }  大小写 只用小写字母。 所有的代码都用小写字母：适用于元素名，属性，属性值（除了文本和 CDATA ）， 选择器，特性，特性值（除了字符串）。">
+  <meta property="og:url" content="/post/%E5%89%8D%E7%AB%AFhtml%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/%E5%89%8D%E7%AB%AFhtml%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Google 前端html代码规范</h1>
+      <p class="post-meta">@ · Jan 19, 2016 · 5 min read</p>
+    </header>
+    <article class="post-content">
+
+<p>本文档定义了 HTML/CSS 的编写格式和风格规则。它旨在提高合作和代码质量,并使其支持基础架构。适用于 HTML/CSS 文件，包括 GSS 文件。 只要代码质量是可以被维护的，就能很好的被工具混淆、压缩和合并。</p>
+
+<h4 id="1-样式规则">1.样式规则</h4>
+
+<p>协议</p>
+
+<p>嵌入式资源书写省略协议头
+省略图像、媒体文件、样式表和脚本等 URL 协议头部声明 ( http: , https: )。如果不是这两个声明的 URL 则不省略。</p>
+
+<p>省略协议声明，使 URL 成相对地址，防止内容混淆问题和导致小文件重复下载。</p>
+
+<pre class="badcode" style="font-size:10pt; color:rgb(204,0,0); background-color:rgb(255,248,248); border-top-color:rgb(255,240,240); border-right-color:rgb(255,240,240); border-bottom-color:rgb(255,240,240); border-left-color:rgb(255,240,240); border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; border-top-width:1px; border-bottom-width:1px; border-right-width:1px; border-left-width:5px; padding-left:12px; padding-right:12px; padding-top:4px; padding-bottom:4px" name="code">&lt;!-- 不推荐 --&gt;
+&lt;script src="http://www.google.com/js/gweb/analytics/autotrack.js"&gt;&lt;/script&gt;</pre>
+<pre style="font-size:10pt; color:rgb(0,102,0); background-color:rgb(248,255,248); border-top-color:rgb(240,255,240); border-right-color:rgb(240,255,240); border-bottom-color:rgb(240,255,240); border-left-color:rgb(240,255,240); border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; border-top-width:1px; border-bottom-width:1px; border-right-width:1px; border-left-width:5px; padding-left:12px; padding-right:12px; padding-top:4px; padding-bottom:4px">&lt;!-- 推荐 --&gt;
+&lt;script src="//www.google.com/js/gweb/analytics/autotrack.js"&gt;&lt;/script&gt;</pre>
+<pre class="badcode" style="font-size:10pt; color:rgb(204,0,0); background-color:rgb(255,248,248); border-top-color:rgb(255,240,240); border-right-color:rgb(255,240,240); border-bottom-color:rgb(255,240,240); border-left-color:rgb(255,240,240); border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; border-top-width:1px; border-bottom-width:1px; border-right-width:1px; border-left-width:5px; padding-left:12px; padding-right:12px; padding-top:4px; padding-bottom:4px" name="code">/* 不推荐 */
+.example {
+  background: url(http://www.google.com/images/example);
+}</pre>
+<pre style="font-size:10pt; color:rgb(0,102,0); background-color:rgb(248,255,248); border-top-color:rgb(240,255,240); border-right-color:rgb(240,255,240); border-bottom-color:rgb(240,255,240); border-left-color:rgb(240,255,240); border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; border-top-width:1px; border-bottom-width:1px; border-right-width:1px; border-left-width:5px; padding-left:12px; padding-right:12px; padding-top:4px; padding-bottom:4px">/* 推荐 */
+.example {
+  background: url(//www.google.com/images/example);
+}</pre>
+
+<h4 id="2-排版规则">2. 排版规则</h4>
+
+<h6 id="缩进">缩进</h6>
+
+<p>每次缩进两个空格，不适用 TAB 键或者多个空格来缩进</p>
+
+<pre><code>
+&lt;ul>
+  &lt;li>Fantastic
+  &lt;li>Great
+&lt;/ul>
+.example {
+  color: blue;
+}
+</code></pre>
+
+<h6 id="大小写">大小写</h6>
+
+<p>只用小写字母。
+所有的代码都用小写字母：适用于元素名，属性，属性值（除了文本和 CDATA ）， 选择器，特性，特性值（除了字符串）。</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;A HREF="/">Home&lt;/A>
+</code></pre>
+<pre><code>
+&lt;!-- 推荐 -->
+&lt;img src="google.png" alt="Google">
+</code></pre>
+
+<h6 id="行尾空格">行尾空格</h6>
+
+<p><strong>删除行尾白空格,行尾空格没必要存在。</strong></p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;p>What?_
+</code></pre>
+<pre><code>
+&lt;!-- 推荐 -->
+&lt;p>Yes please.
+</code></pre>
+
+<h4 id="3-元数据规则">3.元数据规则</h4>
+
+<h6 id="编码">编码</h6>
+
+<p>用不带 BOM 头的 UTF-8 编码。</p>
+
+<p>让你的编辑器用没有字节顺序标记的 UTF-8 编码格式进行编写。</p>
+
+<p>在 HTML 模板和文件中指定编码 <meta charset="utf-8"> . 不需要制定样式表的编码，它默认为 UTF-8.</p>
+
+<p>（更多有关于编码的信息和怎样指定它，请查看 Character Sets &amp; Encodings in XHTML, HTML and CSS。）</p>
+
+<h6 id="注释">注释</h6>
+
+<p>尽可能的去解释你写的代码。</p>
+
+<p>用注释来解释代码：它包括什么，它的目的是什么，它能做什么，为什么使用这个解决方案，还是说只是因为偏爱如此呢？</p>
+
+<p>（本规则可选，没必要每份代码都描述的很充分，它会增重 HTML 和 CSS 的代码。这取决于该项目的复杂程度。）</p>
+
+<h6 id="活动条目">活动条目</h6>
+
+<p>用 TODO 标记代办事项和正活动的条目</p>
+
+<p>只用 TODO 来强调代办事项， 不要用其他的常见格式，例如 @@ 。</p>
+
+<p>附加联系人（用户名或电子邮件列表），用括号括起来，例如 TODO(contact) 。</p>
+
+<p>可在冒号之后附加活动条目说明等，例如 TODO: 活动条目说明 。</p>
+
+<pre><code>
+{# TODO(john.doe): revisit centering #}
+&lt;center&gt;Test&lt;/center&gt;
+</code></pre>
+
+<pre><code>
+&lt;!-- TODO: 删除可选元素 -->
+&lt;ul>
+ &lt;li>Apples</li>
+  &lt;li>Oranges</li>
+&lt;/ul>
+</code></pre>
+
+<h4 id="3-html-代码风格">3.HTML 代码风格</h4>
+
+<h6 id="文档类型">文档类型</h6>
+
+<p>请使用 HTML5 标准。</p>
+
+<p>HTML5 是目前所有 HTML 文档类型中的首选： &lt;!DOCTYPE html&gt; .</p>
+
+<p>（推荐用 HTML 文本文档格式，即 text/html . 不要用 XHTML。 XHTML 格式，即 application/xhtml+xml , 有俩浏览器完全不支持，还比 HTML 用更多的存储空间。）</p>
+
+<h6 id="html-代码有效性">HTML 代码有效性</h6>
+
+<p>尽量使用有效的 HTML 代码。</p>
+
+<p>编写有效的 HTML 代码，否则很难达到性能上的提升。</p>
+
+<p>用类似这样的工具 W3C HTML validator 来进行测试。</p>
+
+<p>HTML 代码有效性是重要的质量衡量标准，并可确保 HTML 代码可以正确使用。</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;title>Test&lt;/title>
+&lt;article>This is only a test.
+</code></pre>
+<pre><code>
+&lt;!-- 推荐 -->
+&lt;!DOCTYPE html>
+&lt;meta charset="utf-8">
+&lt;title>Test&lt;/title>
+&lt;article>This is only a test.&lt;/article>
+</code></pre>
+
+<h6 id="语义">语义</h6>
+
+<p>根据 HTML 各个元素的用途而去使用它们。</p>
+
+<p>使用元素 (有时候错称其为“标签”) 要知道为什么去使用它们和是否正确。 例如，用 heading 元素构造标题， p 元素构造段落, a 元素构造锚点等。</p>
+
+<p>根据 HTML 各个元素的用途而去使用是很重要的，它涉及到文档的可访问性、重用和代码效率等问题。</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;div onclick="goToRecommendations();">All recommendations&lt;/div>
+</code></pre>
+<pre><code>
+&lt;!-- 推荐 -->
+&lt;a href="recommendations/">All recommendations&lt;/a>
+</code></pre>
+
+<h6 id="多媒体后背方案">多媒体后背方案</h6>
+
+<p>为多媒体提供备选内容。</p>
+
+<p>对于多媒体，如图像，视频，通过 canvas 读取的动画元素，确保提供备选方案。 对于图像使用有意义的备选文案（ alt ） 对于视频和音频使用有效的副本和文案说明。</p>
+
+<p>提供备选内容是很重要的，原因：给盲人用户以一些提示性的文字，用 @alt 告诉他这图像是关于什么的，给可能没理解视频或音频的内容的用户以提示。</p>
+
+<p>（图像的 alt 属性会产生冗余，如果使用图像只是为了不能立即用 CSS 而装饰的 ，就不需要用备选文案了，可以写 alt=&ldquo;&rdquo; 。）</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;img src="spreadsheet.png">
+</code></pre><pre><code>
+
+&lt;!-- 推荐 -->
+&lt;img src="spreadsheet.png" alt="电子表格截图">
+</code></pre>
+
+<h6 id="关注点分离">关注点分离</h6>
+
+<p>将表现和行为分开。</p>
+
+<p>严格保持结构 （标记），表现 （样式），和行为 （脚本）分离, 并尽量让这三者之间的交互保持最低限度。</p>
+
+<p>确保文档和模板只包含 HTML 结构， 把所有表现都放到样式表里，把所有行为都放到脚本里。</p>
+
+<p>此外，尽量使脚本和样式表在文档与模板中有最小接触面积，即减少外链。</p>
+
+<p>将表现和行为分开维护是很重要滴，因为更改 HTML 文档结构和模板会比更新样式表和脚本更花费成本。</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;!DOCTYPE html>
+&lt;title>HTML sucks&lt;/title>
+&lt;link rel="stylesheet" href="base.css" media="screen">
+&lt;link rel="stylesheet" href="grid.css" media="screen">
+&lt;link rel="stylesheet" href="print.css" media="print">
+&lt;h1 style="font-size: 1em;">HTML sucks&lt;/h1>
+&lt;p>I’ve read about this on a few sites but now I’m sure:
+  &lt;u>HTML is stupid!!1&lt;/u>
+&lt;center>I can’t believe there’s no way to control the styling of
+  my website without doing everything all over again!&lt;/center>
+</code></pre>
+<pre><code>
+&lt;!-- 推荐 -->
+&lt;!DOCTYPE html>
+&lt;title>My first CSS-only redesign&lt;/title>
+&lt;link rel="stylesheet" href="default.css">
+&lt;h1>My first CSS-only redesign&lt;/h1>
+&lt;p>I’ve read about this on a few sites but today I’m actually
+  doing it: separating concerns and avoiding anything in the HTML of
+  my website that is presentational.
+&lt;p>It’s awesome!
+</code></pre>
+
+<h6 id="实体引用">实体引用</h6>
+
+<p>不要用实体引用。</p>
+
+<p>不需要使用类似 &mdash; 、 &rdquo; 和 &#x263a; 等的实体引用, 假定团队之间所用的文件和编辑器是同一编码（UTF-8）。</p>
+
+<p>在 HTML 文档中具有特殊含义的字符（例如 &lt; 和 &amp; )为例外， 噢对了，还有 “不可见” 字符 （例如 no-break 空格）。</p>
+
+<pre><code>
+<!-- 不推荐 -->
+欧元货币符号是 &ldquo;&eur;&rdquo;。
+<!-- 推荐 -->
+欧元货币符号是 “€”。
+</code></pre>
+
+<h6 id="可选标签">可选标签</h6>
+
+<p>省略可选标签（可选）。</p>
+
+<p>出于优化文件大小和校验， 可以考虑省略可选标签，哪些是可选标签可以参考 HTML5 specification。</p>
+
+<p>（这种方法可能需要更精准的规范来制定，众多的开发者对此的观点也都不同。考虑到一致性和简洁的原因，省略所有可选标记是有必要的。）</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>Spending money, spending bytes&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;p>Sic.&lt;/p>
+  &lt;/body>
+&lt;/html>
+&lt;!-- 推荐 -->
+&lt;!DOCTYPE html>
+&lt;title>Saving money, saving bytes&lt;/title>
+&lt;p>Qed.
+</code></pre>
+
+<h6 id="type-属性">type 属性</h6>
+
+<p>在样式表和脚本的标签中忽略 type 属性</p>
+
+<p>在样式表（除非不用 CSS）和脚本（除非不用 JavaScript）的标签中 不写 type 属性。</p>
+
+<p>HTML5 默认 type 为 text/css 和 text/javascript 类型，所以没必要指定。即便是老浏览器也是支持的。</p>
+
+<pre><code>
+&lt;!-- 不推荐 -->
+&lt;link rel="stylesheet" href="//www.google.com/css/maia.css"
+  type="text/css">
+&lt;!-- 推荐 -->
+&lt;link rel="stylesheet" href="//www.google.com/css/maia.css">
+&lt;!-- 不推荐 -->
+&lt;script src="//www.google.com/js/gweb/analytics/autotrack.js"
+  type="text/javascript">&lt;/script>
+  <!-- 推荐 -->
+&lt;script src="//www.google.com/js/gweb/analytics/autotrack.js">&lt;/script>
+</code></pre>
+
+<h4 id="4-html-编码规则">4.HTML 编码规则</h4>
+
+<h6 id="格式">格式</h6>
+
+<p>每个块元素、列表元素或表格元素都独占一行，每个子元素都相对于父元素进行缩进。</p>
+
+<p>独立元素的样式（as CSS allows elements to assume a different role per display property), 将块元素、列表元素或表格元素都放在新行。</p>
+
+<p>另外，需要缩进块元素、列表元素或表格元素的子元素。</p>
+
+<p>（如果出现了列表项左右空文本节点问题，可以试着将所有的 li 元素都放在一行。 A linter is encouraged to throw a warning instead of an error.)</p>
+
+<pre><code>
+&lt;blockquote>
+  &lt;p>&lt;em>Space&lt;/em>, the final frontier.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+  &lt;li>Moe
+  &lt;li>Larry
+  &lt;li>Curly
+&lt;/ul>
+&lt;table>
+  &lt;thead>
+    &lt;tr>
+      &lt;th scope="col">Income
+      &lt;th scope="col">Taxes
+  &lt;tbody>
+    &lt;tr>
+      &lt;td>$ 5.00
+      &lt;td>$ 4.50
+&lt;/table>
+</code></pre>
+
+<h4 id="css-代码风格规则">CSS 代码风格规则</h4>
+
+<h6 id="css-代码有效性">CSS 代码有效性</h6>
+
+<p>尽量使用有效的 CSS 代码。</p>
+
+<p>使用有效的 CSS 代码，除非是处理 CSS 校验器程序错误或者需要专有语法。</p>
+
+<p>用类似 W3C CSS validator 这样的工具来进行有效性的测试。</p>
+
+<p>使用有效的 CSS 是重要的质量衡量标准，如果发现有的 CSS 代码没有任何效果的可以删除，确保 CSS 用法适当。</p>
+
+<h6 id="id-和-class-的命名">ID 和 class 的命名</h6>
+
+<p>为 ID 和 class 取通用且有意义的名字。</p>
+
+<p>应该从 ID 和 class 的名字上就能看出这元素是干嘛用的，而不是表象或模糊不清的命名。</p>
+
+<p>应该优先虑以这元素具体目来进行命名，这样他就最容易理解，减少更新。</p>
+
+<p>通用名称可以加在兄弟元素都不特殊或没有个别意义的元素上，可以起名类似“helpers”这样的泛。</p>
+
+<p>使用功能性或通用的名字会减少不必要的文档或模板修改。</p>
+
+<pre><code>
+
+/* 不推荐: 无意义 不易理解 */
+#yee-1901 {}
+
+/* 不推荐: 表达不具体 */
+.button-green {}
+.clear {}
+</code></pre>
+
+<pre><code>
+/* 推荐: 明确详细 */
+#gallery {}
+#login {}
+.video {}
+</code></pre>
+
+<pre><code>
+/* 推荐: 通用 */
+.aux {}
+.alt {}
+</code></pre>
+
+<h6 id="id-和-class-命名风格">ID 和 class 命名风格</h6>
+
+<p>非必要的情况下，ID 和 class 的名称应尽量简短。</p>
+
+<p>简要传达 ID 或 class 是关于什么的。</p>
+
+<p>通过这种方式，似的代码易懂且高效。</p>
+
+<pre><code>
+/* 不推荐 */
+#navigation {}
+.atr {}
+</code></pre>
+<pre><code>
+/* 推荐 */
+#nav {}
+.author {}
+</code></pre>
+
+<h6 id="类型选择器">类型选择器</h6>
+
+<p>避免使用 CSS 类型选择器。</p>
+
+<p>非必要的情况下不要使用元素标签名和 ID 或 class 进行组合。</p>
+
+<p>出于性能上的考虑避免使用父辈节点做选择器 performance reasons.</p>
+
+<pre><code>
+/* 不推荐 */
+ul#example {}
+div.error {}
+</code></pre>
+<pre><code>
+/* 推荐 */
+#example {}
+.error {}
+</code></pre>
+
+<h6 id="属性缩写">属性缩写</h6>
+
+<p>写属性值的时候尽量使用缩写。</p>
+
+<p>CSS 很多属性都支持缩写 shorthand （例如 font ） 尽量使用缩写，甚至只设置一个值。</p>
+
+<p>使用缩写可以提高代码的效率和方便理解。</p>
+
+<pre><code>
+/* 不推荐 */
+border-top-style: none;
+font-family: palatino, georgia, serif;
+font-size: 100%;
+line-height: 1.6;
+padding-bottom: 2em;
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0;
+</code></pre>
+<pre><code>
+/* 推荐 */
+border-top: 0;
+font: 100%/1.6 palatino, georgia, serif;
+padding: 0 1em 2em;
+</code></pre>
+
+<h6 id="0-和单位">0 和单位</h6>
+
+<p>省略 0 后面的单位。</p>
+
+<p>非必要的情况下 0 后面不用加单位。</p>
+
+<pre><code>
+margin: 0;
+padding: 0;
+</code></pre>
+
+<h6 id="0-开头的小数">0 开头的小数</h6>
+
+<p>省略 0 开头小数点前面的 0。</p>
+
+<p>值或长度在-1 与 1 之间的小数，小数前的 0 可以忽略不写。</p>
+
+<pre><code>
+font-size: .8em;
+</code></pre>
+
+<h6 id="uri-外的引号">URI 外的引号</h6>
+
+<p>省略 URI 外的引号。</p>
+
+<p>不要在 url() 里用 ( &ldquo;&rdquo; , &ldquo; ) 。</p>
+
+<pre><code>
+@import url(//www.google.com/css/go.css);
+</code></pre>
+
+<h6 id="十六进制">十六进制</h6>
+
+<p>十六进制尽可能使用 3 个字符。</p>
+
+<p>加颜色值时候会用到它，使用 3 个字符的十六进制更短与简洁。</p>
+
+<pre><code>
+/* 不推荐 */
+color: #eebbcc;
+</code></pre>
+<pre><code>
+/* 推荐 */
+color: #ebc;
+</code></pre>
+
+<h6 id="前缀">前缀</h6>
+
+<p>选择器前面加上特殊应用标识的前缀（可选）。</p>
+
+<p>大型项目中最好在 ID 或 class 名字前加上这种标识性前缀（命名空间），使用短破折号链接。</p>
+
+<p>使用命名空间可以防止命名冲突，方便维护，比如在搜索和替换操作上。</p>
+
+<pre><code>
+.adw-help {} /* AdWords */
+#maia-note {} /* Maia */
+</code></pre>
+
+<h4 id="id-和-class-命名的定界符">ID 和 class 命名的定界符</h4>
+
+<p>ID 和 class 名字有多单词组合的用短破折号“-”分开。</p>
+
+<p>别在选择器名字里用短破折号“-”以外的连接词(包括啥也没有)， 以增进对名字的理解和查找。</p>
+
+<pre><code>
+/* 不推荐：“demo”和“image”中间没加“-” */
+.demoimage {}
+
+/* 不推荐：用下划线“_”是屌丝的风格 */
+.error_status {}
+</code></pre>
+<pre><code>
+/* 推荐 */
+#video-id {}
+.ads-sample {}
+</code></pre>
+
+<h6 id="hacks">Hacks</h6>
+
+<p>最好避免使用该死的 CSS “hacks” —— 请先尝试使用其他的解决方法。</p>
+
+<p>虽然它很有诱惑力，可以当作用户代理检测或特殊的 CSS 过滤器，但它的行为太过于频繁，会长期伤害项目的效率和代码管理，所以能用其他的解决方案就找其他的。</p>
+
+<h4 id="5-css-代码格式规则">5.CSS 代码格式规则</h4>
+
+<h4 id="声明顺序">声明顺序</h4>
+
+<p>依字母顺序进行声明。</p>
+
+<p>都按字母顺序声明，很容易记住和维护。</p>
+
+<p>忽略浏览器的特定前缀排序，但多浏览器特定的某个 CSS 属性前缀应相对保持排序（例如-moz 前缀在-webkit 前面）。</p>
+
+<pre><code>
+background: fuchsia;
+border: 1px solid;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+color: black;
+text-align: center;
+text-indent: 2em;
+</code></pre>
+
+<h6 id="代码块内容缩进">代码块内容缩进</h6>
+
+<p>缩进所有代码块（“{}”之间）内容。</p>
+
+<p>缩进所有代码块的内容，它能够提高层次结构的清晰度。</p>
+
+<pre><code>
+@media screen, projection {
+
+  html {
+    background: #fff;
+    color: #444;
+  }
+
+}
+</code></pre>
+
+<h6 id="声明完结">声明完结</h6>
+
+<p>所有声明都要用“;”结尾。</p>
+
+<p>考虑到一致性和拓展性，请在每个声明尾部都加上分号。</p>
+
+<pre><code>
+/* 不推荐 */
+.test {
+  display: block;
+  height: 100px
+}
+</code></pre>
+<pre><code>
+/* 推荐 */
+.test {
+  display: block;
+  height: 100px;
+}
+</code></pre>
+
+<h6 id="属性名完结">属性名完结</h6>
+
+<p>在属性名冒号结束后加一个空字符。</p>
+
+<p>出于一致性的原因，在属性名和值之间加一个空格（可不是属性名和冒号之间噢）。</p>
+
+<pre><code>
+/* 不推荐 */
+h3 {
+  font-weight:bold;
+}
+/* 推荐 */
+h3 {
+  font-weight: bold;
+}
+</code></pre>
+
+<h6 id="选择器和声明分行">选择器和声明分行</h6>
+
+<p>将选择器和声明隔行。</p>
+
+<p>每个选择器和声明都要独立新行。</p>
+
+<pre><code>
+/* 不推荐 */
+a:focus, a:active {
+  position: relative; top: 1px;
+}
+</code></pre>
+<pre><code>
+/* 推荐 */
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+</code></pre>
+
+<h6 id="规则分行">规则分行</h6>
+
+<p>每个规则独立一行。</p>
+
+<p>两个规则之间隔行。</p>
+
+<pre><code>
+html {
+  background: #fff;
+}
+
+body {
+  margin: auto;
+  width: 50%;
+}
+</code></pre>
+
+<h4 id="6-css-元数据规则">6.CSS 元数据规则</h4>
+
+<h6 id="注释部分">注释部分</h6>
+
+<p>按组写注释。（可选）</p>
+
+<p>如果可以，按照功能的类别来对一组样式表写统一注释。独立成行。</p>
+
+<pre><code>
+/* Header */
+
+#adw-header {}
+
+/* Footer */
+
+#adw-footer {}
+
+/* Gallery */
+
+.adw-gallery {}
+</code></pre>
+
+<h3 id="引用文献">引用文献</h3>
+
+<ol>
+<li><a href="http://blog.csdn.net/chajn/article/details/7538688">Google HTML/CSS 代码风格指南(中文版)</a></li>
+<li><a href="https://google.github.io/styleguide/htmlcssguide.xml">Google HTML/CSS Style Guide</a></li>
+</ol>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/html"><span class="tag">Html</span></a></li>
+        
+          <li><a href="/tags/%E8%A7%84%E8%8C%83"><span class="tag">规范</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1366</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

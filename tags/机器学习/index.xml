@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机器学习 on HerrDu&#39;s Blog</title>
+    <link>/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 机器学习 on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 17 Nov 2014 21:24:26 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>机器学习与人工智能学习资源导引</title>
+      <link>/post/daoyin/</link>
+      <pubDate>Mon, 17 Nov 2014 21:24:26 +0000</pubDate>
+      
+      <guid>/post/daoyin/</guid>
+      <description>转自 http://mindhacks.cn/2008/09/11/machine-learning-and-ai-resources/ 我经常在 TopLanguage 讨论组上推荐一些书籍，也经常问里面的牛人们搜罗一些有关的资料，人工智能、机器学习、自然语言处理、知识发现（特别地，数据挖掘）、信息检索 这些无疑是 CS 领域最好玩的分支了（也是互相紧密联系的），这里将最近有关机器学习和人工智能相关的一些学习资源归一个类：
+首先是两个非常棒的 Wikipedia 条目，我也算是 wikipedia 的重度用户了，学习一门东西的时候常常发现是始于 wikipedia 中间经过若干次 google ，然后止于某一本或几本著作。
+第一个是“人工智能的历史”（History of Artificial Intelligence），我在讨论组上写道：
+而今天看到的这篇文章是我在 wikipedia 浏览至今觉得最好的。文章名为《人工智能的历史》，顺着 AI 发展时间线娓娓道来，中间穿插无数牛人故事，且一波三折大气磅礴，可谓&amp;rdquo;事实比想象更令人惊讶&amp;rdquo;。人工智能始于哲学思辨，中间经历了一个没有心理学（尤其是认知神经科学的）的帮助的阶段，仅通过牛人对人类思维的外在表现的归纳、内省，以及数学工具进行探索，其间最令人激动的是 Herbert Simon （决策理论之父，诺奖，跨领域牛人）写的一个自动证明机，证明了罗素的数学原理中的二十几个定理，其中有一个定理比原书中的还要优雅，Simon 的程序用的是启发式搜索，因为公理系统中的证明可以简化为从条件到结论的树状搜索（但由于组合爆炸，所以必须使用启发式剪枝）。后来 Simon 又写了 GPS （General Problem Solver），据说能解决一些能良好形式化的问题，如汉诺塔。但说到底 Simon 的研究毕竟只触及了人类思维的一个很小很小的方面 —— Formal Logic，甚至更狭义一点 Deductive Reasoning （即不包含 Inductive Reasoning , Transductive Reasoning (俗称 analogic thinking）。还有诸多比如 Common Sense、Vision、尤其是最为复杂的 Language 、Consciousness 都还谜团未解。还有一个比较有趣的就是有人认为 AI 问题必须要以一个物理的 Body 为支撑，一个能够感受这个世界的物理规则的身体本身就是一个强大的信息来源，基于这个信息来源，人类能够自身与时俱进地总结所谓的 Common-Sense Knowledge （这个就是所谓的 Emboddied Mind 理论。 ），否则像一些老兄直接手动构建 Common-Sense Knowledge Base ，就很傻很天真了，须知人根据感知系统从自然界获取知识是一个动态的自动更新的系统，而手动构建常识库则无异于古老的 Expert System 的做法。当然，以上只总结了很小一部分我个人觉得比较有趣或新颖的，每个人看到的有趣的地方不一样，比如里面相当详细地介绍了神经网络理论的兴衰。所以我强烈建议你看自己一遍，别忘了里面链接到其他地方的链接。</description>
+    </item>
+    
+  </channel>
+</rss>

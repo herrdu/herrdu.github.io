@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vssh on HerrDu&#39;s Blog</title>
+    <link>/tags/vssh/</link>
+    <description>Recent content in vssh on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Nov 2014 00:38:53 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/vssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>vssh编辑中文</title>
+      <link>/post/vsshshowchinese/</link>
+      <pubDate>Sat, 22 Nov 2014 00:38:53 +0000</pubDate>
+      
+      <guid>/post/vsshshowchinese/</guid>
+      <description>1，ssh 工具连接设置里为 UTF-8 编码 2，在/etc/profile 最后加入 export LANG=zh_CN.UTF-8 3，连接的时候字符编码改成 utf－8 即可。 修改/etc/profile 提示文件只读。 解决方法：sudo chmod +w /etc/profile 即可 4，执行 source /etc/profile</description>
+    </item>
+    
+  </channel>
+</rss>

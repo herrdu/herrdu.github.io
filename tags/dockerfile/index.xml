@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dockerfile on HerrDu&#39;s Blog</title>
+    <link>/tags/dockerfile/</link>
+    <description>Recent content in Dockerfile on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 26 Jul 2019 11:21:47 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DockerFileForPM2-2</title>
+      <link>/post/dockerfileforpm2/</link>
+      <pubDate>Fri, 26 Jul 2019 11:21:47 +0800</pubDate>
+      
+      <guid>/post/dockerfileforpm2/</guid>
+      <description>&lt;p&gt;之前写了一个 DockerFile With PM2 感觉总是不太满意，每次执行 yarn install 的时候太慢。感觉这是在赤裸裸的浪费声明，曾数次优化未果，昨天经过隔壁组大佬启发。实现了一个还算满意的配置，记录一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：DockerFileForPM2</title>
+      <link>/post/dailyword/dockerfileforpm2/</link>
+      <pubDate>Fri, 12 Jul 2019 19:51:32 +0800</pubDate>
+      
+      <guid>/post/dailyword/dockerfileforpm2/</guid>
+      <description>&lt;p&gt;因为项目需要，我使用了 Nuxt2 这个框架。&lt;/p&gt;
+
+&lt;p&gt;使用了之后，问题就来了，如何去部署呢？直接把项目文件 pull 到服务器？ 这显的太不现代化了，不如使用一个 Docker。&lt;/p&gt;
+
+&lt;p&gt;使用了 Docker 之后发现，Nuxt2 的部署是需要启动 node server 的，万一挂了怎么办？ 不如来个 PM2 进行进程的守护？&lt;/p&gt;
+
+&lt;p&gt;那么 BaseImage 使用 node:alpine ，每次 docker build 的时候都需要 install pm2 太慢了。PM2 说我们说已经 build 好的 Image 呀。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

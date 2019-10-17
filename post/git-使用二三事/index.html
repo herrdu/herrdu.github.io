@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>git 使用二三事</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="git checkout git status git show git add git commit git pull git mergetoll git push 我们应该如何完成一个提交流程（应用于只有 master 分支）        到新公司入职，新公司开始了 git 与 svn 到底使用的哪个的争执。问到我说，”你对 git 熟悉吗？“ 平时会还会使用 github 的我为了对 git 技术的支持，吐出了“以前还用过 git 的”。就这样经过投票，公司转向了 git 平台。
+入职第一天，公司分配给了 git 帐号和可视化的网址 gitlag.xxx.com。我擦累，gitlab 怎么和 github 不太一样？gitlab 为什么没有图像界面工具？SourceTree 这个货是看上去很方便，不过到底是怎么使用的？我提交的代码会不会和库里的有冲突。这些彻底懵逼了。git 操作为什么先 add 再 commit 再 pull、再 push 呢？（为了照顾菜鸟，直接再 master 分支里面提交代码的）">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="git 使用二三事">
+    <meta name="twitter:description" content="git checkout git status git show git add git commit git pull git mergetoll git push 我们应该如何完成一个提交流程（应用于只有 master 分支）        到新公司入职，新公司开始了 git 与 svn 到底使用的哪个的争执。问到我说，”你对 git 熟悉吗？“ 平时会还会使用 github 的我为了对 git 技术的支持，吐出了“以前还用过 git 的”。就这样经过投票，公司转向了 git 平台。
+入职第一天，公司分配给了 git 帐号和可视化的网址 gitlag.xxx.com。我擦累，gitlab 怎么和 github 不太一样？gitlab 为什么没有图像界面工具？SourceTree 这个货是看上去很方便，不过到底是怎么使用的？我提交的代码会不会和库里的有冲突。这些彻底懵逼了。git 操作为什么先 add 再 commit 再 pull、再 push 呢？（为了照顾菜鸟，直接再 master 分支里面提交代码的）">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="git 使用二三事">
+  <meta property="og:description" content="git checkout git status git show git add git commit git pull git mergetoll git push 我们应该如何完成一个提交流程（应用于只有 master 分支）        到新公司入职，新公司开始了 git 与 svn 到底使用的哪个的争执。问到我说，”你对 git 熟悉吗？“ 平时会还会使用 github 的我为了对 git 技术的支持，吐出了“以前还用过 git 的”。就这样经过投票，公司转向了 git 平台。
+入职第一天，公司分配给了 git 帐号和可视化的网址 gitlag.xxx.com。我擦累，gitlab 怎么和 github 不太一样？gitlab 为什么没有图像界面工具？SourceTree 这个货是看上去很方便，不过到底是怎么使用的？我提交的代码会不会和库里的有冲突。这些彻底懵逼了。git 操作为什么先 add 再 commit 再 pull、再 push 呢？（为了照顾菜鸟，直接再 master 分支里面提交代码的）">
+  <meta property="og:url" content="/post/git-%E4%BD%BF%E7%94%A8%E4%BA%8C%E4%B8%89%E4%BA%8B/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/git-%E4%BD%BF%E7%94%A8%E4%BA%8C%E4%B8%89%E4%BA%8B/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">git 使用二三事</h1>
+      <p class="post-meta">@ · Jun 27, 2016 · 1 min read</p>
+    </header>
+    <article class="post-content"><nav>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#git-checkout">git checkout</a></li>
+<li><a href="#git-status">git status</a></li>
+<li><a href="#git-show">git show</a></li>
+<li><a href="#git-add">git add</a></li>
+<li><a href="#git-commit">git commit</a></li>
+<li><a href="#git-pull">git pull</a></li>
+<li><a href="#git-mergetoll">git mergetoll</a></li>
+<li><a href="#git-push">git push</a></li>
+<li><a href="#我们应该如何完成一个提交流程-应用于只有-master-分支">我们应该如何完成一个提交流程（应用于只有 master 分支）</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<p>到新公司入职，新公司开始了 git 与 svn 到底使用的哪个的争执。问到我说，”你对 git 熟悉吗？“ 平时会还会使用 github 的我为了对 git 技术的支持，吐出了“以前还用过 git 的”。就这样经过投票，公司转向了 git 平台。</p>
+
+<p>入职第一天，公司分配给了 git 帐号和可视化的网址 gitlag.xxx.com。我擦累，gitlab 怎么和 github 不太一样？gitlab 为什么没有图像界面工具？SourceTree 这个货是看上去很方便，不过到底是怎么使用的？我提交的代码会不会和库里的有冲突。这些彻底懵逼了。git 操作为什么先 add 再 commit 再 pull、再 push 呢？（为了照顾菜鸟，直接再 master 分支里面提交代码的）</p>
+
+<p>不过，既然逼已经装了出去，自己也要硬撑着。赶紧看资料了解吧。总结了以下几个常用的 git 语句</p>
+
+<h6 id="git-checkout">git checkout</h6>
+
+<p>再我看来这个命令有两个功能</p>
+
+<ol>
+<li>迁出版本库代码</li>
+<li>在某个目录下面单独重签代码
+不过，令人尴尬的事，这么长的命令没有缩写</li>
+</ol>
+
+<h6 id="git-status">git status</h6>
+
+<p>这个和 svn 的 status 有相同的作用，就是可以看到有多少修改过的文件，有多少是需要提交的文件</p>
+
+<h6 id="git-show">git show</h6>
+
+<p>这个相当于 svn 中的 diff，可以对比每个在本地修改过的文件和线上的文件直接的差异</p>
+
+<h6 id="git-add">git add</h6>
+
+<p>每次修改过的代码要提交的时候，要先用 add 语句把文件添加到了暂存区，然后才能使用提交到本地版本库</p>
+
+<h6 id="git-commit">git commit</h6>
+
+<p>add 到暂存区的文件，要通过 commit 提交到本地分支，此时执行 commit 命令时一般会带有 -m 参数，来添加修改记录</p>
+
+<h6 id="git-pull">git pull</h6>
+
+<p>把远程分支代码拉到本地，并查看有没有冲突</p>
+
+<h6 id="git-mergetoll">git mergetoll</h6>
+
+<p>通过调用 git 设置的 mergetool 来解决之前遇到的冲突。由于我下载了 source tree，所以我调用的是 source tree 的 file merge 工具。目前对这个 merge 工具不是很满意，可以自己配置</p>
+
+<h6 id="git-push">git push</h6>
+
+<p>冲突解决完了，真的要提交代码了。</p>
+
+<h6 id="我们应该如何完成一个提交流程-应用于只有-master-分支">我们应该如何完成一个提交流程（应用于只有 master 分支）</h6>
+
+<ol>
+<li>git add 添加我们需要提交的文件 ，如：git add a.js</li>
+<li>git commit 提交到本地分支，同时添加理由 如：git commit -m</li>
+<li>git pull 从远程分支拉去代码到本地 如： git pull</li>
+<li>若有冲突，git mergetool 解决冲突</li>
+<li>git push 提交到远程</li>
+</ol>
+
+<p>虽然 Git 模式设计的非常好，但是开发人员初期只需要记住这几个命令就好了。</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/git"><span class="tag">Git</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1207</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

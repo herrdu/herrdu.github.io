@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微信 on HerrDu&#39;s Blog</title>
+    <link>/tags/%E5%BE%AE%E4%BF%A1/</link>
+    <description>Recent content in 微信 on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 04 Jul 2016 14:28:20 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E5%BE%AE%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>微信开发中的坑</title>
+      <link>/post/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%9D%91/</link>
+      <pubDate>Mon, 04 Jul 2016 14:28:20 +0000</pubDate>
+      
+      <guid>/post/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%9D%91/</guid>
+      <description>微信中的页面开发是我一直想尝试却又不想尝试的事情。手机和 pc 上应用的技术在不断的发展着，新技术层出不穷。微信又独树一帜的成为前端需要掌握的另一种浏览器，上面各种功能的接口让人费解。不过因为工作，还是需要去趟一下坑的。
+预知识 做微信开发的人应该知道 微信开发文档 中 会介绍让我们应用 https://res.wx.qq.com/open/js/jweixin-1.0.0.js 这里面会有 wx 对象，供我们成为统一的接口。
+1. 坑一: appid 与域名的绑定 我们在调用微信提供的 js 事件接口之前要对 wx 这个对象进行初始化。初始化的参数里面需要 用到一个 appid 的值，这个值是我们申请公众帐号里提供的，一个 appid 据说只能绑定 3 个域名。因此，当我们测试接口有没有调用成功的时候，只能在绑定的域名的服器上进行测试。
+2. 坑二：微信 getLocation 位置接口 出现 invalid coordinate 错误 这个问题我还真是一万匹草泥马在心中飞过呀，当我把从数据库里面的数据直接传给 getLocation 接口的时候竟然显示 invalid coordinate 错误。 于是再次在沉浸在开发文档与度娘的搜索结果当中，默认回首，发现坐标的值 必须是数字。这个悔与恨呢。
+简单的开发了两个功能，居然就这样的在坑中爬过。对于微信开发，想说爱你不容易。</description>
+    </item>
+    
+  </channel>
+</rss>

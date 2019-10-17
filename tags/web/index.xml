@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on HerrDu&#39;s Blog</title>
+    <link>/tags/web/</link>
+    <description>Recent content in Web on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 05 Aug 2019 11:13:03 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WheelEvent</title>
+      <link>/post/dailyword/wheelevent/</link>
+      <pubDate>Mon, 05 Aug 2019 11:13:03 +0800</pubDate>
+      
+      <guid>/post/dailyword/wheelevent/</guid>
+      <description>&lt;p&gt;Wheel Event 是一个描述鼠标滚轮或者类似设备的 event 的接口。Whell Event 是继承自 MouseEvent。 下面看一下它的 IDL：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DockerFileForPM2-2</title>
+      <link>/post/dockerfileforpm2/</link>
+      <pubDate>Fri, 26 Jul 2019 11:21:47 +0800</pubDate>
+      
+      <guid>/post/dockerfileforpm2/</guid>
+      <description>&lt;p&gt;之前写了一个 DockerFile With PM2 感觉总是不太满意，每次执行 yarn install 的时候太慢。感觉这是在赤裸裸的浪费声明，曾数次优化未果，昨天经过隔壁组大佬启发。实现了一个还算满意的配置，记录一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：MouseEvent Order</title>
+      <link>/post/dailyword/mouseeventorder/</link>
+      <pubDate>Thu, 25 Jul 2019 11:23:43 +0800</pubDate>
+      
+      <guid>/post/dailyword/mouseeventorder/</guid>
+      <description>&lt;p&gt;上篇文章，我们关注了 MouseEvent 这个接口，但是它还有一个有趣的定义我们没有关注到，就是 MouseEvent 产生的 Order。 我们关注 MouseEvent 产生顺序的主要一下四种场景：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：MouseEvent</title>
+      <link>/post/dailyword/mouseevent/</link>
+      <pubDate>Tue, 23 Jul 2019 14:15:00 +0800</pubDate>
+      
+      <guid>/post/dailyword/mouseevent/</guid>
+      <description>&lt;p&gt;MouseEvent 接口模型起源于来自于1998年4月编写的 &lt;a href=&#34;https://www.w3.org/TR/html40/&#34;&gt;HTML40&lt;/a&gt; 中的 onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove 和 onmouseout 属性。这个接口是为了点击输入设备（如：鼠标、轨迹球、触摸屏等操控鼠标的输入设备）设计的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FocusEvent</title>
+      <link>/post/dailyword/focusevent/</link>
+      <pubDate>Thu, 18 Jul 2019 22:49:25 +0800</pubDate>
+      
+      <guid>/post/dailyword/focusevent/</guid>
+      <description>&lt;p&gt;FocusEvent 接口为 Focus events 定义了上下文信息&lt;/p&gt;
+
+&lt;p&gt;一般使用 FocusEvent 的结构体来生产一个实例，同时可以传递 FocusEventInit 参数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：UIEvent</title>
+      <link>/post/dailyword/uievent/</link>
+      <pubDate>Wed, 17 Jul 2019 13:00:18 +0800</pubDate>
+      
+      <guid>/post/dailyword/uievent/</guid>
+      <description>&lt;p&gt;UIEvent 接口是从 Event 接口派生出来的。出行这个接口有两个原因，第一个就是为了设计一个允许事件监听器注册和能够在树形结构里描述事件流动的接口；第二个原因是在流量器里为现有的事件系统提供一个通用的子集。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：Event</title>
+      <link>/post/dailyword/event/</link>
+      <pubDate>Sun, 14 Jul 2019 18:22:20 +0800</pubDate>
+      
+      <guid>/post/dailyword/event/</guid>
+      <description>&lt;p&gt;大概每个写过 HTML 的人都会知道 Event 接口，它为 DOM 的处理函数提供了上下文的描述。一般地说，事件的处理函数会把实现了 Event 接口的对象作为第一个参数传递过去。不过大多数 DOM 事件处理函数传递的上下文对象中，还会传递一些额外的信息。如：MouseEvent 的处理函数种会有 clientX 和 clientY 这些信息。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>每日一词：DockerFileForPM2</title>
+      <link>/post/dailyword/dockerfileforpm2/</link>
+      <pubDate>Fri, 12 Jul 2019 19:51:32 +0800</pubDate>
+      
+      <guid>/post/dailyword/dockerfileforpm2/</guid>
+      <description>&lt;p&gt;因为项目需要，我使用了 Nuxt2 这个框架。&lt;/p&gt;
+
+&lt;p&gt;使用了之后，问题就来了，如何去部署呢？直接把项目文件 pull 到服务器？ 这显的太不现代化了，不如使用一个 Docker。&lt;/p&gt;
+
+&lt;p&gt;使用了 Docker 之后发现，Nuxt2 的部署是需要启动 node server 的，万一挂了怎么办？ 不如来个 PM2 进行进程的守护？&lt;/p&gt;
+
+&lt;p&gt;那么 BaseImage 使用 node:alpine ，每次 docker build 的时候都需要 install pm2 太慢了。PM2 说我们说已经 build 好的 Image 呀。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CustomEvent</title>
+      <link>/post/dailyword/customevent/</link>
+      <pubDate>Thu, 11 Jul 2019 10:40:49 +0800</pubDate>
+      
+      <guid>/post/dailyword/customevent/</guid>
+      <description>&lt;p&gt;CustomEvent 是一个允许 Event 来使用自定义数据的一个接口。 Custom 继承自 Event，拥有 Event 的属性与方法。同事添加了一个自己的属性和一个自己的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>HTTP状态码作用</title>
+      <link>/post/http%E7%8A%B6%E6%80%81%E7%A0%81%E4%BD%9C%E7%94%A8/</link>
+      <pubDate>Thu, 17 Dec 2015 15:08:00 +0000</pubDate>
+      
+      <guid>/post/http%E7%8A%B6%E6%80%81%E7%A0%81%E4%BD%9C%E7%94%A8/</guid>
+      <description>HTTP 状态码的作用是：web 服务器用来告诉客户端，发生了什么事。
+状态码位于 HTTP Response 的第一行中，会返回一个”三位数字的状态码“和一个“状态消息”。 ”三位数字的状态码“便于程序进行处理， “状态消息”更便于人理解。
+状态码分类 HTTP 状态码被分为五大类， 目前我们使用的 HTTP 协议版本是 1.1， 支持以下的状态码。随着协议的发展，HTTP 规范中会定义更多的状态码。
+小技巧： 假如你看到一个状态码 518， 你并不知道具体 518 是什么意思。 这时候你只要知道 518 是属于（5XX，服务器错误就可以了）
+已定义范围 分类
+   状态码 范围 含义     1XX 100-101 信息提示   2XX 200-206 成功   3XX 300-305 重定向   4XX 400-415 客户端错误   5XX 500-505 服务器错误    常见的状态码 一般人只需要了解以下常见的状态码就够了， 如果你想了解更多， 请继续往下看。</description>
+    </item>
+    
+  </channel>
+</rss>

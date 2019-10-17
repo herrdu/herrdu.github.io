@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UIEvent on HerrDu&#39;s Blog</title>
+    <link>/tags/uievent/</link>
+    <description>Recent content in UIEvent on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 17 Jul 2019 13:00:18 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/uievent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>每日一词：UIEvent</title>
+      <link>/post/dailyword/uievent/</link>
+      <pubDate>Wed, 17 Jul 2019 13:00:18 +0800</pubDate>
+      
+      <guid>/post/dailyword/uievent/</guid>
+      <description>&lt;p&gt;UIEvent 接口是从 Event 接口派生出来的。出行这个接口有两个原因，第一个就是为了设计一个允许事件监听器注册和能够在树形结构里描述事件流动的接口；第二个原因是在流量器里为现有的事件系统提供一个通用的子集。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

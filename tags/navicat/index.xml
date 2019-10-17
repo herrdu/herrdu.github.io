@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Navicat on HerrDu&#39;s Blog</title>
+    <link>/tags/navicat/</link>
+    <description>Recent content in Navicat on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 26 Oct 2014 23:15:37 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/navicat/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac下Navicat安装文件与破解方法</title>
+      <link>/post/navicat/</link>
+      <pubDate>Sun, 26 Oct 2014 23:15:37 +0000</pubDate>
+      
+      <guid>/post/navicat/</guid>
+      <description>由于最近工作学习需要使用到 MySQL，所以找了 Navicat Premium 作为客户端，在官网上下载了最新的中文版本(11.0.12)，发现网上流传的破解工具不能破解，后来发现，该工具只能破解英文版的。 所以重新在官网上下载了最新的英文版本（11.0.15），有中文版本不能用，有点不甘心，所以提取出了中文版本中的语言包，放到了英文版本下面，运行一切正常。只是其中文汉化还不是很好，还有一些有不明确的地方。 不管怎么样，能够使用就 OK。
+安装步骤： 1、下载 Navicat Premium_11.0.15.zip，解压之后有两个文件，一个是 Navicat Premium.app(英文版本 11.0.15，已包含中文语言包)，另一个是 Keygen.app。 2、将 Navicat Premium.app 移动或者复制到应用程序目录下。 3、运行 Keygen.app 进行破解，按如下步骤： 3.1 点击 Generate,生成 SN 3.2 点击 Activate，然后选择 Navicat Premium.app 3.3 点击 Patch,然后选择 Navicat Premium.app。恭喜你，你可以使用中文版本的 Navicat Premium 了
+下载地址：http://pan.baidu.com/s/1u2T1G 原文地址：http://bbs.maiyadi.com/thread-935221-1-1.html</description>
+    </item>
+    
+  </channel>
+</rss>

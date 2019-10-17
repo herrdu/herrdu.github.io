@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>命令 on HerrDu&#39;s Blog</title>
+    <link>/tags/%E5%91%BD%E4%BB%A4/</link>
+    <description>Recent content in 命令 on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 13 Nov 2015 23:43:33 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E5%91%BD%E4%BB%A4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>virtualenvwrapper 的命令参考</title>
+      <link>/post/virtualenvwrapper%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83/</link>
+      <pubDate>Fri, 13 Nov 2015 23:43:33 +0000</pubDate>
+      
+      <guid>/post/virtualenvwrapper%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83/</guid>
+      <description> 命令参考 下面所有的命令都是在终端中使用
+管理环境 创建一个新的环境，在 WORKON_HOME 中
+语法：
+ mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] ENVNAME  除了-a,-i,-r和-h的所有命令选项都会直接传递给 virtualenv。新的环境在初始化之后会自动被激活。
+ $ workon $ mkvirtualenv mynewenv New python executable in mynewenv/bin/python Installing setuptools............................................. .................................................................. .................................................................. done. (mynewenv)$ workon mynewenv (mynewenv)$  命令选项 -a，是用来关联已经存在的项目路径的新环境的
+命令选项 -i，在环境创建之后用来安装一个或多个安装包的（通过重复选项）
+命令选项 -r, 在用来指定一个存着等待安装软件列表的文件。这些参数会传递给 pip -r 来进行安装。
+也可以看看  premkvirtualenv postmkvirtualenv requirements file format  mktmpenv 在 WORKON_HOME 目录中创建新的环境
+语法：
+ mktmpenv [(-c|--cd)|(-n|--no-cd)] [VIRTUALENV_OPTIONS]  </description>
+    </item>
+    
+  </channel>
+</rss>

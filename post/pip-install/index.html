@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>pip – pip安装和使用教程</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content="pip 是一个安装 python 库很方便的东西，类似 yum，pip search pip install，如果没 wget 的话，就用 curl -O 另外也可以考虑用 easy_install 代替 pip
+来源：http://www.jsxubar.info/install-pip.html pip 是一个安装和管理 Python 包的工具 , 是 easy_install 的一个替换品。本文将详细说明 安装 pip 的方法和 使用 pip 的一些基本操作如安装、更新和卸载 python 包。
+目录 [显示] 一、pip 安装
+安装 pip 的方法非常简单, 首先下载一个 python 程序, 然后运行这个程序即可. 这个是在线安装. $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py $ python get-pip.py 如果不能联网, 可以到这里下载, 然后按照压缩包的说明安装即可.
+如果要安装 pip 的开发版本, 使用以下命令即可:
+easy_install pip==dev 开发包源码下载地址: pip 开发版本
+Mac 安装方法
+1.安装 easy_install $ wget http://python-distribute.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="pip – pip安装和使用教程">
+    <meta name="twitter:description" content="pip 是一个安装 python 库很方便的东西，类似 yum，pip search pip install，如果没 wget 的话，就用 curl -O 另外也可以考虑用 easy_install 代替 pip
+来源：http://www.jsxubar.info/install-pip.html pip 是一个安装和管理 Python 包的工具 , 是 easy_install 的一个替换品。本文将详细说明 安装 pip 的方法和 使用 pip 的一些基本操作如安装、更新和卸载 python 包。
+目录 [显示] 一、pip 安装
+安装 pip 的方法非常简单, 首先下载一个 python 程序, 然后运行这个程序即可. 这个是在线安装. $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py $ python get-pip.py 如果不能联网, 可以到这里下载, 然后按照压缩包的说明安装即可.
+如果要安装 pip 的开发版本, 使用以下命令即可:
+easy_install pip==dev 开发包源码下载地址: pip 开发版本
+Mac 安装方法
+1.安装 easy_install $ wget http://python-distribute.">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="pip – pip安装和使用教程">
+  <meta property="og:description" content="pip 是一个安装 python 库很方便的东西，类似 yum，pip search pip install，如果没 wget 的话，就用 curl -O 另外也可以考虑用 easy_install 代替 pip
+来源：http://www.jsxubar.info/install-pip.html pip 是一个安装和管理 Python 包的工具 , 是 easy_install 的一个替换品。本文将详细说明 安装 pip 的方法和 使用 pip 的一些基本操作如安装、更新和卸载 python 包。
+目录 [显示] 一、pip 安装
+安装 pip 的方法非常简单, 首先下载一个 python 程序, 然后运行这个程序即可. 这个是在线安装. $ curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py $ python get-pip.py 如果不能联网, 可以到这里下载, 然后按照压缩包的说明安装即可.
+如果要安装 pip 的开发版本, 使用以下命令即可:
+easy_install pip==dev 开发包源码下载地址: pip 开发版本
+Mac 安装方法
+1.安装 easy_install $ wget http://python-distribute.">
+  <meta property="og:url" content="/post/pip-install/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/pip-install/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">pip – pip安装和使用教程</h1>
+      <p class="post-meta">@ · Nov 17, 2014 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>pip 是一个安装 python 库很方便的东西，类似 yum，pip search pip install，如果没 wget 的话，就用 curl -O 另外也可以考虑用 easy_install 代替 pip</p>
+
+<p>来源：<a href="http://www.jsxubar.info/install-pip.html">http://www.jsxubar.info/install-pip.html</a>
+pip 是一个安装和管理 Python 包的工具 , 是 easy_install 的一个替换品。本文将详细说明 安装 pip 的方法和 使用 pip 的一些基本操作如安装、更新和卸载 python 包。</p>
+
+<p>目录 [显示]
+一、pip 安装</p>
+
+<p>安装 pip 的方法非常简单, 首先下载一个 python 程序, 然后运行这个程序即可. 这个是在线安装.
+$ curl -O <a href="https://raw.github.com/pypa/pip/master/contrib/get-pip.py">https://raw.github.com/pypa/pip/master/contrib/get-pip.py</a>
+$ python get-pip.py
+如果不能联网, 可以到这里下载, 然后按照压缩包的说明安装即可.</p>
+
+<p>如果要安装 pip 的开发版本, 使用以下命令即可:</p>
+
+<p>easy_install pip==dev
+开发包源码下载地址: pip 开发版本</p>
+
+<p>Mac 安装方法</p>
+
+<p>1.安装 easy_install
+$ wget <a href="http://python-distribute.org/distribute_setup.py">http://python-distribute.org/distribute_setup.py</a>
+$ sudo python distribute_setup.py 2.安装 pip
+sudo easy_install pip
+二、常用 pip 操作</p>
+
+<p>pip 的基本操作包括安装,升级和卸载 python 包, 使用如下命令即可, 以 simplejson 包作为例子.</p>
+
+<ol>
+<li>安装 python 包</li>
+</ol>
+
+<p>1
+\$ pip install simplejson</p>
+
+<ol>
+<li>升级 python 包</li>
+</ol>
+
+<p>1
+2
+3
+\$ pip install &ndash;upgrade simplejson
+[&hellip; progress report &hellip;]
+Successfully installed simplejson</p>
+
+<ol>
+<li>卸载 python 包</li>
+</ol>
+
+<p>1
+2
+3
+4
+5
+6
+\$ pip uninstall simplejson
+Uninstalling simplejson:
+/home/me/env/lib/python2.7/site-packages/simplejson
+/home/me/env/lib/python2.7/site-packages/simplejson-2.2.1-py2.7.egg-info
+Proceed (y/n)? y
+Successfully uninstalled simplejson
+如需要更多 pip 安装和使用的教程可以到 pip 英文文档 网站查看。</p>
+
+<p>参考文章</p>
+
+<p>pip 1.1 安装和使用教程 – 英文, 简单介绍了 pip 的各个方面, 包括 pip 安装和使用教程。</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/pip"><span class="tag">Pip</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        This post was published <strong>1794</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

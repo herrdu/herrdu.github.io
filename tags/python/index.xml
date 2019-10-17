@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on HerrDu&#39;s Blog</title>
+    <link>/tags/python/</link>
+    <description>Recent content in python on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 30 Oct 2015 22:13:36 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>virtualenvwrapper的安装</title>
+      <link>/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 30 Oct 2015 22:13:36 +0000</pubDate>
+      
+      <guid>/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+      <description>安装 支持的 SHELL virtualenvwrapper 是在 Bourne Shell 兼容语法上定义的一个 Shell 函数的合集。在 OS X 和 Linux 系统上，可以用下面这些 Shell 进行自动化的测试：
+ bash Ksh zsh  它也许可已运行在其他的 Shell 上，如果你发现了它能够运行除了以上列出来的其它 Shell 上，请告诉我。如果你在没有完全重写它而让他运行在其他的 Shell 上，你可以通过bitbucket project page发送一个 Pull 请求。如果你写了一个克隆的版本去适应不兼容的 Shell 的话，也请告诉我，我会在这个界面上加上一个链接。
+Windows 命令提示符 David Marble 已经将 virtualenvwrapper 到能够在微软的 Windows 命令提示符上运行的 Windows 批处理脚本。这是也是一个独立的分布式的再实现。你可以通过 PyPI 下载 virtualenvwrapper-win
+MSYS 它可以使用 virtualenv 和本地的 Windows Python 安装文件封装MSYS。为了让它能够运行，你需要额外的定义一个环境变量，起名字为——MSYS_HOME,包括指向 MSYS 安装程序的根目录。
+ export WORKON_HOME=$HOME/.virtualenvs export MSYS_HOME=/c/msys/1.0 source /usr/local/bin/virtualenvwrapper.sh  或者
+  export WORKON_HOME=$HOME/.</description>
+    </item>
+    
+  </channel>
+</rss>

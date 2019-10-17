@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on HerrDu&#39;s Blog</title>
+    <link>/tags/git/</link>
+    <description>Recent content in git on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 27 Jun 2016 12:12:28 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git 使用二三事</title>
+      <link>/post/git-%E4%BD%BF%E7%94%A8%E4%BA%8C%E4%B8%89%E4%BA%8B/</link>
+      <pubDate>Mon, 27 Jun 2016 12:12:28 +0000</pubDate>
+      
+      <guid>/post/git-%E4%BD%BF%E7%94%A8%E4%BA%8C%E4%B8%89%E4%BA%8B/</guid>
+      <description>git checkout git status git show git add git commit git pull git mergetoll git push 我们应该如何完成一个提交流程（应用于只有 master 分支）        到新公司入职，新公司开始了 git 与 svn 到底使用的哪个的争执。问到我说，”你对 git 熟悉吗？“ 平时会还会使用 github 的我为了对 git 技术的支持，吐出了“以前还用过 git 的”。就这样经过投票，公司转向了 git 平台。
+入职第一天，公司分配给了 git 帐号和可视化的网址 gitlag.xxx.com。我擦累，gitlab 怎么和 github 不太一样？gitlab 为什么没有图像界面工具？SourceTree 这个货是看上去很方便，不过到底是怎么使用的？我提交的代码会不会和库里的有冲突。这些彻底懵逼了。git 操作为什么先 add 再 commit 再 pull、再 push 呢？（为了照顾菜鸟，直接再 master 分支里面提交代码的）</description>
+    </item>
+    
+  </channel>
+</rss>

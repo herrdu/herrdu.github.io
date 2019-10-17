@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>DockerFileForPM2-2</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="Herr Du">
+  <meta name="description" content="之前写了一个 DockerFile With PM2 感觉总是不太满意，每次执行 yarn install 的时候太慢。感觉这是在赤裸裸的浪费声明，曾数次优化未果，昨天经过隔壁组大佬启发。实现了一个还算满意的配置，记录一下。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="DockerFileForPM2-2">
+    <meta name="twitter:description" content="之前写了一个 DockerFile With PM2 感觉总是不太满意，每次执行 yarn install 的时候太慢。感觉这是在赤裸裸的浪费声明，曾数次优化未果，昨天经过隔壁组大佬启发。实现了一个还算满意的配置，记录一下。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DockerFileForPM2-2">
+  <meta property="og:description" content="之前写了一个 DockerFile With PM2 感觉总是不太满意，每次执行 yarn install 的时候太慢。感觉这是在赤裸裸的浪费声明，曾数次优化未果，昨天经过隔壁组大佬启发。实现了一个还算满意的配置，记录一下。
+">
+  <meta property="og:url" content="/post/dockerfileforpm2/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6">
+
+
+<link rel="canonical" href="/post/dockerfileforpm2/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">DockerFileForPM2-2</h1>
+      <p class="post-meta">@Herr Du · Jul 26, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>之前写了一个 DockerFile With PM2 感觉总是不太满意，每次执行 yarn install 的时候太慢。感觉这是在赤裸裸的浪费声明，曾数次优化未果，昨天经过隔壁组大佬启发。实现了一个还算满意的配置，记录一下。</p>
+
+<h4 id="满意的dockerfile">满意的Dockerfile</h4>
+
+<pre><code>FROM keymetrics/pm2:latest-alpine	
+
+# Create app directory
+RUN mkdir -p /app
+WORKDIR /app 
+
+COPY ./package.json ./package.json
+
+RUN yarn config set registry https://registry.npm.taobao.org/
+RUN yarn install --pure-lockfile  # install 一步提前为了使用 docker cache
+
+
+ARG BUILD_ENV
+ENV BUILD_ENV=${BUILD_ENV}
+# Install app dependencies
+ADD ./ /app 
+
+# Set environment variables
+# ENV NODE_ENV production
+# ENV HOST 0.0.0.0 
+
+# RUN yarn install --pure-lockfile
+RUN yarn build:${BUILD_ENV}
+
+# Clear the cache
+# RUN yarn cache clean
+
+# Expose the app port
+EXPOSE 3000
+
+
+# start command when container init
+CMD pm2-runtime pm2.json --env ${BUILD_ENV}
+</code></pre>
+
+<h4 id="效果图">效果图</h4>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/36jDFdxk2ibdl8pXgAatCALAv6pTMT0MFwRziab8Kbt5IXWN9iadhT0lvia9tWFBeJLw2Qfib7rqPoQNV0zPiayYicVFA/0?wx_fmt=png" alt="img" /></p>
+
+<p>从效果图上看到，send to docker daemon 的 context 只有 4M，而之前的会有 270M 左右。这是因为我在 .dockeringore 里面加入了 node_modules。这让我感到 js 现在包依赖的成都太严重了。</p>
+
+<p>从第二个框中看出，我们这次执行 yarn install 的时候使用的就是 docker cache 内容。 那么为什这次可以触发 docker cache，之前没有呢？这个要和 docker cache 的原理谈起。 之前请教隔壁组大佬的时候，他们总是会告诉我说，docker 每次 RUN 成功之后都会有一个layyer cache 起来，以后每次 build 的时候就可以直接使用那个layyer。但是我们却忽略了一个问题，就是我的 yarn install 是在 ADD ./ /app 之后执行的，由于 app/ 目录下面的内容发生了变动，yarn install 执行的上下文环境发生了改变，而无法使用之前的 layyer 。这样以来，受到某个外国有人的启发，我们主动把 yarn install 提前不就好了吗？今天早晨试了一下，果真好了。</p>
+
+<h4 id="add-app-为什么每次-yarn-install-的时候都会执行">ADD ./ /app 为什么每次 yarn install 的时候都会执行？</h4>
+
+<p>没有在 .dockerignore 里添加 node_modules 之前，我每次都是把 node_modules 直接 ADD 到docker daemon 的工作目录里的，天真的以为目录存在，yarn install 的时候就可以直接把 package.json 和 node_modules 里的依赖对比之后然后显示 Done 。</p>
+
+<p>这里我们忽略了一个问题，那就是 node_modules 里的某些依赖，如：node-sass 会根据操作系统的变化而重新编译。我的宿主机使用的 centos7 ，而docker deamon 使用的是 alpine。</p>
+
+<p>心中一万个小动物奔跑而过&hellip;..</p>
+
+<h4 id="yarn-add-node-sass-失败">Yarn add node-sass 失败</h4>
+
+<p>不过，得到这个结果可不是一番风顺的。遇到的最大的问题就是 node-sass 来给捣乱。</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/36jDFdxk2ibdl8pXgAatCALAv6pTMT0MFibcnm1IjIe1fZCVrqeQ6PwVLibfmGBTqCCCClUxljnVQeh1jAiaaZP74w/0?wx_fmt=png" alt="img" /></p>
+
+<p>之前没有问题，现在居然出现了问题。 为什么 Node-sass 在安装的时候会时好时坏呢？ 在 node-sass 的一个 issue 中有人提到， 在大多数的宿主机上 install node-sass 的时候会有他们预先编译后的 binary file 供我们下载直接使用。这里出现的找不到 python 应该是没有拿到 binary file,而开始了在本地进行编译。 有的时候可以拿到，有的时候拿不到？ 这难道是 FGW 的网络抖动吗？ 不得而知。</p>
+
+<p>不过问题出现了，寻找解决办法吧。</p>
+
+<pre><code>Here is an example of how you would install dependencies for packages that require node-gyp support on the alpine variant:
+
+FROM node:alpine
+
+RUN apk add --no-cache --virtual .gyp python make g++ \
+    &amp;&amp; npm install [ your npm dependencies here ] \
+    &amp;&amp; apk del .gyp
+And Here's a multistage build example
+
+FROM node:alpine as builder
+
+## Install build toolchain, install node deps and compile native add-ons
+RUN apk add --no-cache python make g++
+RUN npm install [ your npm dependencies here ]
+
+FROM node:alpine as app
+
+## Copy built node modules and binaries without including the toolchain
+COPY --from=builder node_modules .
+</code></pre>
+
+<p>这里感觉到了 GFW 在浪费我的时间，赶快使用 APK 的国内 mirrors。</p>
+
+<pre><code>sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+</code></pre>
+
+<p>至此 node-sass 风波才算过去</p>
+
+<h4 id="docker-multistage-build">docker multistage build</h4>
+
+<p>经隔壁组大佬提醒，我可以看一下 docker multistage build 是否可以解决我的问题。 multistage build 确实是一个比较有意思的模式，不过我们尝试。以后有时间可以再试。</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<p>1、<a href="https://hackernoon.com/using-yarn-with-docker-c116ad289d56">Using Yarn with Docker</a></p>
+
+<p>2、<a href="https://github.com/sass/node-sass/issues/2605">Node alpine 11.10 not compatile</a></p>
+
+<p>3、<a href="https://github.com/sass/node-sass/releases">Node-sass Release</a></p>
+
+<p>4、<a href="https://mirrors.ustc.edu.cn/help/alpine.html">https://mirrors.ustc.edu.cn/help/alpine.html</a></p>
+
+<p>5、<a href="https://hub.docker.com/r/cscheide/node-sass/dockerfile">cscheide/node-sass
+</a></p>
+
+<p>6、<a href="https://codefresh.io/docker-tutorial/not-ignore-dockerignore/">Do not ignore .dockerignore (it’s expensive and potentially dangerous)</a></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/web"><span class="tag">Web</span></a></li>
+        
+          <li><a href="/tags/frontend"><span class="tag">FrontEnd</span></a></li>
+        
+          <li><a href="/tags/docker"><span class="tag">Docker</span></a></li>
+        
+          <li><a href="/tags/dockerfile"><span class="tag">Dockerfile</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>
