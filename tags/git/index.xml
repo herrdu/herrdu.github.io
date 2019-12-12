@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on HerrDu&#39;s Blog</title>
+    <title>Git on HerrDu&#39;s Blog</title>
     <link>/tags/git/</link>
-    <description>Recent content in git on HerrDu&#39;s Blog</description>
+    <description>Recent content in Git on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 27 Jun 2016 12:12:28 +0000</lastBuildDate>

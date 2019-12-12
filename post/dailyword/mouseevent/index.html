@@ -50,7 +50,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6">
+<meta name="generator" content="Hugo 0.54.0">
 
 
 <link rel="canonical" href="/post/dailyword/mouseevent/">
@@ -253,40 +253,42 @@ interface MouseEvent : UIEvent {
 
 <p>3：第四个按钮被按下，通常指浏览器后退按钮</p>
 
-<p>4：第五个按钮被按下，通常指浏览器的前进按钮</p>
+<p>4：第五个按钮被按下，通常指浏览器的前进按钮</p></li>
+</ul>
 
 <pre><code>&lt;script&gt;
 var whichButton = function (e) {
-// Handle different event models
-var e = e || window.event;
-var btnCode;
+    // Handle different event models
+    var e = e || window.event;
+    var btnCode;
 
-if ('object' === typeof e) {
-    btnCode = e.button;
+    if ('object' === typeof e) {
+        btnCode = e.button;
 
-    switch (btnCode) {
-        case 0:
-            console.log('Left button clicked.');
-        break;
+        switch (btnCode) {
+            case 0:
+                console.log('Left button clicked.');
+            break;
 
-        case 1:
-            console.log('Middle button clicked.');
-        break;
+            case 1:
+                console.log('Middle button clicked.');
+            break;
 
-        case 2:
-            console.log('Right button clicked.');
-        break;
+            case 2:
+                console.log('Right button clicked.');
+            break;
 
-        default:
-            console.log('Unexpected code: ' + btnCode);
+            default:
+                console.log('Unexpected code: ' + btnCode);
+        }
     }
-}
 }
 &lt;/script&gt;
 
 &lt;button onmouseup=&quot;whichButton(event);&quot; oncontextmenu=&quot;event.preventDefault();&quot;&gt;Click with mouse...&lt;/button&gt;
-</code></pre></li>
+</code></pre>
 
+<ul>
 <li><p>MouseEvent.buttons<br />
 每一个按键都用一个给定的数（见下文）表示。如果同时多个按键被按下，buttons 的值为各键对应值做与计算（|）后的值。例如，如果右键（2）和滚轮键（4）被同时按下，buttons 的值为 2 | 4 = 6。<br />
 返回值列表如下：</p>
@@ -367,12 +369,12 @@ if ('object' === typeof e) {
 <h4 id="方法">方法</h4>
 
 <ul>
-<li><p>getModifierState()<br />
-方法返回一个布尔值，表示有没有按下特定的功能键。它的参数是一个表示功能键的字符串。</p>
+<li>getModifierState()<br />
+方法返回一个布尔值，表示有没有按下特定的功能键。它的参数是一个表示功能键的字符串。</li>
+</ul>
 
 <pre><code>var active =​ event.getModifierState(keyArg);
-</code></pre></li>
-</ul>
+</code></pre>
 
 <h4 id="参考文档">参考文档</h4>
 
@@ -397,7 +399,7 @@ if ('object' === typeof e) {
       </ul>
       
       <p class="post-copyright">
-        
+        This post was published <strong>141</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     

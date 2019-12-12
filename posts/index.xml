@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on HerrDu&#39;s Blog</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Oct 2019 09:55:20 +0800</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GO中的Package——Error</title>
+      <link>/posts/golang/package/error/</link>
+      <pubDate>Fri, 18 Oct 2019 09:55:20 +0800</pubDate>
+      
+      <guid>/posts/golang/package/error/</guid>
+      <description>Error 包实现了几个操作 errors 的方法。使用起来非常简单，而 New 方法需要的内容只是一个段文本。
+New 操作
+err := errors.New(&amp;quot;emit macho dwarf: elf header corrupted&amp;quot;) if err != nil { fmt.Print(err) }  Unwrap 方法
+errors.Unwrap(fmt.Errorf(&amp;quot;... %w ...&amp;quot;, ..., err, ...))  </description>
+    </item>
+    
+  </channel>
+</rss>

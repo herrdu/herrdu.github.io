@@ -53,7 +53,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6">
+<meta name="generator" content="Hugo 0.54.0">
 
 
 <link rel="canonical" href="/post/install-greenplum/">
@@ -251,23 +251,29 @@
 <p>GP 在 6.x 版本的文档里提供的 yum 和 apt 两种安装方式。我使用的<a href="https://github.com/greenplum-db/gpdb/releases">6.0.0-beta.6</a>这个版本，似乎只有这个版本在 github 上有 assets，其它版本的主要注册 Pivotal 的帐号，且无法下载。</p>
 
 <ol>
-<li><p>yum install</p>
+<li>yum install</li>
+</ol>
 
 <pre><code>yum install ./greenplum-db-&lt;version&gt;-&lt;platform&gt;.rpm
-</code></pre></li>
+</code></pre>
 
-<li><p>创建 gpadmin 用户</p>
+<ol>
+<li>创建 gpadmin 用户</li>
+</ol>
 
 <pre><code>useradd gpadmin
-</code></pre></li>
+</code></pre>
 
-<li><p>修改安装目录的 owner 与 group</p>
+<ol>
+<li>修改安装目录的 owner 与 group</li>
+</ol>
 
 <pre><code>chown -R gpadmin /usr/local/greenplum*
 chgrp -R gpadmin /usr/local/greenplum*
-</code></pre></li>
+</code></pre>
 
-<li><p>实现 master 与 segments 之间的无密码登录</p></li>
+<ol>
+<li>实现 master 与 segments 之间的无密码登录</li>
 </ol>
 
 <h4 id="确认-master-与-segments-的-gp-安装是否正确">确认 master 与 segments 的 GP 安装是否正确</h4>
@@ -289,12 +295,14 @@ chgrp -R gpadmin /usr/local/greenplum*
 <h4 id="初始化-gp-的配置">初始化 GP 的配置</h4>
 
 <ol>
-<li><p>从 GP 的默认配置文件里面 copy gpinitsystem_config 出来</p>
+<li>从 GP 的默认配置文件里面 copy gpinitsystem_config 出来</li>
+</ol>
 
 <pre><code>cp $GPHOME/docs/cli_help/gpconfigs/gpinitsystem_config /home/gpadmin/gpconfigs/gpinitsystem_config
-</code></pre></li>
+</code></pre>
 
-<li><p>修改 gpinitsystem_config</p></li>
+<ol>
+<li>修改 gpinitsystem_config</li>
 </ol>
 
 <p>配置文件里面的大部分内容不需要修改的，不过还是需要注意的是下面几个值：</p>
@@ -308,20 +316,20 @@ chgrp -R gpadmin /usr/local/greenplum*
 <p>declare -a DATA_DIRECTORY 里面的值会决定一个主机上可以安装几个 segments 实例。</p>
 
 <ol>
-<li><p>执行 gpinitsystem 命令，进行初始化配置</p>
+<li>执行 gpinitsystem 命令，进行初始化配置</li>
+</ol>
 
 <pre><code>gpinitsystem -c gpconfigs/gpinitsystem_config -h gpconfigs/hostfile_gpinitsystem
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p>hostfile_gpinitsyste 是一个列有 segment 机子的文本，需要主动去写</p>
 
 <ol>
-<li><p>创建成功</p>
+<li>创建成功</li>
+</ol>
 
 <pre><code>=&gt; Greenplum Database instance successfully created.
-</code></pre></li>
-</ol>
+</code></pre>
 
 <h4 id="psql-连接数据库">PSQL 连接数据库</h4>
 
@@ -359,7 +367,7 @@ chgrp -R gpadmin /usr/local/greenplum*
       </ul>
       
       <p class="post-copyright">
-        
+        This post was published <strong>125</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     

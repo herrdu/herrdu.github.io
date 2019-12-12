@@ -50,7 +50,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6">
+<meta name="generator" content="Hugo 0.54.0">
 
 
 <link rel="canonical" href="/post/identifybywechatwork/">
@@ -216,41 +216,44 @@
 
 <ol>
 <li>点击小程序的认证按钮，触发 wx.qy.login 来获取企业微信的 code</li>
-
-<li><p>获取小程序的 access_token</p>
+<li>获取小程序的 access_token</li>
+</ol>
 
 <pre><code>https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=********&amp;corpsecret=********
-</code></pre></li>
+</code></pre>
 
-<li><p>使用企业微信的 codeToSession 接口获取 session_key 和 userid</p>
+<ol>
+<li>使用企业微信的 codeToSession 接口获取 session_key 和 userid</li>
+</ol>
 
 <pre><code>https://qyapi.weixin.qq.com/cgi-bin/miniprogram/jscode2session?access_token=**********&amp;js_code=**********&amp;grant_type=authorization_code
 
-</code></pre></li>
+</code></pre>
 
-<li><p>根据 userid 获取个人信息，如果成功可以则可以认证该人为公司员工。</p>
+<ol>
+<li>根据 userid 获取个人信息，如果成功可以则可以认证该人为公司员工。</li>
+</ol>
 
 <pre><code>https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=***********&amp;userid=***********
 
 返回数据格式
 
 {
-&quot;errcode&quot;: 0,
-&quot;errmsg&quot;: &quot;ok&quot;,
-&quot;userid&quot;: &quot;zhangsan&quot;,
-&quot;name&quot;: &quot;李四&quot;,
-&quot;department&quot;: [1, 2],
-&quot;position&quot;: &quot;后台工程师&quot;,
-&quot;mobile&quot;: &quot;15913215421&quot;,
-&quot;gender&quot;: &quot;1&quot;,
-&quot;email&quot;: &quot;zhangsan@gzdev.com&quot;,
-&quot;weixinid&quot;: &quot;lisifordev&quot;,  
-&quot;avatar&quot;: &quot;http://wx.qlogo.cn/mmopen/ajNVdqHZLLA3WJ6DSZUfiakYe37PKnQhBIeOQBO4czqrnZDS79FH5Wm5m4X69TBicnHFlhiafvDwklOpZeXYQQ2icg/0&quot;,
-&quot;status&quot;: 1,
-&quot;extattr&quot;: {&quot;attrs&quot;:[{&quot;name&quot;:&quot;爱好&quot;,&quot;value&quot;:&quot;旅游&quot;},{&quot;name&quot;:&quot;卡号&quot;,&quot;value&quot;:&quot;1234567234&quot;}]}
+   &quot;errcode&quot;: 0,
+   &quot;errmsg&quot;: &quot;ok&quot;,
+   &quot;userid&quot;: &quot;zhangsan&quot;,
+   &quot;name&quot;: &quot;李四&quot;,
+   &quot;department&quot;: [1, 2],
+   &quot;position&quot;: &quot;后台工程师&quot;,
+   &quot;mobile&quot;: &quot;15913215421&quot;,
+   &quot;gender&quot;: &quot;1&quot;,
+   &quot;email&quot;: &quot;zhangsan@gzdev.com&quot;,
+   &quot;weixinid&quot;: &quot;lisifordev&quot;,  
+   &quot;avatar&quot;: &quot;http://wx.qlogo.cn/mmopen/ajNVdqHZLLA3WJ6DSZUfiakYe37PKnQhBIeOQBO4czqrnZDS79FH5Wm5m4X69TBicnHFlhiafvDwklOpZeXYQQ2icg/0&quot;,
+   &quot;status&quot;: 1,
+   &quot;extattr&quot;: {&quot;attrs&quot;:[{&quot;name&quot;:&quot;爱好&quot;,&quot;value&quot;:&quot;旅游&quot;},{&quot;name&quot;:&quot;卡号&quot;,&quot;value&quot;:&quot;1234567234&quot;}]}
 }
-</code></pre></li>
-</ol></article>
+</code></pre></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -264,7 +267,7 @@
       </ul>
       
       <p class="post-copyright">
-        
+        This post was published <strong>117</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     

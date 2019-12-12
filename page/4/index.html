@@ -45,7 +45,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6">
+<meta name="generator" content="Hugo 0.54.0">
 
 
 <link rel="canonical" href="/">
@@ -189,6 +189,50 @@
   
    <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%B9%B3%E5%8F%B0%E7%9A%84cdn%E4%BD%BF%E7%94%A8/" class="post-link">腾讯云平台的cdn使用</a></h3>
+    <p class="post-meta">@ · Sep 26, 2016 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">公司的 web 平台搭建在了腾讯云上，腾讯云提供了一系列的服务，为 web 开发提供了不错的解决方案。其中之一就是 cdn 服务。
+cdn 技术以经常听说过，但是平没有自己配置过。这次有机会实践一下，写下此文以做记录， 供后人参考。
+1. 初始腾讯云平台-yun.qq.com 腾讯云平台提供了 cos 服务、cdn 服务、域名管理服务、域名解携服务等，这几项服务都是和 cdn 有关联的。
+2. cdn 服务的类型 cdn 服务分 cos 源和自由源两种。
+ cos 源就是将 cdn 路径指向 cos 服务的文件夹。每次我们使用的时候先把文件传上去，然后得到文件的路径，拿着路径到项目中使用即可。个人觉得，这种适合万年不变的文件使用 自由源，是 cdn 指向我们的应用服务器。然后将域名解析的地方解析到 cdn 提供的一个路径即可。这样用户每次访问的时候先到 cdn 上先查询资源。 cdn 刷新。既然 cdn 上会有我们的缓存文件，那么每次我们发布应用的的时候，都应该刷新 cdn 上的资源。  3. 自由源 cdn 的配置  进入云管理平台，添加一个域名：如 herrdu.cc。 配置源站 ip，一般指向应用服务器；有负载均衡的服务器应该填写负载均衡服务器上的 ip 缓存过期配置     类型 内容 刷新时间     文件类型 .</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%B9%B3%E5%8F%B0%E7%9A%84cdn%E4%BD%BF%E7%94%A8/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="/post/%E5%89%8D%E7%AB%AF%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/" class="post-link">前端命名规范</a></h3>
+    <p class="post-meta">@ · Sep 26, 2016 · 7 min read</p>
+  </header>
+  
+  <p class="post-summary">前端命名规范 纵览各家命名规范之后，决定参照腾讯的命名规范组建自己的一套命名规则
+1.工程命名规则 全部使用小写
+例如：my_project_name
+2.目录命名 参照项目命名规则；
+有复数结构时，要采用复数命名法。
+例：scripts, styles, images, data_models
+3.JS 文件命名 参照项目命名规则。
+例：account_model.js
+4.CSS, SCSS 文件命名 参照项目命名规则。
+例：retina_sprites.scss
+5.HTML 文件命名 参照项目命名规则。
+例：error_report.html
+HTML 规范 语法  缩进使用 soft tab（4 个空格）；
+ 嵌套的节点应该缩进；
+ 在属性上，使用双引号，不要使用单引号；
+ 属性名全小写，用中划线做分隔符；
+ 不要在自动闭合标签结尾处使用斜线（HTML5 规范 指出他们是可选的）；
+ 不要忽略可选的关闭标签，例： 和 。
+  &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Page title&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;img src=&#34;images/company_logo.png&#34; alt=&#34;Company&#34;&gt; &lt;h1 class=&#34;hello-world&#34;&gt;Hello, world!&lt;/h1&gt; &lt;/body&gt; &lt;/html&gt;  HTML5 doctype 在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/%E5%89%8D%E7%AB%AF%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="/post/ssh-%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/" class="post-link">ssh 无密码登录</a></h3>
     <p class="post-meta">@ · Sep 26, 2016 · 0 min read</p>
   </header>
@@ -295,38 +339,6 @@ session.py
  @(title: String = &#34;后台管理系统&#34;)(keywords: String = &#34;后台管理系统&#34;)(description: String = &#34;后台管理系统&#34;)(style: Html)(content: Html)(javascript: Html) &lt;!DOCTYPE html &lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34; lang=&#34;zh-cn&#34; xml:lang=&#34;zh-cn&#34; &lt;head &lt;meta charset=&#34;</p>
   <footer class="post-footer">
     <a class="read-more" href="/post/%E5%87%A0%E7%A7%8D%E9%A6%96%E9%A1%B5%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%88%B6%E4%BD%9C/">Read More →</a>
-  </footer>
-</article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/2016%E5%B9%B4%E6%98%A5%E8%8A%82%E5%B0%8F%E8%AE%B0/" class="post-link">2016 年春节小计</a></h3>
-    <p class="post-meta">@ · Feb 14, 2016 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">1. 大侄子进门就要手机 2. 孩子们一天看 12 个小时的电视 3. 既红且专的春晚 4. 赵大户和赵暴发户家的“豪宅” 5. 肠胃病高发        虽然仍是不舍，猴年短暂的春节时光还是过去了。步伐轻盈，就像常常练习舞蹈的小女孩的一样。轻快的是时光，收获的也多是轻松的生活。在北京工作一年，也终于和家人一起做做家务，聊聊家常。除了这些温馨之外，有几件事是格外有感触的。
-1. 大侄子进门就要手机 我的手机上装了《纪念碑谷》这款游戏，深受孩子的喜爱。最终的结果就是我一进家门，上幼儿园的侄子就来到了我身边，向我讨要手机。不给的话就自己将手悄悄的深入的我的口袋里面，然后摸出来。当然，我回家之后我用的手机就不再是我的了。
-2. 孩子们一天看 12 个小时的电视 由于住进了小区房，孩子们的活动的地方就小了。他们每天会看上 12 个小时以上的电视剧，导致的结果是告诉他们什么事情，他们都装作听不见。看着他们这样的虚度着时光我只有干着急，我小的时候和他们一样没有自己的兴趣。不一样的事每天跟着大孩子导出跑。
-3. 既红且专的春晚 21 世纪以来，春晚就一直被人诟病。个人觉得诟病的可能的原因是，观众的要求太高了。春晚早些的时候，娱乐节目很少。那些老师们匠心独运的作品容隐得到全国的观众的认可。现在大型的娱乐节目常态化，春晚很难再有质的超越，也难再受到全国关注的广泛好评。但是今年的春晚，还真是让我对春晚的刮目相看啊。之前不能灵活的加入应和猴年的孙悟空的片段，还直接排了一场既 H 且 Z 的春晚。对给自己满分的 X 导蛮佩服的。就这样吧，不再吐槽了。
-4. 赵大户和赵暴发户家的“豪宅” “豪宅”这个词是相对来说的，相对于村里已经是相当豪华的了。
-先说赵暴发户家曾家一度困难到儿子的结婚礼钱无法凑齐，经过两三年的对外宣称的房地产买卖成为了村里的暴发户。去年在村里盖了一幢二层小楼，自带敌体。家中置有 2 米&#43;的大鱼缸，里面养有七八条金龙，挂有赵忠祥题字一幅并置有一套红木家具。此外目测有路虎一辆。赵暴发户的赚钱速度真是让我敬佩，但是身上却有了一身戾气，希望以后不被这种戾气反噬为好。
-也可能是迫于赵暴发户的新楼碍了面子，赵大户家老兄弟二人各自重新翻修了自己的住宅。为自家的住宅装上了地暖，各自置办了两套红木的家具。其中有一个老船木的高背靠椅也是相当气派啊，椅子前的是一个可以作为大会议桌的茶道。想他们如果在那里品茶是不是可以流觞曲水呢？
-两家人的豪宅成为了今年村里街头巷尾的谈资，也领先我们建成了我们这些外出求学的心中想想的房子。
-5. 肠胃病高发 年初三，我就因为急性肠胃炎去医院打了点滴。后来上班后发现春节后有胃肠不舒适的还有更多的同事。乃至有人已经请了两天假了。从此我也记住了，肠胃不舒适的时候千万不能喝酒，不能喝酒，不能喝酒。</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/2016%E5%B9%B4%E6%98%A5%E8%8A%82%E5%B0%8F%E8%AE%B0/">Read More →</a>
-  </footer>
-</article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/%E4%BA%BA%E7%94%9F%E7%9F%AD%E6%9A%82/" class="post-link">人生短暂</a></h3>
-    <p class="post-meta">@ · Feb 1, 2016 · 8 min read</p>
-  </header>
-  
-  <p class="post-summary">注：转自保罗•格雷厄姆的《Life is short》
-Life is short, as everyone knows. When I was a kid I used to wonder about this. Is life actually short, or are we really complaining about its finiteness? Would we be just as likely to feel life was short if we lived 10 times as long?
-Since there didn’t seem any way to answer this question, I stopped wondering about it. Then I had kids. That gave me a way to answer the question, and the answer is that life actually is short.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/%E4%BA%BA%E7%94%9F%E7%9F%AD%E6%9A%82/">Read More →</a>
   </footer>
 </article>
  

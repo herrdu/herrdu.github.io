@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Navigator on HerrDu&#39;s Blog</title>
+    <link>/tags/navigator/</link>
+    <description>Recent content in Navigator on HerrDu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 22 Oct 2019 09:24:30 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/navigator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Navigator Online</title>
+      <link>/post/chromedocs/navigatoronline/</link>
+      <pubDate>Tue, 22 Oct 2019 09:24:30 +0800</pubDate>
+      
+      <guid>/post/chromedocs/navigatoronline/</guid>
+      <description>&lt;p&gt;有时，我们的产品的客户会处在离线的状态。为了用户的优质体验，会为离线用户提供离线的用户体验。因此在 HTMl5 的 API 里面多了一个 &lt;code&gt;navigator.onLine&lt;/code&gt; 属性。这个属性会根据设备是否联网返回 &lt;code&gt;true&lt;/code&gt; 或者 &lt;code&gt;false&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (navigator.onLine) {
+  console.log(&#39;ONLINE!&#39;);
+} else {
+  console.log(&#39;Connection flaky&#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

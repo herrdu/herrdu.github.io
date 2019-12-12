@@ -6,10 +6,47 @@
     <description>Recent content on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Oct 2019 22:19:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2019 09:24:30 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Navigator Online</title>
+      <link>/post/chromedocs/navigatoronline/</link>
+      <pubDate>Tue, 22 Oct 2019 09:24:30 +0800</pubDate>
+      
+      <guid>/post/chromedocs/navigatoronline/</guid>
+      <description>&lt;p&gt;有时，我们的产品的客户会处在离线的状态。为了用户的优质体验，会为离线用户提供离线的用户体验。因此在 HTMl5 的 API 里面多了一个 &lt;code&gt;navigator.onLine&lt;/code&gt; 属性。这个属性会根据设备是否联网返回 &lt;code&gt;true&lt;/code&gt; 或者 &lt;code&gt;false&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (navigator.onLine) {
+  console.log(&#39;ONLINE!&#39;);
+} else {
+  console.log(&#39;Connection flaky&#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>VueRouter 里的 query 类型</title>
+      <link>/post/dailyword/query-in-vuerouter/</link>
+      <pubDate>Fri, 18 Oct 2019 13:57:17 +0800</pubDate>
+      
+      <guid>/post/dailyword/query-in-vuerouter/</guid>
+      <description>&lt;p&gt;为什么 VueRouter 里的 query 的参数类型是 &lt;code&gt;string | (string | null)[]&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GO中的Package——Error</title>
+      <link>/posts/golang/package/error/</link>
+      <pubDate>Fri, 18 Oct 2019 09:55:20 +0800</pubDate>
+      
+      <guid>/posts/golang/package/error/</guid>
+      <description>Error 包实现了几个操作 errors 的方法。使用起来非常简单，而 New 方法需要的内容只是一个段文本。
+New 操作
+err := errors.New(&amp;quot;emit macho dwarf: elf header corrupted&amp;quot;) if err != nil { fmt.Print(err) }  Unwrap 方法
+errors.Unwrap(fmt.Errorf(&amp;quot;... %w ...&amp;quot;, ..., err, ...))  </description>
+    </item>
     
     <item>
       <title>Enum_in_TypeScript</title>
@@ -37,7 +74,7 @@
       <pubDate>Mon, 19 Aug 2019 12:59:11 +0800</pubDate>
       
       <guid>/post/usingtypescriptinnuxt/</guid>
-      <description></description>
+      <description>The remaining content of your post.</description>
     </item>
     
     <item>
@@ -477,7 +514,7 @@ HTML 规范 语法  缩进使用 soft tab（4 个空格）；
  属性名全小写，用中划线做分隔符；
  不要在自动闭合标签结尾处使用斜线（HTML5 规范 指出他们是可选的）；
  不要忽略可选的关闭标签，例： 和 。
-&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Page title&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;img src=&amp;quot;images/company_logo.png&amp;quot; alt=&amp;quot;Company&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;hello-world&amp;quot;&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;   HTML5 doctype 在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；</description>
+  &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Page title&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;img src=&amp;quot;images/company_logo.png&amp;quot; alt=&amp;quot;Company&amp;quot;&amp;gt; &amp;lt;h1 class=&amp;quot;hello-world&amp;quot;&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  HTML5 doctype 在页面开头使用这个简单地 doctype 来启用标准模式，使其在每个浏览器中尽可能一致的展现；</description>
     </item>
     
     <item>

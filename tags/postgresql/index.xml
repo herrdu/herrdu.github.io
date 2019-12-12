@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PostgreSql on HerrDu&#39;s Blog</title>
+    <title>Postgresql on HerrDu&#39;s Blog</title>
     <link>/tags/postgresql/</link>
-    <description>Recent content in PostgreSql on HerrDu&#39;s Blog</description>
+    <description>Recent content in Postgresql on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 08 Aug 2019 10:58:56 +0800</lastBuildDate>
