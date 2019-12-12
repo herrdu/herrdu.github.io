@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Typescript on HerrDu&#39;s Blog</title>
-    <link>/tags/typescript/</link>
-    <description>Recent content in Typescript on HerrDu&#39;s Blog</description>
+    <title>Optionchaining on HerrDu&#39;s Blog</title>
+    <link>/tags/optionchaining/</link>
+    <description>Recent content in Optionchaining on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 12 Dec 2019 09:33:51 +0800</lastBuildDate>
     
-	<atom:link href="/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/optionchaining/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -41,17 +41,6 @@ const maybeArtistBio = album.artist &amp;amp;&amp;amp; album.artist.bio;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对&lt;code&gt;?.&lt;/code&gt;编译后的结果也产生了兴趣。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Enum_in_TypeScript</title>
-      <link>/post/dailyword/enun_in_typescript/</link>
-      <pubDate>Thu, 17 Oct 2019 22:19:29 +0800</pubDate>
-      
-      <guid>/post/dailyword/enun_in_typescript/</guid>
-      <description>&lt;p&gt;在类似于C、C#和Java这些强类型的语言里都会有一个数据类型是 —— enumerations（enums是简称）。不过在JS里面似乎并没有这个数据类型。庆幸的是，在MS开发的TypeScript中提供了这个类似，我们可以在TS2.4以后的版本上使用。Enums可以让我们声明和定义一个常量数据集来阐述某一个概念下的相关的数值和字符含义。&lt;/p&gt;
-
-&lt;h4 id=&#34;先看一下enum的语法&#34;&gt;先看一下Enum的语法&lt;/h4&gt;</description>
     </item>
     
   </channel>

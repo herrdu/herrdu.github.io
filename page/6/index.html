@@ -189,6 +189,26 @@
   
    <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="/post/virtualenvwrapper%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83/" class="post-link">virtualenvwrapper 的命令参考</a></h3>
+    <p class="post-meta">@ · Nov 13, 2015 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary"> 命令参考 下面所有的命令都是在终端中使用
+管理环境 创建一个新的环境，在 WORKON_HOME 中
+语法：
+ mkvirtualenv [-a project_path] [-i package] [-r requirements_file] [virtualenv options] ENVNAME  除了-a,-i,-r和-h的所有命令选项都会直接传递给 virtualenv。新的环境在初始化之后会自动被激活。
+ $ workon $ mkvirtualenv mynewenv New python executable in mynewenv/bin/python Installing setuptools............................................. .................................................................. .................................................................. done. (mynewenv)$ workon mynewenv (mynewenv)$  命令选项 -a，是用来关联已经存在的项目路径的新环境的
+命令选项 -i，在环境创建之后用来安装一个或多个安装包的（通过重复选项）
+命令选项 -r, 在用来指定一个存着等待安装软件列表的文件。这些参数会传递给 pip -r 来进行安装。
+也可以看看  premkvirtualenv postmkvirtualenv requirements file format  mktmpenv 在 WORKON_HOME 目录中创建新的环境
+语法：
+ mktmpenv [(-c|--cd)|(-n|--no-cd)] [VIRTUALENV_OPTIONS]  </p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/virtualenvwrapper%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="/post/virtualenvwrapper%E7%9A%84%E5%AE%89%E8%A3%85/" class="post-link">virtualenvwrapper的安装</a></h3>
     <p class="post-meta">@ · Oct 30, 2015 · 2 min read</p>
   </header>
@@ -346,30 +366,6 @@ Mongo 数据库图形管理工具：Mongohub
 最后这条很多文章都丢了，切记切记。 参考http://hearrain.com/2011/01/495</p>
   <footer class="post-footer">
     <a class="read-more" href="/post/uninstall-mysql/">Read More →</a>
-  </footer>
-</article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/r-install-rmysql-on-mac/" class="post-link">R install RMySQL on Mac</a></h3>
-    <p class="post-meta">@ · Dec 6, 2014 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">由于 RMySQL 不提供可以直接使用的安装包的原因，造成 RMySQL 安装步骤复杂，问题颇多。下面简述一些步骤：
-第一，安装 mysql 数据库 Mac 下安装 Mysql 参考：
-http://www.cnblogs.com/macro-cheng/archive/2011/10/25/mysql-001.html
-第二，下载 RMySQL 安装源文件
-http://cran.r-project.org/web/packages/RMySQL/index.html
-第三，安装 libmysqlclient 类库
-第四 执行下面语句，手动安装 RMysql
-R CMD INSTALL –configure-args=‘–with-mysql-dir=/usr/local/mysql-5.6.20-osx10.8-x86_64 –with-mysql-inc=/usr/local/mysql-5.6.20-osx10.8-x86_64/include –with-mysql-lib=/usr/local/mysql-5.6.20-osx10.8-x86_64/lib’ RMySQL_0.9-3.tar.gz
-第三步的时候有人说可以在 Rstudio 中使用 install.packages(“/path/to/package/RMySQL_0.9-3.tar.gz”,repos = NULL,type=“source”) 或 install.packages(“RMySQL”, type = “source”)语句。我尝试失败了，因此改用直接在 Terminal 中安装。
-遇到问题： 1:Error : .onLoad failed in loadNamespace() for ‘RMySQL’, details: 解决方法： step1:安装 libmysqlclient 类库
-执行 npm install mysql-libmysqlclient
-参考网站：http://my.oschina.net/u/923974/blog/205095
-step2:执行手动安装语句（语句中的路径要进行相应的修改）
-R CMD INSTALL –configure-args=‘–with-mysql-dir=/usr/local/mysql-5.6.20-osx10.8-x86_64 –with-mysql-inc=/usr/local/mysql-5.6.20-osx10.8-x86_64/include –with-mysql-lib=/usr/local/mysql-5.6.20-osx10.8-x86_64/lib’ RMySQL_0.9-3.tar.gz</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/r-install-rmysql-on-mac/">Read More →</a>
   </footer>
 </article>
  

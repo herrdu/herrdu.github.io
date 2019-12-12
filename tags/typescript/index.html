@@ -195,6 +195,23 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="/post/typescript/optionchaining/" class="post-link">OptionChaining 说起</a></h3>
+    <p class="post-meta">@HerrDu · Dec 12, 2019 · 1 min read</p>
+  </header>
+  
+    <img class="post-cover" src="https://www.typescriptlang.org/assets/images/bg_blueprint_2.svg" alt="OptionChaining 说起" lazyload="on">
+  
+  <p class="post-summary">在 TypeScript 3.7 中增加了一个叫 OptionChaining 的语法，语法如下:
+type AlbumAPIResponse = { title: string artist?: { name: string bio?: string previousAlbums?: string[] } }; declare const album: AlbumAPIResponse; // With optional chaining, you can write // code like this: const artistBio = album?.artist?.bio; // 替换了下面的语法: const maybeArtistBio = album.artist &amp;&amp; album.artist.bio;  OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对?.编译后的结果也产生了兴趣。
+</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/typescript/optionchaining/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="/post/dailyword/enun_in_typescript/" class="post-link">Enum_in_TypeScript</a></h3>
     <p class="post-meta">@Herr Du · Oct 17, 2019 · 3 min read</p>
   </header>

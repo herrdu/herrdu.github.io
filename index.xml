@@ -6,10 +6,42 @@
     <description>Recent content on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 22 Oct 2019 09:24:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Dec 2019 09:33:51 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OptionChaining 说起</title>
+      <link>/post/typescript/optionchaining/</link>
+      <pubDate>Thu, 12 Dec 2019 09:33:51 +0800</pubDate>
+      
+      <guid>/post/typescript/optionchaining/</guid>
+      <description>&lt;p&gt;在 TypeScript 3.7 中增加了一个叫 OptionChaining 的语法，语法如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;type AlbumAPIResponse = {
+  title: string
+  artist?: {
+    name: string
+    bio?: string
+    previousAlbums?: string[]
+  }
+};
+
+declare const album: AlbumAPIResponse;
+
+// With optional chaining, you can write
+// code like this:
+
+const artistBio = album?.artist?.bio;
+
+// 替换了下面的语法:
+
+const maybeArtistBio = album.artist &amp;amp;&amp;amp; album.artist.bio;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对&lt;code&gt;?.&lt;/code&gt;编译后的结果也产生了兴趣。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Navigator Online</title>

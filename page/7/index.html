@@ -189,6 +189,30 @@
   
    <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="/post/r-install-rmysql-on-mac/" class="post-link">R install RMySQL on Mac</a></h3>
+    <p class="post-meta">@ · Dec 6, 2014 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">由于 RMySQL 不提供可以直接使用的安装包的原因，造成 RMySQL 安装步骤复杂，问题颇多。下面简述一些步骤：
+第一，安装 mysql 数据库 Mac 下安装 Mysql 参考：
+http://www.cnblogs.com/macro-cheng/archive/2011/10/25/mysql-001.html
+第二，下载 RMySQL 安装源文件
+http://cran.r-project.org/web/packages/RMySQL/index.html
+第三，安装 libmysqlclient 类库
+第四 执行下面语句，手动安装 RMysql
+R CMD INSTALL –configure-args=‘–with-mysql-dir=/usr/local/mysql-5.6.20-osx10.8-x86_64 –with-mysql-inc=/usr/local/mysql-5.6.20-osx10.8-x86_64/include –with-mysql-lib=/usr/local/mysql-5.6.20-osx10.8-x86_64/lib’ RMySQL_0.9-3.tar.gz
+第三步的时候有人说可以在 Rstudio 中使用 install.packages(“/path/to/package/RMySQL_0.9-3.tar.gz”,repos = NULL,type=“source”) 或 install.packages(“RMySQL”, type = “source”)语句。我尝试失败了，因此改用直接在 Terminal 中安装。
+遇到问题： 1:Error : .onLoad failed in loadNamespace() for ‘RMySQL’, details: 解决方法： step1:安装 libmysqlclient 类库
+执行 npm install mysql-libmysqlclient
+参考网站：http://my.oschina.net/u/923974/blog/205095
+step2:执行手动安装语句（语句中的路径要进行相应的修改）
+R CMD INSTALL –configure-args=‘–with-mysql-dir=/usr/local/mysql-5.6.20-osx10.8-x86_64 –with-mysql-inc=/usr/local/mysql-5.6.20-osx10.8-x86_64/include –with-mysql-lib=/usr/local/mysql-5.6.20-osx10.8-x86_64/lib’ RMySQL_0.9-3.tar.gz</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/r-install-rmysql-on-mac/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="/post/dbdesigner/" class="post-link">Mac下数据建模软件推荐</a></h3>
     <p class="post-meta">@ · Nov 25, 2014 · 1 min read</p>
   </header>
@@ -319,19 +343,6 @@ In interviews and e-mail exchanges, six political operatives closely aligned wit
 下载地址：http://pan.baidu.com/s/1u2T1G 原文地址：http://bbs.maiyadi.com/thread-935221-1-1.html</p>
   <footer class="post-footer">
     <a class="read-more" href="/post/navicat/">Read More →</a>
-  </footer>
-</article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/howtofindmysqlpassword/" class="post-link">How to find mysql password</a></h3>
-    <p class="post-meta">@ · Oct 26, 2014 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">mac 上 mysql root 密码忘记或权限错误的解决办法
-这几天在折腾 mantis 发现总是连接 mysql 出错，就随手改了 root 权限，导致登录不上。 以下是还原 root 权限和更改 root 密码的最便捷方法。 1：装 mysql workbench 。可视化界面直接操作。 2：苹果-&gt;系统偏好设置-&gt;最下边点 mysql 在弹出页面中 关闭 mysql 服务 3：进入终端 输入： cd /usr/local/mysql/bin/ 回车后 登录管理员权限 sudo su 回车后输入以下命令来禁止 mysql 验证功能 ./mysqld_safe –skip-grant-tables &amp; 回车后 mysql 会自动重启，重启好了之后进入 mysql workbench 随便创建一个连接，然后用户名填 root （注意这里不会验证密码，所以填只要存在的账户就可以）。 再创建一个 server administration，选择刚创建的连接。 双击 server administration 左侧点击 security，右侧就可以看到所有用户权限表了，这个时候想怎么干都行了
-以下是部分说明： 用户权限表中 Limit Connectivity to Hosts Matching 表示登录地址限制，就是登录时候的 ip 地址 ，‘%’代表任意 Adminstrative Roles 是权限，如果发现你的 root 没有管理员权限了，就点这个选项卡全部勾选</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/howtofindmysqlpassword/">Read More →</a>
   </footer>
 </article>
  

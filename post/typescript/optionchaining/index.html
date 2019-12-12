@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>OptionChaining 说起</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  <meta name="author" content="HerrDu">
+  <meta name="description" content="在 TypeScript 3.7 中增加了一个叫 OptionChaining 的语法，语法如下:
+type AlbumAPIResponse = { title: string artist?: { name: string bio?: string previousAlbums?: string[] } }; declare const album: AlbumAPIResponse; // With optional chaining, you can write // code like this: const artistBio = album?.artist?.bio; // 替换了下面的语法: const maybeArtistBio = album.artist &amp;amp;&amp;amp; album.artist.bio;  OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对?.编译后的结果也产生了兴趣。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="OptionChaining 说起">
+    <meta name="twitter:description" content="在 TypeScript 3.7 中增加了一个叫 OptionChaining 的语法，语法如下:
+type AlbumAPIResponse = { title: string artist?: { name: string bio?: string previousAlbums?: string[] } }; declare const album: AlbumAPIResponse; // With optional chaining, you can write // code like this: const artistBio = album?.artist?.bio; // 替换了下面的语法: const maybeArtistBio = album.artist &amp;amp;&amp;amp; album.artist.bio;  OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对?.编译后的结果也产生了兴趣。
+">
+    <meta name="twitter:image" content="https://www.typescriptlang.org/assets/images/bg_blueprint_2.svg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="OptionChaining 说起">
+  <meta property="og:description" content="在 TypeScript 3.7 中增加了一个叫 OptionChaining 的语法，语法如下:
+type AlbumAPIResponse = { title: string artist?: { name: string bio?: string previousAlbums?: string[] } }; declare const album: AlbumAPIResponse; // With optional chaining, you can write // code like this: const artistBio = album?.artist?.bio; // 替换了下面的语法: const maybeArtistBio = album.artist &amp;amp;&amp;amp; album.artist.bio;  OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对?.编译后的结果也产生了兴趣。
+">
+  <meta property="og:url" content="/post/typescript/optionchaining/">
+  <meta property="og:image" content="https://www.typescriptlang.org/assets/images/bg_blueprint_2.svg">
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0">
+
+
+<link rel="canonical" href="/post/typescript/optionchaining/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">OptionChaining 说起</h1>
+      <p class="post-meta">@HerrDu · Dec 12, 2019 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>在 TypeScript 3.7 中增加了一个叫 OptionChaining 的语法，语法如下:</p>
+
+<pre><code>type AlbumAPIResponse = {
+  title: string
+  artist?: {
+    name: string
+    bio?: string
+    previousAlbums?: string[]
+  }
+};
+
+declare const album: AlbumAPIResponse;
+
+// With optional chaining, you can write
+// code like this:
+
+const artistBio = album?.artist?.bio;
+
+// 替换了下面的语法:
+
+const maybeArtistBio = album.artist &amp;&amp; album.artist.bio;
+</code></pre>
+
+<p>OptionChaining 让代码书写起来更加自然，这可能会很快的在使用者中推行开来。在使用的同时，我对<code>?.</code>编译后的结果也产生了兴趣。</p>
+
+<pre><code>OptionChaining 代码：
+
+const artistBio = album?.artist?.bio;
+
+编译后为：
+
+const artistBio = (_b = (_a = album) === null || _a === void 0 ? void 0 : _a.artist) === null || _b === void 0 ? void 0 : _b.bio;
+
+</code></pre>
+
+<p>对比之后不得不感谢 TypeScript 开发者们为我们节省的工作量。 在编译后的代码中有一个 <code>void 0</code> 引起了我的关注。这是是个什么样的值呢？ 自己默默的去 console 里面去敲了一下 ,得到下面的结果：</p>
+
+<pre><code>void 0
+undefined
+
+void 1
+undefined
+
+void true
+undefined
+
+
+void(1)
+undefined
+</code></pre>
+
+<p>既然结果是 <code>undefined</code>, 为什么不直接写  <code>undefined</code>，而是选择让引擎再去计算一次呢？</p>
+
+<p>求助 Google &hellip;. ,Google 告诉我们 <code>undefined</code>  大概有两个原因：</p>
+
+<ol>
+<li><code>undefined</code> 不是一个保留字，而是一个变量，在 es5 之前是可以被修改的。在 es5 之后给加上了 readonly 属性。不过在局部作用域中依然可以修改。</li>
+</ol>
+
+<pre><code>(function() {
+  var undefined = 10;
+
+  // 10 -- chrome
+  alert(undefined);
+})();
+
+(function() {
+  undefined = 10;
+
+  // undefined -- chrome
+  alert(undefined);
+})()
+</code></pre>
+
+<ol>
+<li><code>void 0</code> 比 <code>undefined</code> 节省字节。</li>
+</ol></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/typescript"><span class="tag">TypeScript</span></a></li>
+        
+          <li><a href="/tags/optionchaining"><span class="tag">OptionChaining</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

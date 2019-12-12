@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/typescript/optionchaining/</loc>
+    <lastmod>2019-12-12T09:33:51+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/chromedocs/navigatoronline/</loc>
     <lastmod>2019-10-22T09:24:30+08:00</lastmod>
   </url>
@@ -533,7 +538,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-10-22T09:24:30+08:00</lastmod>
+    <lastmod>2019-12-12T09:33:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -662,6 +667,12 @@
   </url>
   
   <url>
+    <loc>/tags/optionchaining/</loc>
+    <lastmod>2019-12-12T09:33:51+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/order/</loc>
     <lastmod>2019-07-25T11:23:43+08:00</lastmod>
     <priority>0</priority>
@@ -705,7 +716,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-10-22T09:24:30+08:00</lastmod>
+    <lastmod>2019-12-12T09:33:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -800,7 +811,7 @@
   
   <url>
     <loc>/tags/typescript/</loc>
-    <lastmod>2019-10-17T22:19:29+08:00</lastmod>
+    <lastmod>2019-12-12T09:33:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
