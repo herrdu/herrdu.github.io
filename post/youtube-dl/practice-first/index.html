@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>youtube-dl 的第一次实践</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  <link href="//hm.baidu.com" rel="dns-prefetch">
+
+  
+
+  
+  
+  <meta name="description" content=" 项目官网。 学习一个项目最为准确的就是看他的官网，它的官网上主要按照：文档、下载、支持、开发、关于五个模块来介绍的。 ">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="youtube-dl 的第一次实践">
+    <meta name="twitter:description" content=" 项目官网。 学习一个项目最为准确的就是看他的官网，它的官网上主要按照：文档、下载、支持、开发、关于五个模块来介绍的。 ">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="youtube-dl 的第一次实践">
+  <meta property="og:description" content=" 项目官网。 学习一个项目最为准确的就是看他的官网，它的官网上主要按照：文档、下载、支持、开发、关于五个模块来介绍的。 ">
+  <meta property="og:url" content="/post/youtube-dl/practice-first/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0">
+
+
+<link rel="canonical" href="/post/youtube-dl/practice-first/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="HerrDu&#39;s Blog">
+<meta name="msapplication-tooltip" content="HerrDu&#39;s Blog">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+<link rel="preload" href="/styles/custom.min.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.png" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="/styles/custom.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">HerrDu&#39;s Blog</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">关于我</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:du_y_t@hotmail.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/https://github.com/herrdu" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">youtube-dl 的第一次实践</h1>
+      <p class="post-meta">@ · Jan 9, 2020 · 5 min read</p>
+    </header>
+    <article class="post-content"><ol>
+<li><a href="https://ytdl-org.github.io/youtube-dl/">项目官网</a>。 学习一个项目最为准确的就是看他的官网，它的官网上主要按照：文档、下载、支持、开发、关于五个模块来介绍的。</li>
+</ol>
+
+<ol>
+<li><a href="https://ytdl-org.github.io/youtube-dl/download.html">安装与下载</a></li>
+</ol>
+
+<ul>
+<li>pip 安装</li>
+<li>brew 安装</li>
+</ul>
+
+<ol>
+<li>命令实战</li>
+</ol>
+
+<pre><code>1. 查看所有的字幕
+
+youtube-dl --list-subs  https://www.youtube.com/watch\?v\=Mjqf2kkFLy8
+
+Language formats
+af       vtt, ttml, srv3, srv2, srv1
+sq       vtt, ttml, srv3, srv2, srv1
+am       vtt, ttml, srv3, srv2, srv1
+ar       vtt, ttml, srv3, srv2, srv1
+hy       vtt, ttml, srv3, srv2, srv1
+az       vtt, ttml, srv3, srv2, srv1
+bn       vtt, ttml, srv3, srv2, srv1
+eu       vtt, ttml, srv3, srv2, srv1
+be       vtt, ttml, srv3, srv2, srv1
+bs       vtt, ttml, srv3, srv2, srv1
+bg       vtt, ttml, srv3, srv2, srv1
+my       vtt, ttml, srv3, srv2, srv1
+ca       vtt, ttml, srv3, srv2, srv1
+ceb      vtt, ttml, srv3, srv2, srv1
+zh-Hans  vtt, ttml, srv3, srv2, srv1
+zh-Hant  vtt, ttml, srv3, srv2, srv1
+co       vtt, ttml, srv3, srv2, srv1
+hr       vtt, ttml, srv3, srv2, srv1
+cs       vtt, ttml, srv3, srv2, srv1
+da       vtt, ttml, srv3, srv2, srv1
+nl       vtt, ttml, srv3, srv2, srv1
+en       vtt, ttml, srv3, srv2, srv1
+eo       vtt, ttml, srv3, srv2, srv1
+et       vtt, ttml, srv3, srv2, srv1
+fil      vtt, ttml, srv3, srv2, srv1
+fi       vtt, ttml, srv3, srv2, srv1
+fr       vtt, ttml, srv3, srv2, srv1
+gl       vtt, ttml, srv3, srv2, srv1
+ka       vtt, ttml, srv3, srv2, srv1
+de       vtt, ttml, srv3, srv2, srv1
+el       vtt, ttml, srv3, srv2, srv1
+gu       vtt, ttml, srv3, srv2, srv1
+ht       vtt, ttml, srv3, srv2, srv1
+ha       vtt, ttml, srv3, srv2, srv1
+haw      vtt, ttml, srv3, srv2, srv1
+iw       vtt, ttml, srv3, srv2, srv1
+hi       vtt, ttml, srv3, srv2, srv1
+hmn      vtt, ttml, srv3, srv2, srv1
+hu       vtt, ttml, srv3, srv2, srv1
+is       vtt, ttml, srv3, srv2, srv1
+ig       vtt, ttml, srv3, srv2, srv1
+id       vtt, ttml, srv3, srv2, srv1
+ga       vtt, ttml, srv3, srv2, srv1
+it       vtt, ttml, srv3, srv2, srv1
+ja       vtt, ttml, srv3, srv2, srv1
+jv       vtt, ttml, srv3, srv2, srv1
+kn       vtt, ttml, srv3, srv2, srv1
+kk       vtt, ttml, srv3, srv2, srv1
+km       vtt, ttml, srv3, srv2, srv1
+ko       vtt, ttml, srv3, srv2, srv1
+ku       vtt, ttml, srv3, srv2, srv1
+ky       vtt, ttml, srv3, srv2, srv1
+lo       vtt, ttml, srv3, srv2, srv1
+la       vtt, ttml, srv3, srv2, srv1
+lv       vtt, ttml, srv3, srv2, srv1
+lt       vtt, ttml, srv3, srv2, srv1
+lb       vtt, ttml, srv3, srv2, srv1
+mk       vtt, ttml, srv3, srv2, srv1
+mg       vtt, ttml, srv3, srv2, srv1
+ms       vtt, ttml, srv3, srv2, srv1
+ml       vtt, ttml, srv3, srv2, srv1
+mt       vtt, ttml, srv3, srv2, srv1
+mi       vtt, ttml, srv3, srv2, srv1
+mr       vtt, ttml, srv3, srv2, srv1
+mn       vtt, ttml, srv3, srv2, srv1
+ne       vtt, ttml, srv3, srv2, srv1
+no       vtt, ttml, srv3, srv2, srv1
+ny       vtt, ttml, srv3, srv2, srv1
+ps       vtt, ttml, srv3, srv2, srv1
+fa       vtt, ttml, srv3, srv2, srv1
+pl       vtt, ttml, srv3, srv2, srv1
+pt       vtt, ttml, srv3, srv2, srv1
+pa       vtt, ttml, srv3, srv2, srv1
+ro       vtt, ttml, srv3, srv2, srv1
+ru       vtt, ttml, srv3, srv2, srv1
+sm       vtt, ttml, srv3, srv2, srv1
+gd       vtt, ttml, srv3, srv2, srv1
+sr       vtt, ttml, srv3, srv2, srv1
+sn       vtt, ttml, srv3, srv2, srv1
+sd       vtt, ttml, srv3, srv2, srv1
+si       vtt, ttml, srv3, srv2, srv1
+sk       vtt, ttml, srv3, srv2, srv1
+sl       vtt, ttml, srv3, srv2, srv1
+so       vtt, ttml, srv3, srv2, srv1
+st       vtt, ttml, srv3, srv2, srv1
+es       vtt, ttml, srv3, srv2, srv1
+su       vtt, ttml, srv3, srv2, srv1
+sw       vtt, ttml, srv3, srv2, srv1
+sv       vtt, ttml, srv3, srv2, srv1
+tg       vtt, ttml, srv3, srv2, srv1
+ta       vtt, ttml, srv3, srv2, srv1
+te       vtt, ttml, srv3, srv2, srv1
+th       vtt, ttml, srv3, srv2, srv1
+tr       vtt, ttml, srv3, srv2, srv1
+uk       vtt, ttml, srv3, srv2, srv1
+ur       vtt, ttml, srv3, srv2, srv1
+uz       vtt, ttml, srv3, srv2, srv1
+vi       vtt, ttml, srv3, srv2, srv1
+cy       vtt, ttml, srv3, srv2, srv1
+fy       vtt, ttml, srv3, srv2, srv1
+xh       vtt, ttml, srv3, srv2, srv1
+yi       vtt, ttml, srv3, srv2, srv1
+yo       vtt, ttml, srv3, srv2, srv1
+zu       vtt, ttml, srv3, srv2, srv1
+</code></pre>
+
+<pre><code>2. 查看所有可下载视频的格式
+
+youtube-dl --list-formats https://www.youtube.com/watch\?v\=Mjqf2kkFLy8 
+
+format code  extension  resolution note
+249          webm       audio only tiny   52k , opus @ 50k (48000Hz), 7.94MiB
+250          webm       audio only tiny   67k , opus @ 70k (48000Hz), 9.87MiB
+140          m4a        audio only tiny  131k , m4a_dash container, mp4a.40.2@128k (44100Hz), 21.62MiB
+251          webm       audio only tiny  133k , opus @160k (48000Hz), 17.86MiB
+160          mp4        256x144    144p   91k , avc1.4d400c, 25fps, video only, 7.87MiB
+278          webm       256x144    144p   91k , webm container, vp9, 25fps, video only, 9.22MiB
+242          webm       426x240    240p  157k , vp9, 25fps, video only, 12.76MiB
+133          mp4        426x240    240p  198k , avc1.4d4015, 25fps, video only, 16.98MiB
+243          webm       640x360    360p  286k , vp9, 25fps, video only, 22.07MiB
+134          mp4        640x360    360p  374k , avc1.4d401e, 25fps, video only, 30.49MiB
+244          webm       854x480    480p  456k , vp9, 25fps, video only, 34.89MiB
+135          mp4        854x480    480p  738k , avc1.4d401e, 25fps, video only, 56.84MiB
+247          webm       1280x720   720p  910k , vp9, 25fps, video only, 67.99MiB
+136          mp4        1280x720   720p 1536k , avc1.4d401f, 25fps, video only, 118.35MiB
+248          webm       1920x1080  1080p 1801k , vp9, 25fps, video only, 115.94MiB
+137          mp4        1920x1080  1080p 2976k , avc1.640028, 25fps, video only, 246.53MiB
+43           webm       640x360    360p , vp8.0, vorbis@128k, 68.53MiB
+18           mp4        640x360    360p  334k , avc1.42001E, mp4a.40.2@ 96k (44100Hz), 55.77MiB
+22           mp4        1280x720   720p  837k , avc1.64001F, mp4a.40.2@192k (44100Hz) (best)
+
+</code></pre>
+
+<pre><code>3. 下载字幕和视频文件
+
+youtube-dl -f best --sub-lang zh-Hans  https://www.youtube.com/watch\?v\=Mjqf2kkFLy8
+
+[youtube] Mjqf2kkFLy8: Downloading webpage
+[youtube] Mjqf2kkFLy8: Downloading video info webpage
+[youtube] Mjqf2kkFLy8: Looking for automatic captions
+[info] Writing video subtitles to: HTTP headers for the responsible developer by Stefan Judis _ JSConf EU 2019-Mjqf2kkFLy8.zh-Hans.vtt
+WARNING: Requested formats are incompatible for merge and will be merged into mkv.
+[download] Destination: HTTP headers for the responsible developer by Stefan Judis _ JSConf EU 2019-Mjqf2kkFLy8.f137.mp4
+[download]  15.6% of 246.53MiB at  3.15MiB/s ETA 01:05
+
+</code></pre></article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 HerrDu&#39;s Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+    <p><a href="http://beian.miit.gov.cn" title="Check ICP info" target="_blank" rel="noopener">京ICP备16062836号-2</a></p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?58b22b95872bfffd540b2533a4183257";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+  </body>
+</html>

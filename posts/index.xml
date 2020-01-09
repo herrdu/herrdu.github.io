@@ -6,10 +6,21 @@
     <description>Recent content in Posts on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 18 Oct 2019 09:55:20 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jan 2020 09:38:42 +0800</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>youtube-dl 的第一次实践</title>
+      <link>/posts/youtube-dl/practice-first/</link>
+      <pubDate>Thu, 09 Jan 2020 09:38:42 +0800</pubDate>
+      
+      <guid>/posts/youtube-dl/practice-first/</guid>
+      <description>项目官网。 学习一个项目最为准确的就是看他的官网，它的官网上主要按照：文档、下载、支持、开发、关于五个模块来介绍的。
+ 安装与下载
+   pip 安装 brew 安装   命令实战  1. 查看所有的字幕 youtube-dl --list-subs https://www.youtube.com/watch\?v\=Mjqf2kkFLy8 Language formats af vtt, ttml, srv3, srv2, srv1 sq vtt, ttml, srv3, srv2, srv1 am vtt, ttml, srv3, srv2, srv1 ar vtt, ttml, srv3, srv2, srv1 hy vtt, ttml, srv3, srv2, srv1 az vtt, ttml, srv3, srv2, srv1 bn vtt, ttml, srv3, srv2, srv1 eu vtt, ttml, srv3, srv2, srv1 be vtt, ttml, srv3, srv2, srv1 bs vtt, ttml, srv3, srv2, srv1 bg vtt, ttml, srv3, srv2, srv1 my vtt, ttml, srv3, srv2, srv1 ca vtt, ttml, srv3, srv2, srv1 ceb vtt, ttml, srv3, srv2, srv1 zh-Hans vtt, ttml, srv3, srv2, srv1 zh-Hant vtt, ttml, srv3, srv2, srv1 co vtt, ttml, srv3, srv2, srv1 hr vtt, ttml, srv3, srv2, srv1 cs vtt, ttml, srv3, srv2, srv1 da vtt, ttml, srv3, srv2, srv1 nl vtt, ttml, srv3, srv2, srv1 en vtt, ttml, srv3, srv2, srv1 eo vtt, ttml, srv3, srv2, srv1 et vtt, ttml, srv3, srv2, srv1 fil vtt, ttml, srv3, srv2, srv1 fi vtt, ttml, srv3, srv2, srv1 fr vtt, ttml, srv3, srv2, srv1 gl vtt, ttml, srv3, srv2, srv1 ka vtt, ttml, srv3, srv2, srv1 de vtt, ttml, srv3, srv2, srv1 el vtt, ttml, srv3, srv2, srv1 gu vtt, ttml, srv3, srv2, srv1 ht vtt, ttml, srv3, srv2, srv1 ha vtt, ttml, srv3, srv2, srv1 haw vtt, ttml, srv3, srv2, srv1 iw vtt, ttml, srv3, srv2, srv1 hi vtt, ttml, srv3, srv2, srv1 hmn vtt, ttml, srv3, srv2, srv1 hu vtt, ttml, srv3, srv2, srv1 is vtt, ttml, srv3, srv2, srv1 ig vtt, ttml, srv3, srv2, srv1 id vtt, ttml, srv3, srv2, srv1 ga vtt, ttml, srv3, srv2, srv1 it vtt, ttml, srv3, srv2, srv1 ja vtt, ttml, srv3, srv2, srv1 jv vtt, ttml, srv3, srv2, srv1 kn vtt, ttml, srv3, srv2, srv1 kk vtt, ttml, srv3, srv2, srv1 km vtt, ttml, srv3, srv2, srv1 ko vtt, ttml, srv3, srv2, srv1 ku vtt, ttml, srv3, srv2, srv1 ky vtt, ttml, srv3, srv2, srv1 lo vtt, ttml, srv3, srv2, srv1 la vtt, ttml, srv3, srv2, srv1 lv vtt, ttml, srv3, srv2, srv1 lt vtt, ttml, srv3, srv2, srv1 lb vtt, ttml, srv3, srv2, srv1 mk vtt, ttml, srv3, srv2, srv1 mg vtt, ttml, srv3, srv2, srv1 ms vtt, ttml, srv3, srv2, srv1 ml vtt, ttml, srv3, srv2, srv1 mt vtt, ttml, srv3, srv2, srv1 mi vtt, ttml, srv3, srv2, srv1 mr vtt, ttml, srv3, srv2, srv1 mn vtt, ttml, srv3, srv2, srv1 ne vtt, ttml, srv3, srv2, srv1 no vtt, ttml, srv3, srv2, srv1 ny vtt, ttml, srv3, srv2, srv1 ps vtt, ttml, srv3, srv2, srv1 fa vtt, ttml, srv3, srv2, srv1 pl vtt, ttml, srv3, srv2, srv1 pt vtt, ttml, srv3, srv2, srv1 pa vtt, ttml, srv3, srv2, srv1 ro vtt, ttml, srv3, srv2, srv1 ru vtt, ttml, srv3, srv2, srv1 sm vtt, ttml, srv3, srv2, srv1 gd vtt, ttml, srv3, srv2, srv1 sr vtt, ttml, srv3, srv2, srv1 sn vtt, ttml, srv3, srv2, srv1 sd vtt, ttml, srv3, srv2, srv1 si vtt, ttml, srv3, srv2, srv1 sk vtt, ttml, srv3, srv2, srv1 sl vtt, ttml, srv3, srv2, srv1 so vtt, ttml, srv3, srv2, srv1 st vtt, ttml, srv3, srv2, srv1 es vtt, ttml, srv3, srv2, srv1 su vtt, ttml, srv3, srv2, srv1 sw vtt, ttml, srv3, srv2, srv1 sv vtt, ttml, srv3, srv2, srv1 tg vtt, ttml, srv3, srv2, srv1 ta vtt, ttml, srv3, srv2, srv1 te vtt, ttml, srv3, srv2, srv1 th vtt, ttml, srv3, srv2, srv1 tr vtt, ttml, srv3, srv2, srv1 uk vtt, ttml, srv3, srv2, srv1 ur vtt, ttml, srv3, srv2, srv1 uz vtt, ttml, srv3, srv2, srv1 vi vtt, ttml, srv3, srv2, srv1 cy vtt, ttml, srv3, srv2, srv1 fy vtt, ttml, srv3, srv2, srv1 xh vtt, ttml, srv3, srv2, srv1 yi vtt, ttml, srv3, srv2, srv1 yo vtt, ttml, srv3, srv2, srv1 zu vtt, ttml, srv3, srv2, srv1  2.</description>
+    </item>
     
     <item>
       <title>GO中的Package——Error</title>

@@ -189,6 +189,44 @@
   
    <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="/post/wannacry/" class="post-link">wannacry病毒的肆虐</a></h3>
+    <p class="post-meta">@ · May 17, 2017 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">很长时间没有一种病毒有这么强的影响力了，上一次是熊猫烧香，上上次应该就是千年虫了。说实话，碰上这样的物种，着实让我感到了恐惧与兴奋。恐惧的是有些数据会丢失，这给大家造成了上亿美元的损失，是每个个人无法承担的；兴奋的是这个看到了科技实力的不断的自我改进，大概是看到了所谓的魔、道两家的较量中前进的过程。言归正传，还是说说 wannacry 病毒的吧。以下内容来自web 。
+一、WanaCry长啥样？
+　此次爆发的勒索恶意软件为名称为WanaCry，此病毒名在样本中已有提及。翻译、截取并给与其他名称的厂商，可证明其尚未获得样本，并且无法对该样本进行深入分析，他们提及的防御方案的针对性及有效性，更值得怀疑。
+　1、WanaCry的基本情况：
+　WanaCry也被称为WanaCrypt0r 2.0，此病毒文件的大小3.3MB，金山安全将其定义为一种“蠕虫式”勒索软件。
+　WannaCry被认为是使用了ETERNALBLUE漏洞，ETERNALBLUE利用漏洞MS17-010中的某些版本的SMB服务器协议进行传播，该漏洞并不是0Day漏洞， 补丁程序已于17年3月14日发布，但未打补丁的用户有可能遭受此次攻击。
+　2、中招WanaCry后的机器桌面：
+　病毒的文件名并不固定， 但中招后的机器桌面一般会出现如下情形： 　勒索赎金的弹框： 赎金交付方式 然后你的桌面背景会变成这样： 　3、WanaCry的运行方式
+　3.1、病毒主要释放的文件都是干什么的，并且如何运行的？ 可以看出，作者把文件的分工分得很细， 尤其是msg这个文件夹， 里面几乎涵盖了所有语言版本的勒索说明。其中涵盖的语言版本不少于28种。 这是一份中文版的：
+　3.2病毒的运行方式 第一步：病毒运行后会生成启动项： 病毒会加密的文件后缀名有： 这里可以清晰的看到病毒的家族名。 而且病毒作者钟爱VC6.0，各个模块均为VC6.0开发 第二步：遍历磁盘： 第三步：遍历文件后实施加密： 其他说明： 1)：病毒还尝试并创建服务达到自启动： 2)：除此之外， 病毒通过动态加载加密API方式阻碍逆向分析取证： 在此之后，具体的加密行为流程与传统勒索已经并无区别了， 就不再描述了。 4、WanaCry的危害性 感染WanaCry后，用户的终端与受到大多数的勒索软件侵蚀后一样，会将各类型数据、文档文件加密，被加密的文件后缀名会改成.WNCRY， 并索要赎金。</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/wannacry/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="/post/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E4%B8%8A-pptpvpn%E7%9A%84%E6%90%AD%E5%BB%BA/" class="post-link">腾讯云Centos上,pptpVpn的搭建</a></h3>
+    <p class="post-meta">@ · Sep 26, 2016 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">1. 为什么使用 VPN 随着公司项目服务器数量的增多，对服务器管理也越来越难，安全性的要求也越来越高。有一套好的技术机制可以让我们简单、安全的管理服务器集群。而 vpn 恰恰又是这其中的常用的一种。
+我们无论是在阿里云还是腾讯云上购买的服务器，它都是包含两个 ip 的：一个内网 ip，一个公网的 ip。公网的 ip 是我们用 ssh 通过外网进行访问的，而内网 ip 则是在服务器之间通过 ssh 访问用的。为了确保应用服务器在访问上的安全性，我们认为应该把部署应用的服务器的公网 ip 取消掉。这样就可以确保人们不能通过外网随意的访问这台机子，但是我们又需要访问这主机上的应用，那只能使用私有 ip 了。我们有负载均衡的服务器，这台服务器是一个连接公网与私网的桥梁。域名解析的时候指向负载均衡服务器的公网 ip，然后负载均衡服务器通过内网 ip 指向应用服务器。不过还是有一个问题就是，开发人员该如何访问应用服务器上去部署程序呢？这时我们需要一个和应用服务器在同一个局域网内的跳板服务器，我们先通过公网登录跳板服务器，然后在登录应用服务器。可是我们又不想给开发人员跳板服务器的用户名和密码，因此 vpn 就是一个不错的选择。vpn，让开发人员走跳板服务器的代理，然后对应服务器进行操作。这条路线虽然是曲折了一点，但还是简单的办法保证了服务器的安全性。
+2.如何在 centos 上搭建 vpn  准备必要的软件:ppp、iptables、pptpd  yum install -y ppp iptables pptpd 
+ 配置 pptp ##### /etc/pptpd.conf 添加下面两行   localip 192.168.0.1 remoteip 192.168.0.244-192.168.0.245 
+192.168.0.244-192.168.0.245 表示用户被分配的 ip 地址的范围。
+##### /etc/ppp/options.pptpd
+添加下面两行，表示使用 Google 的 DNS 服务器:
+ ms-dns 8.8.8.8 ms-dns 8.</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/%E8%85%BE%E8%AE%AF%E4%BA%91centos%E4%B8%8A-pptpvpn%E7%9A%84%E6%90%AD%E5%BB%BA/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%B9%B3%E5%8F%B0%E7%9A%84cdn%E4%BD%BF%E7%94%A8/" class="post-link">腾讯云平台的cdn使用</a></h3>
     <p class="post-meta">@ · Sep 26, 2016 · 1 min read</p>
   </header>
@@ -310,36 +348,6 @@ HTML 规范 语法  缩进使用 soft tab（4 个空格）；
     <a class="read-more" href="/post/git-%E4%BD%BF%E7%94%A8%E4%BA%8C%E4%B8%89%E4%BA%8B/">Read More →</a>
   </footer>
 </article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/nginx%E5%AE%89%E8%A3%85%E5%B0%8F%E8%AE%B0/" class="post-link">nginx安装小记</a></h3>
-    <p class="post-meta">@ · May 24, 2016 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">参考文档
-1 Nginx 安装配置</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/nginx%E5%AE%89%E8%A3%85%E5%B0%8F%E8%AE%B0/">Read More →</a>
-  </footer>
-</article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/tornado-%E5%88%A9%E7%94%A8redis%E6%90%AD%E5%BB%BAsession/" class="post-link">tornado 利用redis搭建session</a></h3>
-    <p class="post-meta">@ · May 3, 2016 · 3 min read</p>
-  </header>
-  
-  <p class="post-summary">参考文献        操作系统 Mac python 版本：2.7
-1.安装 tornado
-sudo easy_install tornado  2.安装 redis
-cd /tmp wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz tar -zxf redis-2.2.13.tar.gz cd redis-2.2.13 make sudo make install  3.安装 python 的 redis 模块
-pip install redis  4.安装 ujson
-pip install ujson  5.编写 session 文件，基于 redis 的数据库
-session.py
-#/usr/bin/python # coding: utf-8 import uuid import hmac import ujson import hashlib import redis __author__ = &#39;herrdu&#39; &#34;&#34;&#34; 需要安装的第三方库： python的redis连接：http://pypi.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/tornado-%E5%88%A9%E7%94%A8redis%E6%90%AD%E5%BB%BAsession/">Read More →</a>
-  </footer>
-</article>
  
    
   <footer class="list-footer">
@@ -360,7 +368,7 @@ session.py
 </section>
 
 <footer class="site-footer">
-  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>© 2017-2020 HerrDu&#39;s Blog</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
     <p><a href="http://beian.miit.gov.cn" title="Check ICP info" target="_blank" rel="noopener">京ICP备16062836号-2</a></p>

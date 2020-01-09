@@ -6,10 +6,21 @@
     <description>Recent content on HerrDu&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 12 Dec 2019 09:33:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jan 2020 09:38:42 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>youtube-dl 的第一次实践</title>
+      <link>/post/youtube-dl/practice-first/</link>
+      <pubDate>Thu, 09 Jan 2020 09:38:42 +0800</pubDate>
+      
+      <guid>/post/youtube-dl/practice-first/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://ytdl-org.github.io/youtube-dl/&#34;&gt;项目官网&lt;/a&gt;。 学习一个项目最为准确的就是看他的官网，它的官网上主要按照：文档、下载、支持、开发、关于五个模块来介绍的。&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
     
     <item>
       <title>OptionChaining 说起</title>
@@ -70,10 +81,10 @@ const maybeArtistBio = album.artist &amp;amp;&amp;amp; album.artist.bio;
     
     <item>
       <title>GO中的Package——Error</title>
-      <link>/posts/golang/package/error/</link>
+      <link>/post/golang/package/error/</link>
       <pubDate>Fri, 18 Oct 2019 09:55:20 +0800</pubDate>
       
-      <guid>/posts/golang/package/error/</guid>
+      <guid>/post/golang/package/error/</guid>
       <description>Error 包实现了几个操作 errors 的方法。使用起来非常简单，而 New 方法需要的内容只是一个段文本。
 New 操作
 err := errors.New(&amp;quot;emit macho dwarf: elf header corrupted&amp;quot;) if err != nil { fmt.Print(err) }  Unwrap 方法

@@ -189,6 +189,36 @@
   
    <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="/post/nginx%E5%AE%89%E8%A3%85%E5%B0%8F%E8%AE%B0/" class="post-link">nginx安装小记</a></h3>
+    <p class="post-meta">@ · May 24, 2016 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">参考文档
+1 Nginx 安装配置</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/nginx%E5%AE%89%E8%A3%85%E5%B0%8F%E8%AE%B0/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="/post/tornado-%E5%88%A9%E7%94%A8redis%E6%90%AD%E5%BB%BAsession/" class="post-link">tornado 利用redis搭建session</a></h3>
+    <p class="post-meta">@ · May 3, 2016 · 3 min read</p>
+  </header>
+  
+  <p class="post-summary">参考文献        操作系统 Mac python 版本：2.7
+1.安装 tornado
+sudo easy_install tornado  2.安装 redis
+cd /tmp wget http://redis.googlecode.com/files/redis-2.2.13.tar.gz tar -zxf redis-2.2.13.tar.gz cd redis-2.2.13 make sudo make install  3.安装 python 的 redis 模块
+pip install redis  4.安装 ujson
+pip install ujson  5.编写 session 文件，基于 redis 的数据库
+session.py
+#/usr/bin/python # coding: utf-8 import uuid import hmac import ujson import hashlib import redis __author__ = &#39;herrdu&#39; &#34;&#34;&#34; 需要安装的第三方库： python的redis连接：http://pypi.</p>
+  <footer class="post-footer">
+    <a class="read-more" href="/post/tornado-%E5%88%A9%E7%94%A8redis%E6%90%AD%E5%BB%BAsession/">Read More →</a>
+  </footer>
+</article>
+  <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="/post/%E5%87%A0%E7%A7%8D%E9%A6%96%E9%A1%B5%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%88%B6%E4%BD%9C/" class="post-link">几种首页模板的制作</a></h3>
     <p class="post-meta">@ · Feb 19, 2016 · 1 min read</p>
   </header>
@@ -320,42 +350,6 @@ Svn 的基本工作原理 在一台服务器上建立一个源代码库，库里
     <a class="read-more" href="/post/http%E7%8A%B6%E6%80%81%E7%A0%81%E4%BD%9C%E7%94%A8/">Read More →</a>
   </footer>
 </article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/virtualenvwrapper%E7%9A%84%E5%B8%B8%E8%A7%84%E5%BA%94%E7%94%A8/" class="post-link">virtualenvwrapper 的常规应用</a></h3>
-    <p class="post-meta">@ · Nov 27, 2015 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">#### virtualenvwrapper 简介 virtualenvwrapper 是 python 的一个虚拟环境管理工具。它是对 virtualenv 工具的一个扩展。 #### 功能  在一个地方管理所有的虚拟环境 Wrappers 帮助你管理虚拟环境（创建，删除，复制）. 一个简单的命令，在虚拟环境之中随意切换. 命令可以由 Tab 补齐，虚拟环境是命令的参数 所有的操作者都可以有自己的用户配置文件 有更多的创建共享扩展的系统插件  #### 安装与创建一个项目   $ pip install virtualenvwrapper … $ export WORKON_HOME=~/Envs $ mkdir -p $WORKON_HOME $ source /usr/local/bin/virtualenvwrapper.sh $ mkvirtualenv env1 Installing setuptools…………………………………… ……………………………………………. ……………………………………………. ………………………….done. virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/predeactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postdeactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/preactivate virtualenvwrapper.user_scripts Creating /Users/dhellmann/Envs/env1/bin/postactivate New python executable in env1/bin/python (env1)$ ls $WORKON_HOME env1 hook.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/virtualenvwrapper%E7%9A%84%E5%B8%B8%E8%A7%84%E5%BA%94%E7%94%A8/">Read More →</a>
-  </footer>
-</article>
-  <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/tomcat%E7%9A%84%E9%85%8D%E7%BD%AE/" class="post-link">tomcat的配置</a></h3>
-    <p class="post-meta">@ · Nov 24, 2015 · 2 min read</p>
-  </header>
-  
-  <p class="post-summary">tomcat 的下载 Apache Tomcat
-tomcat 的 server.xml Tomcat 服务器是由一系列可配置的组件构成的，其中核心组件是 Catalina Servlet，它是最顶层组件。
-Tomcat 的各组件是在 server.xml（CATALINA_HOME\conf\server.xml）配置的
-Tomcat 各组件关系图
-server server 即 Catalina server 组件，他是 server.xml 的最外层元素
-常用属性： Address—Tomcat 监听 shutdown 命令的地址，默认为 localhost
-className—指定实现 org.apache.catalina.Server 接口的类，默认值为 org.apache.catalina.core.StandardServer
-port－Tomcat 监听 shutdown 命令的端口。设置为-1，则禁止通过端口关闭 Tomcat，同时 shutdown.bat 也不能使用
-shutdown－通过指定的地址（Address）、端口（port）关闭 Tomcat 所需的字符串。修改 shutdown 的值，对 shutdown.bat 无影响
-通过端口关闭 Tomcat，可以用 telnet 进行测试
-安装 telnet
-打开控制面板－程序－启用或关闭 Windows 功能，勾上”Telnet 服务器”、”Telnet 客户端”，点”确定”
-安装成功后，首先启动 Tomcat，然后在 cmd 下输入
-telnet localhost 8005
-然后输入 SHUTDOWN 即可关闭 Tomcat</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/tomcat%E7%9A%84%E9%85%8D%E7%BD%AE/">Read More →</a>
-  </footer>
-</article>
  
    
   <footer class="list-footer">
@@ -376,7 +370,7 @@ telnet localhost 8005
 </section>
 
 <footer class="site-footer">
-  <p>© 2017-2019 HerrDu&#39;s Blog</p>
+  <p>© 2017-2020 HerrDu&#39;s Blog</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
     <p><a href="http://beian.miit.gov.cn" title="Check ICP info" target="_blank" rel="noopener">京ICP备16062836号-2</a></p>
